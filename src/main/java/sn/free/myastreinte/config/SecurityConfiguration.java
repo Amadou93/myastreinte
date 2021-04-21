@@ -20,6 +20,8 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 import org.springframework.security.web.header.writers.ReferrerPolicyHeaderWriter;
 import org.springframework.web.filter.CorsFilter;
 import org.zalando.problem.spring.web.advice.security.SecurityProblemSupport;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.ldap.authentication.ad.ActiveDirectoryLdapAuthenticationProvider;
 
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true, securedEnabled = true)
@@ -30,6 +32,11 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     private final CorsFilter corsFilter;
     private final SecurityProblemSupport problemSupport;
+
+    @Value("${app.ldap.domain}")
+    private String domain;
+    @Value("${app.ldap.url}")
+    private String url;
 
     public SecurityConfiguration(TokenProvider tokenProvider, CorsFilter corsFilter, SecurityProblemSupport problemSupport) {
         this.tokenProvider = tokenProvider;
@@ -97,5 +104,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     private JWTConfigurer securityConfigurerAdapter() {
         return new JWTConfigurer(tokenProvider);
+    }
+
+    @Bean
+    public ActiveDirectoryLdapAuthenticationProvider activeDirectoryLdapAuthenticationProvider() {
+        return new ActiveDirectoryLdapAuthenticationProvider(this.domain, this.url);
     }
 }

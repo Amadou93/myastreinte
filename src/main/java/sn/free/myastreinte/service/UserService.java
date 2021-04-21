@@ -1,5 +1,6 @@
 package sn.free.myastreinte.service;
 
+import org.springframework.security.core.context.SecurityContextHolder;
 import sn.free.myastreinte.config.Constants;
 import sn.free.myastreinte.domain.Authority;
 import sn.free.myastreinte.domain.User;
@@ -138,14 +139,14 @@ public class UserService {
         user.setLogin(userDTO.getLogin().toLowerCase());
         user.setFirstName(userDTO.getFirstName());
         user.setLastName(userDTO.getLastName());
-        user.setEmail(userDTO.getEmail().toLowerCase());
+        user.setEmail(userDTO.getLogin() + "@free.sn");
         user.setImageUrl(userDTO.getImageUrl());
         if (userDTO.getLangKey() == null) {
             user.setLangKey(Constants.DEFAULT_LANGUAGE); // default language
         } else {
             user.setLangKey(userDTO.getLangKey());
         }
-        String encryptedPassword = passwordEncoder.encode(RandomUtil.generatePassword());
+        String encryptedPassword = passwordEncoder.encode("FakePassword");
         user.setPassword(encryptedPassword);
         user.setResetKey(RandomUtil.generateResetKey());
         user.setResetDate(Instant.now());
@@ -293,4 +294,31 @@ public class UserService {
         Objects.requireNonNull(cacheManager.getCache(UserRepository.USERS_BY_LOGIN_CACHE)).evict(user.getLogin());
         Objects.requireNonNull(cacheManager.getCache(UserRepository.USERS_BY_EMAIL_CACHE)).evict(user.getEmail());
     }
+
+    public Optional<UserDTO> getUserByLogin(String login){
+        return userRepository.findOneByLogin(login).map(UserDTO::new);
+    }
+
+    public List<Authority> getMainAuthoritiesOfCurrentUser(){
+        String userLogin = SecurityContextHolder.getContext().getAuthentication().getName();
+        return this.userRepository.findOneByLogin(userLogin)
+            .map(User::getAuthorities)
+            .orElseThrow(IllegalAccessError::new)
+            .stream()
+            .filter(a -> !a.getName().equals("ROLE_USER"))
+            .collect(Collectors.toList());
+    }
+    public List<String> getLoginOfUsersOfTheSameGroupThanCurrentUser(){
+        List<String> loginOfUsersOfTheSameGroupThanCurrentUser = userRepository.findAllByIdIn(
+            userRepository.findAllByAuthoritiesIn(this.getMainAuthoritiesOfCurrentUser())
+                .stream()
+                .map(User::getId)
+                .collect(Collectors.toList())
+        )
+            .stream()
+            .map(User::getLogin)
+            .collect(Collectors.toList());
+        return loginOfUsersOfTheSameGroupThanCurrentUser;
+    }
+
 }
