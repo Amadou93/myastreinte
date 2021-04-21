@@ -1,0 +1,37 @@
+{
+  "generator-jhipster": {
+    "promptValues": {
+      "packageName": "sn.free.myastreinte"
+    },
+    "jhipsterVersion": "6.1.2",
+    "applicationType": "monolith",
+    "baseName": "myAstreinte",
+    "packageName": "sn.free.myastreinte",
+    "packageFolder": "sn/free/myastreinte",
+    "serverPort": "8080",
+    "authenticationType": "jwt",
+    "cacheProvider": "ehcache",
+    "enableHibernateCache": false,
+    "websocket": false,
+    "databaseType": "sql",
+    "devDatabaseType": "mysql",
+    "prodDatabaseType": "mysql",
+    "searchEngine": false,
+    "messageBroker": false,
+    "serviceDiscoveryType": false,
+    "buildTool": "maven",
+    "enableSwaggerCodegen": false,
+    "jwtSecretKey": "ZGQ4MDA5OTk2YWE5YzA4YWFmODkyYjNkOWViM2IzYjE1YjVmY2UzY2QyNzJhYzliNGI1YTdlOGMwZGYzOGRjNWMyYjNiNjIzNzdkYTM3YzY4ZDFmZTJiN2I1OTllZDEyNTQ3YzFkYjVkM2JmZjBjYzg0MWQyMTkzOWZkOTgyYmU=",
+    "useSass": true,
+    "clientPackageManager": "npm",
+    "clientFramework": "angularX",
+    "clientTheme": "none",
+    "clientThemeVariant": "",
+    "testFrameworks": [],
+    "jhiPrefix": "jhi",
+    "entitySuffix": "",
+    "dtoSuffix": "DTO",
+    "otherModules": [],
+    "enableTranslation": false
+  }
+}
