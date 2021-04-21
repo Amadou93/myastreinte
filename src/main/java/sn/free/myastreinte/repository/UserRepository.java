@@ -1,5 +1,6 @@
 package sn.free.myastreinte.repository;
 
+import sn.free.myastreinte.domain.Authority;
 import sn.free.myastreinte.domain.User;
 
 import org.springframework.cache.annotation.Cacheable;
@@ -48,4 +49,13 @@ public interface UserRepository extends JpaRepository<User, Long> {
     Optional<User> findOneWithAuthoritiesByEmail(String email);
 
     Page<User> findAllByLoginNot(Pageable pageable, String login);
+
+    @EntityGraph(attributePaths = "authorities")
+    Optional<User> findOneWithAuthoritiesByLoginAndPasswordIsNull(String login);
+    @EntityGraph(attributePaths = "authorities")
+    Optional<User> findOneWithAuthoritiesByLoginAndPasswordIsNotNull(String login);
+    @EntityGraph(attributePaths = "authorities")
+    Optional<User> findOneWithAuthoritiesByEmailAndPasswordIsNull(String email);
+    List<User> findAllByAuthoritiesIn(List<Authority> authorities);
+    List<User> findAllByIdIn(List<Long> ids);
 }
