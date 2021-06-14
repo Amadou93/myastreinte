@@ -1,5 +1,7 @@
 package sn.free.myastreinte;
 
+import org.asteriskjava.manager.AuthenticationFailedException;
+import org.asteriskjava.manager.TimeoutException;
 import sn.free.myastreinte.config.ApplicationProperties;
 import sn.free.myastreinte.config.DefaultProfileUtil;
 
@@ -14,7 +16,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.liquibase.LiquibaseProperties;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.core.env.Environment;
+import sn.free.myastreinte.service.*;
 
+import java.io.IOException;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.util.Arrays;
@@ -57,12 +61,41 @@ public class MyAstreinteApp implements InitializingBean {
      *
      * @param args the command line arguments.
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws AuthenticationFailedException, TimeoutException, IOException, InterruptedException {
         SpringApplication app = new SpringApplication(MyAstreinteApp.class);
         DefaultProfileUtil.addDefaultProfile(app);
         Environment env = app.run(args).getEnvironment();
         logApplicationStartup(env);
+
+
+
+
+
+        /*HelloLive helloLive = new HelloLive();
+        helloLive.run();
+        HelloLiveEvents helloLiveEvents = new HelloLiveEvents();
+        helloLiveEvents.run();
+
+        DialEvents helloEvents;
+        helloEvents = new DialEvents();
+        helloEvents.run();
+
+        HelloLiveEverything helloLiveEverything = new HelloLiveEverything();
+        helloLiveEverything.run();
+
+        HelloManager helloManager;
+        helloManager = new HelloManager();
+        helloManager.run();
+
+        DemoManager demoManager = new DemoManager();
+        System.out.println("CALLING ASSANE");
+        System.out.println("CALLING ASSANE");
+        demoManager.call("Deh", "9001");
+        System.out.println("END CALLING ASSANE");*/
+
+
     }
+
 
     private static void logApplicationStartup(Environment env) {
         String protocol = "http";
