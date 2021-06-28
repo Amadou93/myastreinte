@@ -1,0 +1,88 @@
+<div class="row justify-content-center" >
+    <div class="col-8">
+        <div *ngIf="astreinte" >
+            <h2><span>Astreinte</span> {{astreinte.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <!-- <table>
+                <tr style="font-weight: bold;" class="text-center">
+                   <th>Astreinte</th>
+                    <th></th>
+                   <th>Employe</th>
+                </tr>
+                <tr  class="text-center">
+                    <td><span>Matricule :</span> {{astreinte.matricul}}</td>
+                    <td></td>
+                    <td> <span>Prenom :</span> {{employe.firstName}}</td>
+                </tr>
+                <tr  class="text-center">
+                    <td><span>Année :</span> {{astreinte.year}}</td>
+                    <td></td>
+                    <td> <span>Nom :</span> {{employe.lastName}}</td>
+                </tr>
+                <tr  class="text-center">
+                    <td> <span>Numéro de la semaine :</span> {{astreinte.numberWeek}}</td>
+                    <td></td>
+                    <td> <span>Email:</span> {{employe.email}}</td>
+                </tr>
+                <tr  class="text-center">
+                    <td></td>
+                    <td></td>
+                    <td><span>Téléphone :</span> {{employe.phoneNumber}}</td>
+                </tr>
+            </table> -->
+            <dl class="row-md jh-entity-details">
+                <dt><span>Matricule</span></dt>
+                <dd>
+                    <span>{{astreinte.matricul}}</span>
+                </dd>
+                <dt><span>Année</span></dt>
+                <dd>
+                    <span>{{astreinte.year}}</span>
+                </dd>
+                <dt><span>Numéro de la semaine </span></dt>
+                <dd>
+                    <span>{{astreinte.numberWeek}}</span>
+                </dd>
+
+                <dt><span>Prenom</span></dt>
+                <dd>
+                    <span>{{employe.firstName}}</span>
+                </dd>
+                <dt><span>Nom</span></dt>
+                <dd>
+                    <span>{{employe.lastName}}</span>
+                </dd>
+                <dt><span>Email</span></dt>
+                <dd>
+                    <span>{{employe.email}}</span>
+                </dd>
+                <dt><span>Numero telephone</span></dt>
+                <dd>
+                    <span>{{employe.phoneNumber}}</span>
+                </dd>
+                <dt><span>Equipe</span></dt>
+                <dd>
+                    <span>{{equipe.name}}</span>
+                </dd>
+                <dd>
+                    <div *ngIf="astreinte.employeId">
+                        <a [routerLink]="['/employe', astreinte.employeId, 'view']">{{astreinte.employeId}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/astreinte', astreinte.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

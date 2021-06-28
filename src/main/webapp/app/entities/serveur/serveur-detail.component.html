@@ -1,0 +1,49 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="serveur">
+            <h2><span>Serveur</span> {{serveur.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Name Serveur</span></dt>
+                <dd>
+                    <span>{{serveur.nameServeur}}</span>
+                </dd>
+                <dt><span>Cpu</span></dt>
+                <dd>
+                    <span>{{serveur.cpu}}</span>
+                </dd>
+                <dt><span>Memory</span></dt>
+                <dd>
+                    <span>{{serveur.memory}}</span>
+                </dd>
+                <dt><span>Disque</span></dt>
+                <dd>
+                    <span>{{serveur.disque}}</span>
+                </dd>
+                <dt><span>Avalibity</span></dt>
+                <dd>
+                    <span>{{serveur.avalibity}}</span>
+                </dd>
+                <dt><span>Equipe</span></dt>
+                <dd>
+                    <div *ngIf="serveur.equipeId">
+                        <a [routerLink]="['/equipe', serveur.equipeId, 'view']">{{serveur.equipeId}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/serveur', serveur.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

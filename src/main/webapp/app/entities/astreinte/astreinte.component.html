@@ -1,0 +1,201 @@
+<div>
+    <h2 id="page-heading">
+        <!-- <jhi-advanced-search (searchReqData)="newSearch($event)"></jhi-advanced-search>-->
+        <form name="searchForm" class="form-inline">
+            <div class="input-group w-100 mt-3">
+                <input type="number" class="form-control" [(ngModel)]="chaine" id="chaine" name="chaine"
+                    placeholder="Rechercher par numero de la semaine ou matricule d'un employé">
+                <button class="input-group-append btn btn-danger" (click)="check()">
+                    <fa-icon [icon]="'search'"></fa-icon>
+                </button>
+
+            </div>
+        </form>
+        <button type="submit" (click)="previousState()" class="btn btn-danger">
+
+            <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> retour</span>
+        </button>
+        <!--<h2>
+            Bienvenue dans la barre de Recherche
+        </h2>
+        <input type="search"  id="chaine" [(ngModel)]="chaine" >
+        <button (click)="check()">Rechercher</button>
+        <script>
+            $("button").function.click.chaine()
+
+        </script>-->
+
+        <!-- <p>
+            <button (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed" aria-controls="advanced"
+                    class="btn btn-primary" type="button">
+                Advanced Search
+            </button>
+        </p>
+        <div [ngbCollapse]="isCollapsed" class="collapse card" id="advanced">
+            <div class="form-inline card-body">
+                <div class="form-group mx-sm-3 mb-2">
+                    <label class="form-control-label">Matricule: </label>
+                    <input #matricul class="form-control-sm" id="matricul"
+                           onblur="document.getElementById('parent').disabled = (''!=this.value);
+            document.querySelectorAll('[id=zone]').forEach(element => element.disabled = (''!=this.value));
+            document.querySelectorAll('[id=partnerProfile]').forEach(element => element.disabled = (''!=this.value));"
+                           placeholder="Entrer une matricule" type="number" [(ngModel)]="advancedSearchMsisdn"/>
+                </div>
+                <div class="form-group mx-sm-3 mb-2">
+                    <label class="form-control-label" >NumeroSemaine: </label>
+                    <input #numeroWeek class="form-control-sm" id="numeroWeek"
+                           onblur="document.getElementById('msisdn').disabled = (''!=this.value);
+            document.querySelectorAll('[id=zone]').forEach(element => element.disabled = (''!=this.value));
+            document.querySelectorAll('[id=partnerProfile]').forEach(element => element.disabled = (''!=this.value));"
+                           placeholder="Entrer un numero" type="number" [(ngModel)]="advancedSearchParent"/>
+                </div>
+
+
+
+                <div class="form-group mx-sm-3 mb-2">
+                    <label class="form-control-label">Année: </label>
+                    <select #zone class="form-control-sm" name="year" [(ngModel)]="advancedSearchZone">
+                        <option value="2020"></option>
+                        <option value="2021"></option>
+                        <option *ngFor="let zoneOption of zones;" id="year"
+                                value="{{ zoneOption.id }}">{{ zoneOption.name }}</option>
+                    </select>
+                </div>
+                <div class="form-group mx-sm-3 mb-2">
+                    <label class="form-control-label">equipe: </label>
+                    <select #profile class="form-control-sm" name="" [(ngModel)]="advancedSearchProfile">
+                        <option value=""></option>
+                        <option *ngFor="let astreinteEquipeOption of astreinteequipe;" id="astreinteEquipe"
+                                value="{{ astreinteEquipeOption.id }}">{{ astreinteEquipeOption.code }}</option>
+                    </select>
+                </div>
+                <button (click)="advancedSearch(matricul.value,numeroWeek.value,year.value,equipe.value);"
+                        class="btn btn-sm mx-sm-3 mb-2 btn-primary">
+                    <fa-icon icon="search"></fa-icon>
+                    Chercher
+                </button>
+               &lt;!&ndash; <button (click)="advancedInit();" class="btn btn-sm mx-sm-2 mb-2 btn-primary">Init</button>&ndash;&gt;
+
+            </div>
+        </div>
+        <br/>-->
+
+        <span>Astreintes</span>
+        <button id="jh-create-entity" class="btn btn-dark float-right jh-create-entity create-astreinte"
+            [routerLink]="['/astreinte/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span>
+                Creer Astreinte
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br />
+    <div class="alert alert-warning" *ngIf="astreintes?.length === 0">
+        <span>No astreintes found</span>
+    </div>
+
+
+    <div class="table-responsive" *ngIf="astreintes?.length > 0">
+
+        <table class="table table-striped">
+
+            <thead class=" bg-danger text-white">
+
+
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+
+                    <th jhiSortBy="matricul"><span>Matricule</span>
+                        <fa-icon [icon]="'sort'"></fa-icon>
+
+                    <!--<th jhiSortBy="numberWeek"><span>Numéro Semaine</span>
+                        <fa-icon [icon]="'sort'"></fa-icon>
+                    </th>-->
+                <th jhiSortBy="astreinte.numberWeek.toDateString()"><span>Debut de la semaine</span>
+                    <fa-icon [icon]="'sort'"></fa-icon>
+                </th>
+                </th>
+                <th jhiSortBy="year"><span>Année</span>
+                    <fa-icon [icon]="'sort'"></fa-icon>
+                </th>
+                <th jhiSortBy="employe.lastName"><span >Employe</span>
+                    <fa-icon [icon]="'sort'"></fa-icon>
+                </th>
+                 <th jhiSortBy="astreinte.employe.equipe.name"><span>Domaine</span>
+                    <fa-icon [icon]="'sort'"></fa-icon>
+                </th>
+                <th jhiSortBy="astreinte.employe.numberPhone"><span>N° Telephone</span>
+                    <fa-icon [icon]="'sort'"></fa-icon>
+                </th>
+                <th jhiSortBy="astreinte.employe.mail"><span>Email</span>
+                    <fa-icon [icon]="'sort'"></fa-icon>
+                </th>
+                    <th></th>
+
+                </tr>
+
+            </thead>
+
+
+    <tbody>
+                <tr *ngFor="let astreinte of astreintes ;trackBy: trackId">
+<!--                    <td><a [routerLink]="['/astreinte', astreinte.id, 'view' ]">{{astreinte.employe.fistName}}</a></td>-->
+                    <td>{{astreinte.matricul}}</td>
+              <!--  <td>{{astreinte.numberWeek}}</td>-->
+                    <td><label for="start">Start date:</label>
+
+                        <input type="date" id="start" name="trip-start"
+                               value="2021-06-12"
+                               value="2021-06-20"
+                               min="2021-01-01" max="2021-12-31"></td>
+                   <!-- <td *ngIf="astreinte">{{astreinte.numberWeek.toDateString()}}</td>-->
+                    <td>{{astreinte.year}}</td>
+                    <td><a href= "/employe">{{astreinte.employe.firstName}} {{astreinte.employe.lastName}}</a></td>
+
+                 <!--   <td>{{astreinte.employe.lastName}}</td>-->
+                    <td *ngIf="astreinte.employe.equipe"><a href= "/equipe">{{astreinte.employe.equipe.name}}</a></a></td>
+
+                    <td>{{astreinte.employe.phoneNumber}}</td>
+                   <td>{{astreinte.employe.email}}</td>
+                    <td></td>
+
+
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <!--<button type="submit" [routerLink]="['/astreinte', astreinte.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                                <fa-icon [icon]="'eye'"></fa-icon>
+                                <span class="d-none d-md-inline">View</span>
+                            </button>-->
+                            <button type="submit" [routerLink]="['/astreinte', astreinte.id, 'edit']"
+                                class="btn btn-dark btn-sm">
+                                <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                                <span class="d-none d-md-inline">Edit</span>
+                            </button>
+                            <button type="submit"
+                                [routerLink]="['/', 'astreinte', { outlets: { popup: astreinte.id + '/delete'} }]"
+                                replaceUrl="true" queryParamsHandling="merge" class="btn btn-danger btn-sm">
+                                <fa-icon [icon]="'times'"></fa-icon>
+                                <span class="d-none d-md-inline">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+
+    </div>
+
+
+    <div [hidden]="astreintes?.length === 0">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="totalItems" [maxSize]="5" [itemsPerPage]="itemsPerPage">
+            </jhi-item-count>
+        </div>
+        <div class="row justify-content-center" >
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5"
+                [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+    </div>
+</div>

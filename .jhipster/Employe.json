@@ -1,0 +1,75 @@
+{
+    "name": "Employe",
+    "fields": [
+        {
+            "fieldName": "matricul",
+            "fieldType": "Long",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "firstName",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "minlength"
+            ],
+            "fieldValidateRulesMinlength": 3
+        },
+        {
+            "fieldName": "lastName",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "minlength"
+            ],
+            "fieldValidateRulesMinlength": 3
+        },
+        {
+            "fieldName": "email",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "minlength"
+            ],
+            "fieldValidateRulesMinlength": 3
+        },
+        {
+            "fieldName": "phoneNumber",
+            "fieldType": "Long"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "astreinte",
+            "otherEntityRelationshipName": "employe",
+            "relationshipName": "astreinte"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "notification",
+            "otherEntityRelationshipName": "employe",
+            "relationshipName": "notification"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "absence",
+            "otherEntityRelationshipName": "employe",
+            "relationshipName": "absence"
+        },
+        {
+            "relationshipName": "equipe",
+            "otherEntityName": "equipe",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20210503135545",
+    "entityTableName": "employe",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

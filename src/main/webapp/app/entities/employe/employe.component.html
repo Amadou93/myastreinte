@@ -1,0 +1,81 @@
+<div>
+    <h2 id="page-heading">
+        <span>Employes</span>
+        <button id="jh-create-entity" class="btn btn-danger float-right jh-create-entity create-employe" [routerLink]="['/employe/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span >
+            Creer Un Employe
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="alert alert-warning" *ngIf="employes?.length === 0">
+        <span>No employes found</span>
+    </div>
+    <div class="table-responsive" *ngIf="employes?.length > 0">
+        <table class="table table-stripe">
+            <thead class="bg-danger text-white">
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+          <!--  <th jhiSortBy="id"><span>ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>-->
+            <th jhiSortBy="matricul"><span>Matricule</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+           <th jhiSortBy="firstName"><span>Prenom</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="lastName"><span>Nom</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="email"><span>Email</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="phoneNumber"><span>N°Telephone</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="employe.equipe.name"><span>Domaine</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let employe of employes ;trackBy: trackId">
+             <!-- <td><a [routerLink]="['/employe', employe.id, 'view' ]">{{employe.id}}</a></td>-->
+                <td>{{employe.matricul}}</td>
+                <td>{{employe.firstName}}</td>
+                <td>{{employe.lastName}}</td>
+                <td>{{employe.email}}</td>
+                <td>{{employe.phoneNumber}}</td>
+                <td><a [routerLink]="['/employe',employe.id, 'view' ]">team</a></td>
+              <!-- <td >{{employe.equipeId}}</td>-->
+               <!-- <td>
+                    <div *ngIf="employe.equipeId">
+                        <a [routerLink]="['../equipe', employe.equipeId , 'view' ]" >{{employe.equipe.name}}</a>
+                    </div>
+                </td>-->
+                <td class="text-right" >
+                    <div class="btn-group" >
+                        <!--<button type="submit"
+                                [routerLink]="['/employe', employe.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>-->
+                        <button type="submit"
+                                [routerLink]="['/employe', employe.id, 'edit']"
+                                class="btn btn-dark btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline">Editer</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', 'employe', { outlets: { popup: employe.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div [hidden]="employes?.length === 0">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="totalItems" [maxSize]="5" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+    </div>
+</div>

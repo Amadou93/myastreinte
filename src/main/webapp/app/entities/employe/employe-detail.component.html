@@ -1,0 +1,82 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="employe" >
+            <h2><span>Employe</span> {{employe.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+           <!--  <table>
+                <tr style="font-weight: bold;">
+                </tr>
+                <tr class="text-center" >
+                    <td><span>Matricule :</span> {{employe.matricul}}</td>
+                   <td></td> 
+                    </tr>
+                    <tr>
+                    <td><span>Prenom :</span> {{employe.firstName}}</td>
+                    <td></td>
+                </tr>
+                <tr class="text-center" >
+                    <td><span>Nom :</span> {{employe.lastName}}</td>
+                    <td></td>
+                </tr>
+                <tr class="text-center" >
+                    <td><span>Numero Telephone :</span> {{employe.phoneNumber}}</td>
+                    <td></td>
+                </tr>
+                <tr class="text-center" >
+                    <td><span>Email:</span> {{employe.email}}</td>
+                    <td></td>
+                </tr>
+                <tr class="text-center" >
+                    <td><span>Nom de l'equipe:</span> {{equipe.name}}</td>
+                    <td></td>
+                    
+
+                </tr>
+            </table> -->
+            <dl class="row-md jh-entity-details">
+                <dt><span>Matricul</span></dt>
+                <dd>
+                    <span>{{employe.matricul}}</span>
+                </dd>
+                <dt><span>Prenom</span></dt>
+                <dd>
+                    <span>{{employe.firstName}}</span>
+                </dd>
+                <dt><span>Nom</span></dt>
+                <dd>
+                    <span>{{employe.lastName}}</span>
+                </dd>
+                <dt><span>Email</span></dt>
+                <dd>
+                    <span>{{employe.email}}</span>
+                </dd>
+                <dt><span>Numéro Telephone</span></dt>
+                <dd>
+                    <span>{{employe.phoneNumber}}</span>
+                </dd>
+                <dt><span>Equipe</span></dt>
+                <dd>
+                    <span>{{equipe.name}}</span>
+                </dd> 
+               <!--  <dd>
+                    <div *ngIf="employe.equipeId">
+                        <a [routerLink]="['/equipe', employe.equipeId, 'view']">{{employe.equipeId}}</a>
+                    </div>
+                </dd> -->
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/employe', employe.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

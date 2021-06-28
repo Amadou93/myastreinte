@@ -1,0 +1,44 @@
+{
+    "name": "Division",
+    "fields": [
+        {
+            "fieldName": "divisionName",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "minlength"
+            ],
+            "fieldValidateRulesMinlength": 3
+        },
+        {
+            "fieldName": "divisionChef",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipName": "departement",
+            "otherEntityName": "departement",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "equipe",
+            "otherEntityRelationshipName": "division",
+            "relationshipName": "nameEquipe"
+        }
+    ],
+    "changelogDate": "20210503135552",
+    "entityTableName": "division",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

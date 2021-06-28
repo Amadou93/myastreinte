@@ -1,0 +1,98 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-serveur-heading">Create or edit a Serveur</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!editForm.get('id').value">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id"
+                        readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_nameServeur">Name Serveur</label>
+                    <input type="text" class="form-control" name="nameServeur" id="field_nameServeur"
+                           formControlName="nameServeur"/>
+                    <div *ngIf="editForm.get('nameServeur').invalid && (editForm.get('nameServeur').dirty || editForm.get('nameServeur').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('nameServeur').errors.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('nameServeur').errors.minlength">
+                        This field is required to be at least 3 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_cpu">Cpu</label>
+                    <input type="text" class="form-control" name="cpu" id="field_cpu"
+                           formControlName="cpu"/>
+                    <div *ngIf="editForm.get('cpu').invalid && (editForm.get('cpu').dirty || editForm.get('cpu').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('cpu').errors.minlength">
+                        This field is required to be at least 15 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_memory">Memory</label>
+                    <input type="number" class="form-control" name="memory" id="field_memory"
+                           formControlName="memory"/>
+                    <div *ngIf="editForm.get('memory').invalid && (editForm.get('memory').dirty || editForm.get('memory').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('memory').errors.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('memory')?.errors?.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_disque">Disque</label>
+                    <input type="number" class="form-control" name="disque" id="field_disque"
+                           formControlName="disque"/>
+                    <div *ngIf="editForm.get('disque').invalid && (editForm.get('disque').dirty || editForm.get('disque').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('disque').errors.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('disque')?.errors?.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_avalibity">Avalibity</label>
+                    <input type="text" class="form-control" name="avalibity" id="field_avalibity"
+                           formControlName="avalibity"/>
+                    <div *ngIf="editForm.get('avalibity').invalid && (editForm.get('avalibity').dirty || editForm.get('avalibity').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('avalibity').errors.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_equipe">Equipe</label>
+                    <select class="form-control" id="field_equipe" name="equipe" formControlName="equipeId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="equipeOption.id" *ngFor="let equipeOption of equipes; trackBy: trackEquipeById">{{equipeOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span>Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
