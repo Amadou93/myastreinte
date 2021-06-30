@@ -1,4 +1,4 @@
-/*
+
 
 package sn.free.myastreinte.web.rest;
 
@@ -40,7 +40,7 @@ public static void main(String[] args){}
             sendSmsRequest.put("221761995807", receiverMsisdn);
             sendSmsRequest.put("free", sender);
             sendSmsRequest.put("1", type);
-        } catch (JSONException e) {
+        } catch (Exception e) {
             e.printStackTrace();
             return false;
         }
@@ -63,4 +63,4 @@ public static void main(String[] args){}
 
 }
 
-*/
+

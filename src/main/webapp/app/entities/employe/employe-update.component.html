@@ -70,6 +70,13 @@
                         <option [ngValue]="equipeOption.id" *ngFor="let equipeOption of equipes; trackBy: trackEquipeById">{{equipeOption.name}}</option>
                     </select>
                 </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_domaine">Domaine</label>
+                    <select class="form-control" id="field_domaine" name="domaine" formControlName="domaineId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="domaineOption.id" *ngFor="let domaineOption of domaines; trackBy: trackDomaineById">{{domaineOption.name}}</option>
+                    </select>
+                </div>
             </div>
             <div>
                 <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">

@@ -19,9 +19,10 @@ import java.util.List;
 @SuppressWarnings("unused")
 @Repository
 public interface EmployeRepository extends JpaRepository<Employe, Long> {
-    @Query("Select e,d from Employe e,Equipe d where e.id=d.id")
-    Page<EmployeDTO>findAllEmployeDTO(Pageable pageable);
+    @Override
+    Page<Employe> findAll(Pageable pageable);
 
+    /*
     @Query("Select a from Employe a where a.equipe.name =:requete")
-        List<EmployeDTO> findEmployeByRequete(@Param("requete") String requete);
+        List<EmployeDTO> findEmployeByRequete(@Param("requete") String requete);*/
 }

@@ -108,25 +108,14 @@ public class EmployeServiceImpl implements EmployeService {
 
 
 
-    @Override
+
+    /*@Override
     public List<EmployeDTO> findEmployeDTOByRequete(String requete) {
         return employeRepository.findEmployeByRequete( requete);
     }
+*/
 
 
-    /**
-     * Get all the employes.
-     *
-     * @param pageable the pagination information.
-     * @return the list of entities.
-     */
-    @Transactional(readOnly = true)
-    public Page<EmployeDTO> findAllEmploye(Pageable pageable) {
-        log.debug("Request to get all Employes");
-
-         return employeRepository.findAllEmployeDTO(pageable);
-        /*(Page<EmployeDTO>) EmployeRepository.findALLEmployeDTO(pageable);*/
-    }
 
 
     @Override

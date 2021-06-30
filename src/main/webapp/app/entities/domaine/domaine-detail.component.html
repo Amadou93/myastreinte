@@ -1,0 +1,91 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="domaine">
+            <h2><span>Domaine</span> {{domaine.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Nom</span></dt>
+                <dd>
+                    <span>{{domaine.nom}}</span>
+                </dd>
+                <dt><span>Service</span></dt>
+                <dd>
+                    <span>{{domaine.service}}</span>
+                </dd>
+                <dt><span>Responsable Service</span></dt>
+                <dd>
+                    <span>{{domaine.responsableService}}</span>
+                </dd>
+                <dt><span>Num Tel Responsable Service</span></dt>
+                <dd>
+                    <span>{{domaine.numTelResponsableService}}</span>
+                </dd>
+                <dt><span>Email Responsable Service</span></dt>
+                <dd>
+                    <span>{{domaine.emailResponsableService}}</span>
+                </dd>
+                <dt><span>Division</span></dt>
+                <dd>
+                    <span>{{domaine.division}}</span>
+                </dd>
+                <dt><span>Responsable Division</span></dt>
+                <dd>
+                    <span>{{domaine.responsableDivision}}</span>
+                </dd>
+                <dt><span>Num Responsable Division</span></dt>
+                <dd>
+                    <span>{{domaine.numResponsableDivision}}</span>
+                </dd>
+                <dt><span>Email Responsable Division</span></dt>
+                <dd>
+                    <span>{{domaine.emailResponsableDivision}}</span>
+                </dd>
+                <dt><span>Departement</span></dt>
+                <dd>
+                    <span>{{domaine.departement}}</span>
+                </dd>
+                <dt><span>Responsable Departement</span></dt>
+                <dd>
+                    <span>{{domaine.responsableDepartement}}</span>
+                </dd>
+                <dt><span>Numero Tel Responsable Departement</span></dt>
+                <dd>
+                    <span>{{domaine.numeroTelResponsableDepartement}}</span>
+                </dd>
+                <dt><span>Email Responsable Departement</span></dt>
+                <dd>
+                    <span>{{domaine.emailResponsableDepartement}}</span>
+                </dd>
+                <dt><span>Direction</span></dt>
+                <dd>
+                    <span>{{domaine.direction}}</span>
+                </dd>
+                <dt><span>Responsable Direction</span></dt>
+                <dd>
+                    <span>{{domaine.responsableDirection}}</span>
+                </dd>
+                <dt><span>Numero Tel Directeur</span></dt>
+                <dd>
+                    <span>{{domaine.numeroTelDirecteur}}</span>
+                </dd>
+                <dt><span>Email Directeur</span></dt>
+                <dd>
+                    <span>{{domaine.emailDirecteur}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/domaine', domaine.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

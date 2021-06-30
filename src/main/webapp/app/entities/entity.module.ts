@@ -55,6 +55,10 @@ import { RouterModule } from '@angular/router';
       {
         path: 'incident',
         loadChildren: './incident/incident.module#MyAstreinteIncidentModule'
+      },
+      {
+        path: 'domaine',
+        loadChildren: './domaine/domaine.module#MyAstreinteDomaineModule'
       }
       /* jhipster-needle-add-entity-route - JHipster will add entity modules routes here */
     ])

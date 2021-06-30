@@ -53,6 +53,10 @@ public class Employe implements Serializable {
     @JsonIgnoreProperties("employes")
     private Equipe equipe;
 
+    @ManyToOne
+    @JsonIgnoreProperties("employes")
+    private Domaine domaine;
+
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
         return id;
@@ -205,15 +209,27 @@ public class Employe implements Serializable {
     public Equipe getEquipe() {
         return equipe;
     }
+    public Domaine getDomaine() {
+        return domaine;
+    }
 
     public Employe equipe(Equipe equipe) {
         this.equipe = equipe;
+        return this;
+
+    }
+    public Employe domaine(Domaine domaine){
+        this.domaine=domaine;
         return this;
     }
 
     public void setEquipe(Equipe equipe) {
         this.equipe = equipe;
     }
+    public void setDomaine(Domaine domaine) {
+        this.domaine = domaine;
+    }
+
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
     @Override
@@ -243,4 +259,11 @@ public class Employe implements Serializable {
             ", phoneNumber=" + getPhoneNumber() +
             "}";
     }
+
+
+
+
+
+    /*public void setDomaine(Domaine domaine) {
+    }*/
 }

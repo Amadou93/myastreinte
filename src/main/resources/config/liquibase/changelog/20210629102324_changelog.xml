@@ -1,0 +1,28 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
+    <changeSet author="adeh (generated)" id="1624962224483-3">
+        <addColumn tableName="employe">
+            <column name="domaine_id" type="bigint"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="adeh (generated)" id="1624962224483-4">
+        <addForeignKeyConstraint baseColumnNames="departement_id" baseTableName="division" constraintName="FK4jqlevqtpsxq6xs6ne5ykpkjx" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="departement" validate="true"/>
+    </changeSet>
+    <changeSet author="adeh (generated)" id="1624962224483-5">
+        <addForeignKeyConstraint baseColumnNames="equipe_id" baseTableName="incident" constraintName="FK4wm8075s1dmpdr7u608cpt1li" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="equipe" validate="true"/>
+    </changeSet>
+    <changeSet author="adeh (generated)" id="1624962224483-6">
+        <addForeignKeyConstraint baseColumnNames="domaine_id" baseTableName="employe" constraintName="FKghr2kagqrl1f7i24utjaj41n2" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="domaine" validate="true"/>
+    </changeSet>
+    <changeSet author="adeh (generated)" id="1624962224483-7">
+        <addForeignKeyConstraint baseColumnNames="equipe_id" baseTableName="serveur" constraintName="FKh1rqr0jeeej2g4hw4ng8xbe8d" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="equipe" validate="true"/>
+    </changeSet>
+    <changeSet author="adeh (generated)" id="1624962224483-1">
+        <dropUniqueConstraint constraintName="UC_JHI_USEREMAIL_COL" tableName="jhi_user"/>
+        <addUniqueConstraint columnNames="email" constraintName="UC_JHI_USEREMAIL_COL" tableName="jhi_user"/>
+    </changeSet>
+    <changeSet author="adeh (generated)" id="1624962224483-2">
+        <dropUniqueConstraint constraintName="UC_JHI_USERLOGIN_COL" tableName="jhi_user"/>
+        <addUniqueConstraint columnNames="login" constraintName="UC_JHI_USERLOGIN_COL" tableName="jhi_user"/>
+    </changeSet>
+</databaseChangeLog>

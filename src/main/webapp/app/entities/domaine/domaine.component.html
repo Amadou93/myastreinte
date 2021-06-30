@@ -1,0 +1,97 @@
+<div>
+    <h2 id="page-heading">
+        <span>Domaines</span>
+        <button id="jh-create-entity" class="btn btn-danger float-right jh-create-entity create-domaine" [routerLink]="['/domaine/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span >
+            Creer une Domaine
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="alert alert-warning" *ngIf="domaines?.length === 0">
+        <span>No domaines found</span>
+    </div>
+    <div class="table-responsive" *ngIf="domaines?.length > 0">
+        <table class="table table-striped">
+            <thead class="bg-danger text-white">
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <!--<th jhiSortBy="id"><span>ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>-->
+            <th jhiSortBy="nom"><span>Nom</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="service"><span>Service</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="responsableService"><span>Responsable Service</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="numTelResponsableService"><span>Num Tel Responsable Service</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="emailResponsableService"><span>Email Responsable Service</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="division"><span>Division</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="responsableDivision"><span>Responsable Division</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="numResponsableDivision"><span>Num Responsable Division</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="emailResponsableDivision"><span>Email Responsable Division</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="departement"><span>Departement</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="responsableDepartement"><span>Responsable Departement</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="numeroTelResponsableDepartement"><span>Numero Tel Responsable Departement</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="emailResponsableDepartement"><span>Email Responsable Departement</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="direction"><span>Direction</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="responsableDirection"><span>Responsable Direction</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="numeroTelDirecteur"><span>Numero Tel Directeur</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="emailDirecteur"><span>Email Directeur</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let domaine of domaines ;trackBy: trackId">
+               <!-- <td><a [routerLink]="['/domaine', domaine.id, 'view' ]">{{domaine.id}}</a></td>-->
+                <td>{{domaine.nom}}</td>
+                <td>{{domaine.service}}</td>
+                <td>{{domaine.responsableService}}</td>
+                <td>{{domaine.numTelResponsableService}}</td>
+                <td>{{domaine.emailResponsableService}}</td>
+                <td>{{domaine.division}}</td>
+                <td>{{domaine.responsableDivision}}</td>
+                <td>{{domaine.numResponsableDivision}}</td>
+                <td>{{domaine.emailResponsableDivision}}</td>
+                <td>{{domaine.departement}}</td>
+                <td>{{domaine.responsableDepartement}}</td>
+                <td>{{domaine.numeroTelResponsableDepartement}}</td>
+                <td>{{domaine.emailResponsableDepartement}}</td>
+                <td>{{domaine.direction}}</td>
+                <td>{{domaine.responsableDirection}}</td>
+                <td>{{domaine.numeroTelDirecteur}}</td>
+                <td>{{domaine.emailDirecteur}}</td>
+                <td class="text-right">
+                    <div class="btn-group">
+                       <!-- <button type="submit"
+                                [routerLink]="['/domaine', domaine.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>-->
+                        <button type="submit"
+                                [routerLink]="['/domaine', domaine.id, 'edit']"
+                                class="btn btn-dark btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', 'domaine', { outlets: { popup: domaine.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div [hidden]="domaines?.length === 0">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="totalItems" [maxSize]="5" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+    </div>
+</div>

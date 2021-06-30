@@ -20,14 +20,14 @@ public interface AstreinteRepository extends JpaRepository<Astreinte, Long> {
 
 
     @Query("Select a from Astreinte a where a.matricul =:chaine  or a.numberWeek =:chaine and a.year = 2021" )
-
     List<Astreinte>findAstreinteByChaine(@Param("chaine") long chaine);
 
     @Query("Select a from Astreinte a order by numberWeek asc" )
+
     Page<Astreinte> findAllAstreinte(Pageable pageable);
 
 
-    //  @Query("Select a from Astreinte a where order_by numberWeek ASC")
+    /* @Query("Select a from Astreinte a where order_by year ASC")*/
     Page<Astreinte> findAllByOrderByNumberWeekAsc(Pageable pageable);
 
 

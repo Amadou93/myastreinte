@@ -1,0 +1,83 @@
+{
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "nom",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "service",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "responsableService",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "numTelResponsableService",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "emailResponsableService",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "division",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "responsableDivision",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "numResponsableDivision",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "emailResponsableDivision",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "departement",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "responsableDepartement",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "numeroTelResponsableDepartement",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "emailResponsableDepartement",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "direction",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "responsableDirection",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "numeroTelDirecteur",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "emailDirecteur",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20210628131624",
+    "dto": "no",
+    "searchEngine": false,
+    "service": "no",
+    "entityTableName": "domaine",
+    "databaseType": "sql",
+    "jpaMetamodelFiltering": false,
+    "pagination": "pagination"
+}

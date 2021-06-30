@@ -1,0 +1,109 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-domaine-heading">Create or edit a Domaine</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!editForm.get('id').value">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id"
+                        readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_nom">Nom</label>
+                    <input type="text" class="form-control" name="nom" id="field_nom"
+                           formControlName="nom"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_service">Service</label>
+                    <input type="text" class="form-control" name="service" id="field_service"
+                           formControlName="service"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_responsableService">Responsable Service</label>
+                    <input type="text" class="form-control" name="responsableService" id="field_responsableService"
+                           formControlName="responsableService"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_numTelResponsableService">Num Tel Responsable Service</label>
+                    <input type="text" class="form-control" name="numTelResponsableService" id="field_numTelResponsableService"
+                           formControlName="numTelResponsableService"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_emailResponsableService">Email Responsable Service</label>
+                    <input type="text" class="form-control" name="emailResponsableService" id="field_emailResponsableService"
+                           formControlName="emailResponsableService"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_division">Division</label>
+                    <input type="text" class="form-control" name="division" id="field_division"
+                           formControlName="division"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_responsableDivision">Responsable Division</label>
+                    <input type="text" class="form-control" name="responsableDivision" id="field_responsableDivision"
+                           formControlName="responsableDivision"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_numResponsableDivision">Num Responsable Division</label>
+                    <input type="text" class="form-control" name="numResponsableDivision" id="field_numResponsableDivision"
+                           formControlName="numResponsableDivision"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_emailResponsableDivision">Email Responsable Division</label>
+                    <input type="text" class="form-control" name="emailResponsableDivision" id="field_emailResponsableDivision"
+                           formControlName="emailResponsableDivision"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_departement">Departement</label>
+                    <input type="text" class="form-control" name="departement" id="field_departement"
+                           formControlName="departement"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_responsableDepartement">Responsable Departement</label>
+                    <input type="text" class="form-control" name="responsableDepartement" id="field_responsableDepartement"
+                           formControlName="responsableDepartement"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_numeroTelResponsableDepartement">Numero Tel Responsable Departement</label>
+                    <input type="text" class="form-control" name="numeroTelResponsableDepartement" id="field_numeroTelResponsableDepartement"
+                           formControlName="numeroTelResponsableDepartement"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_emailResponsableDepartement">Email Responsable Departement</label>
+                    <input type="text" class="form-control" name="emailResponsableDepartement" id="field_emailResponsableDepartement"
+                           formControlName="emailResponsableDepartement"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_direction">Direction</label>
+                    <input type="text" class="form-control" name="direction" id="field_direction"
+                           formControlName="direction"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_responsableDirection">Responsable Direction</label>
+                    <input type="text" class="form-control" name="responsableDirection" id="field_responsableDirection"
+                           formControlName="responsableDirection"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_numeroTelDirecteur">Numero Tel Directeur</label>
+                    <input type="text" class="form-control" name="numeroTelDirecteur" id="field_numeroTelDirecteur"
+                           formControlName="numeroTelDirecteur"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_emailDirecteur">Email Directeur</label>
+                    <input type="text" class="form-control" name="emailDirecteur" id="field_emailDirecteur"
+                           formControlName="emailDirecteur"/>
+                </div>
+
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span>Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

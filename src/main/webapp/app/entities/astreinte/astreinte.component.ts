@@ -33,6 +33,7 @@ export class AstreinteComponent implements OnInit, OnDestroy {
   reverse: any;
   chaine: number;
   message: Message = new Message();
+  firstName: string;
   /* @Output() searchReqData: EventEmitter<any> = new EventEmitter();
   partners?: IPartner[];
   partnerprofiles?: IPartnerProfile[];
@@ -138,6 +139,13 @@ export class AstreinteComponent implements OnInit, OnDestroy {
     });
     this.registerChangeInAstreintes();
     this.essaiSend();
+    this.route.queryParams
+      .filter(params => params.firstName)
+      .subscribe(params => {
+        console.log(params); // { category: "fiction" }
+        this.category = params.category;
+        console.log(this.firstName); // fiction
+      });
   }
 
   ngOnDestroy() {

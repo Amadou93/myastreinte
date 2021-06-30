@@ -62,12 +62,14 @@ public interface EmployeService {
      */
     void delete(Long id);
 
+    Page<EmployeDTO> findAllEmployeDTO(Pageable pageable);
+
     /*Page<EmployeDTO> findAllEmploye(Pageable pageable);
 */
    /* Page<EmployeDTO> findAllEmployeDTO(Pageable pageable);*/
 
 
 
-    Page<EmployeDTO> findAllEmployeDTO(Pageable pageable);
-    List<EmployeDTO> findEmployeDTOByRequete(String requete);
+   /* Page<EmployeDTO> findAllEmployeDTO(Pageable pageable);
+    List<EmployeDTO> findEmployeDTOByRequete(String requete);*/
 }

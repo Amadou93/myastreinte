@@ -121,9 +121,9 @@
                 <th jhiSortBy="employe.lastName"><span >Employe</span>
                     <fa-icon [icon]="'sort'"></fa-icon>
                 </th>
-                 <th jhiSortBy="astreinte.employe.equipe.name"><span>Domaine</span>
+                <!-- <th jhiSortBy="astreinte.employe.equipe.name"><span>Domaine</span>
                     <fa-icon [icon]="'sort'"></fa-icon>
-                </th>
+                </th>-->
                 <th jhiSortBy="astreinte.employe.numberPhone"><span>N° Telephone</span>
                     <fa-icon [icon]="'sort'"></fa-icon>
                 </th>
@@ -142,7 +142,7 @@
 <!--                    <td><a [routerLink]="['/astreinte', astreinte.id, 'view' ]">{{astreinte.employe.fistName}}</a></td>-->
                     <td>{{astreinte.matricul}}</td>
               <!--  <td>{{astreinte.numberWeek}}</td>-->
-                    <td><label for="start">Start date:</label>
+                    <td><!--<label for="start">Start date:</label>-->
 
                         <input type="date" id="start" name="trip-start"
                                value="2021-06-12"
@@ -150,11 +150,14 @@
                                min="2021-01-01" max="2021-12-31"></td>
                    <!-- <td *ngIf="astreinte">{{astreinte.numberWeek.toDateString()}}</td>-->
                     <td>{{astreinte.year}}</td>
-                    <td><a href= "/employe">{{astreinte.employe.firstName}} {{astreinte.employe.lastName}}</a></td>
+                 <!--  <td><a href="http://localhost:8080/employe?firstName=Amadou">{{astreinte.employe.firstName}} {{astreinte.employe.lastName}}</a></td>-->
+                  <td><a [routerLink]="['/employe']" [queryParams]="{firstName:'Amadou'}">
+                        {{astreinte.employe.firstName}} {{astreinte.employe.lastName}}
+                    </a></td>
 
                  <!--   <td>{{astreinte.employe.lastName}}</td>-->
-                    <td *ngIf="astreinte.employe.equipe"><a href= "/equipe">{{astreinte.employe.equipe.name}}</a></a></td>
-
+                    <!--<td *ngIf="astreinte.employe.equipe"><a href="/equipe">{{astreinte.employe.equipe.name}}</a></a></td>
+-->
                     <td>{{astreinte.employe.phoneNumber}}</td>
                    <td>{{astreinte.employe.email}}</td>
                     <td></td>

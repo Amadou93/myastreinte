@@ -8,6 +8,7 @@ import { JhiAlertService } from 'ng-jhipster';
 import { IEmploye, Employe } from 'app/shared/model/employe.model';
 import { EmployeService } from './employe.service';
 import { IEquipe } from 'app/shared/model/equipe.model';
+import { IDomaine } from 'app/shared/model/domaine.model';
 import { EquipeService } from 'app/entities/equipe';
 
 @Component({
@@ -26,7 +27,8 @@ export class EmployeUpdateComponent implements OnInit {
     lastName: [null, [Validators.minLength(3)]],
     email: [null, [Validators.minLength(3)]],
     phoneNumber: [],
-    equipeId: []
+    equipeId: [],
+    domaineId: []
   });
 
   constructor(
@@ -59,7 +61,8 @@ export class EmployeUpdateComponent implements OnInit {
       lastName: employe.lastName,
       email: employe.email,
       phoneNumber: employe.phoneNumber,
-      equipeId: employe.equipeId
+      equipeId: employe.equipeId,
+      domaineId: employe.domaineId
     });
   }
 
@@ -86,7 +89,8 @@ export class EmployeUpdateComponent implements OnInit {
       lastName: this.editForm.get(['lastName']).value,
       email: this.editForm.get(['email']).value,
       phoneNumber: this.editForm.get(['phoneNumber']).value,
-      equipeId: this.editForm.get(['equipeId']).value
+      equipeId: this.editForm.get(['equipeId']).value,
+      domaineId: this.editForm.get(['domaineId']).value
     };
   }
 
@@ -106,7 +110,7 @@ export class EmployeUpdateComponent implements OnInit {
     this.jhiAlertService.error(errorMessage, null, null);
   }
 
-  trackEquipeById(index: number, item: IEquipe) {
+  trackDomaineById(index: number, item: IDomaine) {
     return item.id;
   }
 }

@@ -1,7 +1,6 @@
 import { IAstreinte } from 'app/shared/model/astreinte.model';
 import { INotification } from 'app/shared/model/notification.model';
 import { IAbsence } from 'app/shared/model/absence.model';
-
 export interface IEmploye {
   id?: number;
   matricul?: number;
@@ -13,6 +12,7 @@ export interface IEmploye {
   notifications?: INotification[];
   absences?: IAbsence[];
   equipeId?: number;
+  domaineId?: number;
 }
 
 export class Employe implements IEmploye {
@@ -26,6 +26,7 @@ export class Employe implements IEmploye {
     public astreintes?: IAstreinte[],
     public notifications?: INotification[],
     public absences?: IAbsence[],
-    public equipeId?: number
+    public equipeId?: number[],
+    public domaineId?: number[]
   ) {}
 }
