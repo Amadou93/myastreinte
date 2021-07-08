@@ -35,7 +35,8 @@ public class Division implements Serializable {
     private Departement departement;
 
     @OneToMany(mappedBy = "division")
-    private Set<Equipe> nameEquipes = new HashSet<>();
+    private Set<Equipe> equipes = new HashSet<>();
+  /*private Set<Equipe> equipes;*/
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -85,29 +86,29 @@ public class Division implements Serializable {
         this.departement = departement;
     }
 
-    public Set<Equipe> getNameEquipes() {
-        return nameEquipes;
+    public Set<Equipe> getEquipes() {
+        return equipes;
     }
 
-    public Division nameEquipes(Set<Equipe> equipes) {
-        this.nameEquipes = equipes;
+    public Division equipes (Set<Equipe> equipes) {
+        this.equipes = equipes;
         return this;
     }
 
-    public Division addNameEquipe(Equipe equipe) {
-        this.nameEquipes.add(equipe);
+    public Division addEquipe(Equipe equipe) {
+        this.equipes.add(equipe);
         equipe.setDivision(this);
         return this;
     }
 
-    public Division removeNameEquipe(Equipe equipe) {
-        this.nameEquipes.remove(equipe);
+    public Division removeEquipe(Equipe equipe) {
+        this.equipes.remove(equipe);
         equipe.setDivision(null);
         return this;
     }
 
-    public void setNameEquipes(Set<Equipe> equipes) {
-        this.nameEquipes = equipes;
+    public void setEquipes(Set<Equipe> equipes ) {
+        this.equipes= equipes;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 

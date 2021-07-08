@@ -17,51 +17,9 @@
             "otherEntityName": "employe",
             "otherEntityRelationshipName": "equipe",
             "relationshipName": "employe"
-        },
-        {
-            "relationshipType": "one-to-many",
-            "otherEntityName": "serveur",
-            "otherEntityRelationshipName": "equipe",
-            "relationshipName": "serveur"
-        },
-        {
-            "relationshipType": "one-to-many",
-            "otherEntityName": "equipementReseau",
-            "otherEntityRelationshipName": "equipe",
-            "relationshipName": "equipement"
-        },
-        {
-            "relationshipType": "one-to-many",
-            "otherEntityName": "switche",
-            "otherEntityRelationshipName": "equipe",
-            "relationshipName": "switche"
-        },
-        {
-            "relationshipType": "one-to-many",
-            "otherEntityName": "incident",
-            "otherEntityRelationshipName": "equipe",
-            "relationshipName": "date"
-        },
-        {
-            "relationshipType": "one-to-many",
-            "otherEntityName": "application",
-            "otherEntityRelationshipName": "equipe",
-            "relationshipName": "application"
-        },
-        {
-            "relationshipType": "one-to-many",
-            "otherEntityName": "basededonnee",
-            "otherEntityRelationshipName": "equipe",
-            "relationshipName": "basededonnee"
-        },
-        {
-            "relationshipName": "division",
-            "otherEntityName": "division",
-            "relationshipType": "many-to-one",
-            "otherEntityField": "id"
         }
     ],
-    "changelogDate": "20210503135549",
+    "changelogDate": "20210702132006",
     "entityTableName": "equipe",
     "dto": "mapstruct",
     "pagination": "pagination",

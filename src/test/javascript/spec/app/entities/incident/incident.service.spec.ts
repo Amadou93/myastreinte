@@ -7,7 +7,7 @@ import { take, map } from 'rxjs/operators';
 import * as moment from 'moment';
 import { DATE_TIME_FORMAT } from 'app/shared/constants/input.constants';
 import { IncidentService } from 'app/entities/incident/incident.service';
-import { IIncident, Incident } from 'app/shared/model/incident.model';
+import { IIncident, Incident, State } from 'app/shared/model/incident.model';
 
 describe('Service Tests', () => {
   describe('Incident Service', () => {
@@ -27,7 +27,20 @@ describe('Service Tests', () => {
       httpMock = injector.get(HttpTestingController);
       currentDate = moment();
 
-      elemDefault = new Incident(0, currentDate, 'AAAAAAA', 'AAAAAAA', 0, 'AAAAAAA');
+      elemDefault = new Incident(
+        0,
+        currentDate,
+        'AAAAAAA',
+        'AAAAAAA',
+        0,
+        'AAAAAAA',
+        'AAAAAAA',
+        'AAAAAAA',
+        'AAAAAAA',
+        State.UP,
+        'AAAAAAA',
+        'AAAAAAA'
+      );
     });
 
     describe('Service methods', () => {
@@ -78,7 +91,13 @@ describe('Service Tests', () => {
             type: 'BBBBBB',
             criticite: 'BBBBBB',
             sla: 1,
-            description: 'BBBBBB'
+            description: 'BBBBBB',
+            adresseIP: 'BBBBBB',
+            composant: 'BBBBBB',
+            responsable: 'BBBBBB',
+            status: 'BBBBBB',
+            equipementName: 'BBBBBB',
+            message: 'BBBBBB'
           },
           elemDefault
         );
@@ -105,7 +124,13 @@ describe('Service Tests', () => {
             type: 'BBBBBB',
             criticite: 'BBBBBB',
             sla: 1,
-            description: 'BBBBBB'
+            description: 'BBBBBB',
+            adresseIP: 'BBBBBB',
+            composant: 'BBBBBB',
+            responsable: 'BBBBBB',
+            status: 'BBBBBB',
+            equipementName: 'BBBBBB',
+            message: 'BBBBBB'
           },
           elemDefault
         );

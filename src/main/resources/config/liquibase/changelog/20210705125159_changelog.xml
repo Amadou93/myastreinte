@@ -1,0 +1,140 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
+    <changeSet author="adeh (generated)" id="1625489532267-4">
+        <addColumn tableName="domaine">
+            <column name="email_resp_depart" type="varchar(255)"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="adeh (generated)" id="1625489532267-5">
+        <addColumn tableName="domaine">
+            <column name="email_resp_division" type="varchar(255)"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="adeh (generated)" id="1625489532267-6">
+        <addColumn tableName="domaine">
+            <column name="email_resp_service" type="varchar(255)"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="adeh (generated)" id="1625489532267-7">
+        <addColumn tableName="domaine">
+            <column name="nom_depart" type="varchar(255)"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="adeh (generated)" id="1625489532267-8">
+        <addColumn tableName="domaine">
+            <column name="nom_direction" type="varchar(255)"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="adeh (generated)" id="1625489532267-9">
+        <addColumn tableName="domaine">
+            <column name="nom_division" type="varchar(255)"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="adeh (generated)" id="1625489532267-10">
+        <addColumn tableName="domaine">
+            <column name="nom_service" type="varchar(255)"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="adeh (generated)" id="1625489532267-11">
+        <addColumn tableName="domaine">
+            <column name="resp_depart" type="varchar(255)"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="adeh (generated)" id="1625489532267-12">
+        <addColumn tableName="domaine">
+            <column name="resp_direction" type="varchar(255)"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="adeh (generated)" id="1625489532267-13">
+        <addColumn tableName="domaine">
+            <column name="resp_division" type="varchar(255)"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="adeh (generated)" id="1625489532267-14">
+        <addColumn tableName="domaine">
+            <column name="resp_service" type="varchar(255)"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="adeh (generated)" id="1625489532267-15">
+        <addColumn tableName="domaine">
+            <column name="tel_directeur" type="varchar(255)"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="adeh (generated)" id="1625489532267-16">
+        <addColumn tableName="domaine">
+            <column name="tel_resp_depart" type="varchar(255)"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="adeh (generated)" id="1625489532267-17">
+        <addColumn tableName="domaine">
+            <column name="tel_resp_division" type="varchar(255)"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="adeh (generated)" id="1625489532267-18">
+        <addColumn tableName="domaine">
+            <column name="tel_resp_service" type="varchar(255)"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="adeh (generated)" id="1625489532267-19">
+        <addForeignKeyConstraint baseColumnNames="departement_id" baseTableName="division" constraintName="FK4jqlevqtpsxq6xs6ne5ykpkjx" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="departement" validate="true"/>
+    </changeSet>
+    <changeSet author="adeh (generated)" id="1625489532267-20">
+        <addForeignKeyConstraint baseColumnNames="equipe_id" baseTableName="incident" constraintName="FK4wm8075s1dmpdr7u608cpt1li" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="equipe" validate="true"/>
+    </changeSet>
+    <changeSet author="adeh (generated)" id="1625489532267-21">
+        <dropColumn columnName="departement" tableName="domaine"/>
+    </changeSet>
+    <changeSet author="adeh (generated)" id="1625489532267-22">
+        <dropColumn columnName="direction" tableName="domaine"/>
+    </changeSet>
+    <changeSet author="adeh (generated)" id="1625489532267-23">
+        <dropColumn columnName="division" tableName="domaine"/>
+    </changeSet>
+    <changeSet author="adeh (generated)" id="1625489532267-24">
+        <dropColumn columnName="email_responsable_departement" tableName="domaine"/>
+    </changeSet>
+    <changeSet author="adeh (generated)" id="1625489532267-25">
+        <dropColumn columnName="email_responsable_division" tableName="domaine"/>
+    </changeSet>
+    <changeSet author="adeh (generated)" id="1625489532267-26">
+        <dropColumn columnName="email_responsable_service" tableName="domaine"/>
+    </changeSet>
+    <changeSet author="adeh (generated)" id="1625489532267-27">
+        <dropColumn columnName="num_responsable_division" tableName="domaine"/>
+    </changeSet>
+    <changeSet author="adeh (generated)" id="1625489532267-28">
+        <dropColumn columnName="num_tel_responsable_service" tableName="domaine"/>
+    </changeSet>
+    <changeSet author="adeh (generated)" id="1625489532267-29">
+        <dropColumn columnName="numero_tel_directeur" tableName="domaine"/>
+    </changeSet>
+    <changeSet author="adeh (generated)" id="1625489532267-30">
+        <dropColumn columnName="numero_tel_responsable_departement" tableName="domaine"/>
+    </changeSet>
+    <changeSet author="adeh (generated)" id="1625489532267-31">
+        <dropColumn columnName="responsable_departement" tableName="domaine"/>
+    </changeSet>
+    <changeSet author="adeh (generated)" id="1625489532267-32">
+        <dropColumn columnName="responsable_direction" tableName="domaine"/>
+    </changeSet>
+    <changeSet author="adeh (generated)" id="1625489532267-33">
+        <dropColumn columnName="responsable_division" tableName="domaine"/>
+    </changeSet>
+    <changeSet author="adeh (generated)" id="1625489532267-34">
+        <dropColumn columnName="responsable_service" tableName="domaine"/>
+    </changeSet>
+    <changeSet author="adeh (generated)" id="1625489532267-35">
+        <dropColumn columnName="service" tableName="domaine"/>
+    </changeSet>
+    <changeSet author="adeh (generated)" id="1625489532267-1">
+        <addNotNullConstraint columnDataType="varchar(255)" columnName="nom" tableName="domaine"/>
+    </changeSet>
+    <changeSet author="adeh (generated)" id="1625489532267-2">
+        <dropUniqueConstraint constraintName="UC_JHI_USEREMAIL_COL" tableName="jhi_user"/>
+        <addUniqueConstraint columnNames="email" constraintName="UC_JHI_USEREMAIL_COL" tableName="jhi_user"/>
+    </changeSet>
+    <changeSet author="adeh (generated)" id="1625489532267-3">
+        <dropUniqueConstraint constraintName="UC_JHI_USERLOGIN_COL" tableName="jhi_user"/>
+        <addUniqueConstraint columnNames="login" constraintName="UC_JHI_USERLOGIN_COL" tableName="jhi_user"/>
+    </changeSet>
+</databaseChangeLog>

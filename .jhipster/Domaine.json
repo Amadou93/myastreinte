@@ -5,66 +5,69 @@
     "fields": [
         {
             "fieldName": "nom",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "nomService",
             "fieldType": "String"
         },
         {
-            "fieldName": "service",
+            "fieldName": "respService",
             "fieldType": "String"
         },
         {
-            "fieldName": "responsableService",
+            "fieldName": "telRespService",
             "fieldType": "String"
         },
         {
-            "fieldName": "numTelResponsableService",
+            "fieldName": "emailRespService",
             "fieldType": "String"
         },
         {
-            "fieldName": "emailResponsableService",
+            "fieldName": "nomDivision",
             "fieldType": "String"
         },
         {
-            "fieldName": "division",
+            "fieldName": "respDivision",
             "fieldType": "String"
         },
         {
-            "fieldName": "responsableDivision",
+            "fieldName": "telRespDivision",
             "fieldType": "String"
         },
         {
-            "fieldName": "numResponsableDivision",
+            "fieldName": "emailRespDivision",
             "fieldType": "String"
         },
         {
-            "fieldName": "emailResponsableDivision",
+            "fieldName": "nomDepart",
             "fieldType": "String"
         },
         {
-            "fieldName": "departement",
+            "fieldName": "respDepart",
             "fieldType": "String"
         },
         {
-            "fieldName": "responsableDepartement",
+            "fieldName": "telRespDepart",
             "fieldType": "String"
         },
         {
-            "fieldName": "numeroTelResponsableDepartement",
+            "fieldName": "emailRespDepart",
             "fieldType": "String"
         },
         {
-            "fieldName": "emailResponsableDepartement",
+            "fieldName": "nomDirection",
             "fieldType": "String"
         },
         {
-            "fieldName": "direction",
+            "fieldName": "respDirection",
             "fieldType": "String"
         },
         {
-            "fieldName": "responsableDirection",
-            "fieldType": "String"
-        },
-        {
-            "fieldName": "numeroTelDirecteur",
+            "fieldName": "telDirecteur",
             "fieldType": "String"
         },
         {
@@ -72,12 +75,14 @@
             "fieldType": "String"
         }
     ],
-    "changelogDate": "20210628131624",
-    "dto": "no",
+    "changelogDate": "20210705194158",
+    "dto": "mapstruct",
     "searchEngine": false,
-    "service": "no",
+    "service": "serviceImpl",
     "entityTableName": "domaine",
     "databaseType": "sql",
     "jpaMetamodelFiltering": false,
-    "pagination": "pagination"
+    "pagination": "pagination",
+    "name": "Domaine",
+    "applications": "*"
 }

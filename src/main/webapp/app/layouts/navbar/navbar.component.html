@@ -12,7 +12,7 @@
                 <a class="nav-link" routerLink="/" (click)="collapseNavbar()">
                     <span>
                         <fa-icon icon="home"></fa-icon>
-                        <span>Home</span>
+                        <span>Accueil</span>
                     </span>
                 </a>
             </li>
@@ -22,7 +22,7 @@
                     <span>
                         <fa-icon icon="th-list"></fa-icon>
                         <span>
-                            Entities
+                            Entités
                         </span>
                     </span>
                 </a>
@@ -125,19 +125,19 @@
                     <li>
                         <a class="dropdown-item" routerLink="admin/user-management" routerLinkActive="active" (click)="collapseNavbar()">
                             <fa-icon icon="user" fixedWidth="true"></fa-icon>
-                            <span>User management</span>
+                            <span>Gestion des utilisateurs</span>
                         </a>
                     </li>
                     <li>
                         <a class="dropdown-item" routerLink="admin/jhi-metrics" routerLinkActive="active" (click)="collapseNavbar()">
                             <fa-icon icon="tachometer-alt" fixedWidth="true"></fa-icon>
-                            <span>Metrics</span>
+                            <span>Metriques</span>
                         </a>
                     </li>
                     <li>
                         <a class="dropdown-item" routerLink="admin/jhi-health" routerLinkActive="active" (click)="collapseNavbar()">
                             <fa-icon icon="heart" fixedWidth="true"></fa-icon>
-                            <span>Health</span>
+                            <span>Diagnostics</span>
                         </a>
                     </li>
                     <li>
@@ -172,7 +172,7 @@
                   <span *ngIf="!getImageUrl()">
                     <fa-icon icon="user"></fa-icon>
                     <span>
-                      Account
+                     Compte
                     </span>
                   </span>
                   <span *ngIf="getImageUrl()">
@@ -183,19 +183,19 @@
                     <li *ngSwitchCase="true">
                         <a class="dropdown-item" routerLink="settings" routerLinkActive="active" (click)="collapseNavbar()">
                             <fa-icon icon="wrench" fixedWidth="true"></fa-icon>
-                            <span>Settings</span>
+                            <span>Profil</span>
                         </a>
                     </li>
                     <li *ngSwitchCase="true">
                         <a class="dropdown-item" routerLink="password" routerLinkActive="active" (click)="collapseNavbar()">
                             <fa-icon icon="lock" fixedWidth="true"></fa-icon>
-                            <span>Password</span>
+                            <span>Mot de passe</span>
                         </a>
                     </li>
                     <li *ngSwitchCase="true">
                         <a class="dropdown-item" (click)="logout()" id="logout">
                             <fa-icon icon="sign-out-alt" fixedWidth="true"></fa-icon>
-                            <span>Sign out</span>
+                            <span>Déconnexion</span>
                         </a>
                     </li>
                     <li *ngSwitchCase="false">

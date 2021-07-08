@@ -31,6 +31,9 @@ export class NotificationUpdateComponent implements OnInit {
     groupe: [null, [Validators.minLength(3)]],
     astreinteName: [null, [Validators.minLength(3)]],
     availiblity: [],
+    contact: [],
+    status: [],
+    message: [],
     employeId: []
   });
 
@@ -67,6 +70,9 @@ export class NotificationUpdateComponent implements OnInit {
       groupe: notification.groupe,
       astreinteName: notification.astreinteName,
       availiblity: notification.availiblity != null ? notification.availiblity.format(DATE_TIME_FORMAT) : null,
+      contact: notification.contact,
+      status: notification.status,
+      message: notification.message,
       employeId: notification.employeId
     });
   }
@@ -98,6 +104,9 @@ export class NotificationUpdateComponent implements OnInit {
       astreinteName: this.editForm.get(['astreinteName']).value,
       availiblity:
         this.editForm.get(['availiblity']).value != null ? moment(this.editForm.get(['availiblity']).value, DATE_TIME_FORMAT) : undefined,
+      contact: this.editForm.get(['contact']).value,
+      status: this.editForm.get(['status']).value,
+      message: this.editForm.get(['message']).value,
       employeId: this.editForm.get(['employeId']).value
     };
   }

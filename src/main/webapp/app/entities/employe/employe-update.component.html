@@ -67,14 +67,14 @@
                     <label class="form-control-label" for="field_equipe">Equipe</label>
                     <select class="form-control" id="field_equipe" name="equipe" formControlName="equipeId">
                         <option [ngValue]="null"></option>
-                        <option [ngValue]="equipeOption.id" *ngFor="let equipeOption of equipes; trackBy: trackEquipeById">{{equipeOption.name}}</option>
+                        <option [ngValue]="equipeOption.id" *ngFor="let equipeOption of equipes; trackBy: trackEquipeById">{{equipeOption.id}}</option>
                     </select>
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" for="field_domaine">Domaine</label>
                     <select class="form-control" id="field_domaine" name="domaine" formControlName="domaineId">
                         <option [ngValue]="null"></option>
-                        <option [ngValue]="domaineOption.id" *ngFor="let domaineOption of domaines; trackBy: trackDomaineById">{{domaineOption.name}}</option>
+                        <option [ngValue]="domaineOption.id" *ngFor="let domaineOption of domaines; trackBy: trackDomaineById">{{domaineOption.id}}</option>
                     </select>
                 </div>
             </div>

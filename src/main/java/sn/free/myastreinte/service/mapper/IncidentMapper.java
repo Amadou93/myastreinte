@@ -15,6 +15,8 @@ public interface IncidentMapper extends EntityMapper<IncidentDTO, Incident> {
     IncidentDTO toDto(Incident incident);
 
     @Mapping(source = "equipeId", target = "equipe")
+    @Mapping(target = "notifications", ignore = true)
+    @Mapping(target = "removeNotification", ignore = true)
     Incident toEntity(IncidentDTO incidentDTO);
 
     default Incident fromId(Long id) {

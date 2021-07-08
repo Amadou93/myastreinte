@@ -1,60 +1,41 @@
 <div>
     <h2 id="page-heading">
-        <span>Domaines</span>
+        <span>Equipes</span>
         <button id="jh-create-entity" class="btn btn-danger float-right jh-create-entity create-equipe" [routerLink]="['/equipe/new']">
             <fa-icon [icon]="'plus'"></fa-icon>
             <span >
-            Creer une Domaine
+            Creer une Equipe
             </span>
         </button>
     </h2>
     <jhi-alert></jhi-alert>
     <br/>
     <div class="alert alert-warning" *ngIf="equipes?.length === 0">
-        <span>No domaines found</span>
+        <span>No equipes found</span>
     </div>
     <div class="table-responsive" *ngIf="equipes?.length > 0">
         <table class="table table-striped">
-            <thead class="bg-danger text-white"  >
+            <thead class="bg-danger text-white">
             <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
-           <!-- <th jhiSortBy="id" class="test-white"><span>ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>-->
+          <!--  <th jhiSortBy="id"><span>ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>-->
             <th jhiSortBy="name"><span>Name</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="equipe.divisionName"><span>Division</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-              <!--  <th jhiSortBy="equipe.division"><span>Departement</span> <fa-icon [icon]="'sort'"></fa-icon></th>-->
-              <!--  <th></th>-->
+                <th jhiSortBy="name"><span>Division</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th></th>
             </tr>
             </thead>
             <tbody>
             <tr *ngFor="let equipe of equipes ;trackBy: trackId">
-               <!-- <td><a [routerLink]="['/equipe', equipe.id, 'view' ]">{{equipe.id}}</a></td>-->
+              <!--  <td><a [routerLink]="['/equipe', equipe.id, 'view' ]">{{equipe.id}}</a></td>-->
                 <td>{{equipe.name}}</td>
-                <td><a [routerLink]= "['/division']">{{equipe.name}}</a></td>
-
-                <!--<td><a href= "/division>{{equipe.name}}</a></td>-->
-
-           <!--     <td>{{equipe.divisionId}}</td>-->
-              <!--  <td>{{equipe.division.departementId}}</td>-->
-
-
-               <!-- <td *ngIf="equipe.division">{{equipe.division.divisionName}}</td>-->
-               <!--<td *ngIf="equipe.division">{{equipe.division.division.id}}</td>-->
-
-
-                <!--<td *ngIf="equipe.departement">{{equipe.departement.departementName}}</td>-->
-           <!--   <td>
-                    <div *ngIf="equipe.divisionName">
-                        <a [routerLink]="['../division', equipe.divisionId , 'view' ]" >{{equipe.division}}</a>
-                    </div>
-                </td>-->
-
+                <td *ng If="equipe.division">{{equipe.division.divisionName}}</td>
                 <td class="text-right">
                     <div class="btn-group">
-                        <button type="submit"
+                       <!-- <button type="submit"
                                 [routerLink]="['/equipe', equipe.id, 'view' ]"
                                 class="btn btn-info btn-sm">
                             <fa-icon [icon]="'eye'"></fa-icon>
                             <span class="d-none d-md-inline">View</span>
-                        </button>
+                        </button>-->
                         <button type="submit"
                                 [routerLink]="['/equipe', equipe.id, 'edit']"
                                 class="btn btn-dark btn-sm">

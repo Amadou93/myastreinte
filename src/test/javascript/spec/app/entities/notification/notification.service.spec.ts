@@ -27,7 +27,20 @@ describe('Service Tests', () => {
       httpMock = injector.get(HttpTestingController);
       currentDate = moment();
 
-      elemDefault = new Notification(0, currentDate, 'AAAAAAA', 0, 'AAAAAAA', State.Down, 'AAAAAAA', 'AAAAAAA', currentDate);
+      elemDefault = new Notification(
+        0,
+        currentDate,
+        'AAAAAAA',
+        0,
+        'AAAAAAA',
+        State.Down,
+        'AAAAAAA',
+        'AAAAAAA',
+        currentDate,
+        'AAAAAAA',
+        'AAAAAAA',
+        'AAAAAAA'
+      );
     });
 
     describe('Service methods', () => {
@@ -84,7 +97,10 @@ describe('Service Tests', () => {
             state: 'BBBBBB',
             groupe: 'BBBBBB',
             astreinteName: 'BBBBBB',
-            availiblity: currentDate.format(DATE_TIME_FORMAT)
+            availiblity: currentDate.format(DATE_TIME_FORMAT),
+            contact: 'BBBBBB',
+            status: 'BBBBBB',
+            message: 'BBBBBB'
           },
           elemDefault
         );
@@ -115,7 +131,10 @@ describe('Service Tests', () => {
             state: 'BBBBBB',
             groupe: 'BBBBBB',
             astreinteName: 'BBBBBB',
-            availiblity: currentDate.format(DATE_TIME_FORMAT)
+            availiblity: currentDate.format(DATE_TIME_FORMAT),
+            contact: 'BBBBBB',
+            status: 'BBBBBB',
+            message: 'BBBBBB'
           },
           elemDefault
         );

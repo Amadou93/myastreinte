@@ -32,6 +32,7 @@ import static org.hamcrest.Matchers.hasItem;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
+import sn.free.myastreinte.domain.enumeration.State;
 /**
  * Integration tests for the {@Link IncidentResource} REST controller.
  */
@@ -52,6 +53,24 @@ public class IncidentResourceIT {
 
     private static final String DEFAULT_DESCRIPTION = "AAAAAAAAAA";
     private static final String UPDATED_DESCRIPTION = "BBBBBBBBBB";
+
+    private static final String DEFAULT_ADRESSE_IP = "AAAAAAAAAA";
+    private static final String UPDATED_ADRESSE_IP = "BBBBBBBBBB";
+
+    private static final String DEFAULT_COMPOSANT = "AAAAAAAAAA";
+    private static final String UPDATED_COMPOSANT = "BBBBBBBBBB";
+
+    private static final String DEFAULT_RESPONSABLE = "AAAAAAAAAA";
+    private static final String UPDATED_RESPONSABLE = "BBBBBBBBBB";
+
+    private static final State DEFAULT_STATUS = State.UP;
+    private static final State UPDATED_STATUS = State.DOWN;
+
+    private static final String DEFAULT_EQUIPEMENT_NAME = "AAAAAAAAAA";
+    private static final String UPDATED_EQUIPEMENT_NAME = "BBBBBBBBBB";
+
+    private static final String DEFAULT_MESSAGE = "AAAAAAAAAA";
+    private static final String UPDATED_MESSAGE = "BBBBBBBBBB";
 
     @Autowired
     private IncidentRepository incidentRepository;
@@ -105,7 +124,13 @@ public class IncidentResourceIT {
             .type(DEFAULT_TYPE)
             .criticite(DEFAULT_CRITICITE)
             .sla(DEFAULT_SLA)
-            .description(DEFAULT_DESCRIPTION);
+            .description(DEFAULT_DESCRIPTION)
+            .adresseIP(DEFAULT_ADRESSE_IP)
+            .composant(DEFAULT_COMPOSANT)
+            .responsable(DEFAULT_RESPONSABLE)
+            .status(DEFAULT_STATUS)
+            .equipementName(DEFAULT_EQUIPEMENT_NAME)
+            .message(DEFAULT_MESSAGE);
         return incident;
     }
     /**
@@ -120,7 +145,13 @@ public class IncidentResourceIT {
             .type(UPDATED_TYPE)
             .criticite(UPDATED_CRITICITE)
             .sla(UPDATED_SLA)
-            .description(UPDATED_DESCRIPTION);
+            .description(UPDATED_DESCRIPTION)
+            .adresseIP(UPDATED_ADRESSE_IP)
+            .composant(UPDATED_COMPOSANT)
+            .responsable(UPDATED_RESPONSABLE)
+            .status(UPDATED_STATUS)
+            .equipementName(UPDATED_EQUIPEMENT_NAME)
+            .message(UPDATED_MESSAGE);
         return incident;
     }
 
@@ -150,6 +181,12 @@ public class IncidentResourceIT {
         assertThat(testIncident.getCriticite()).isEqualTo(DEFAULT_CRITICITE);
         assertThat(testIncident.getSla()).isEqualTo(DEFAULT_SLA);
         assertThat(testIncident.getDescription()).isEqualTo(DEFAULT_DESCRIPTION);
+        assertThat(testIncident.getAdresseIP()).isEqualTo(DEFAULT_ADRESSE_IP);
+        assertThat(testIncident.getComposant()).isEqualTo(DEFAULT_COMPOSANT);
+        assertThat(testIncident.getResponsable()).isEqualTo(DEFAULT_RESPONSABLE);
+        assertThat(testIncident.getStatus()).isEqualTo(DEFAULT_STATUS);
+        assertThat(testIncident.getEquipementName()).isEqualTo(DEFAULT_EQUIPEMENT_NAME);
+        assertThat(testIncident.getMessage()).isEqualTo(DEFAULT_MESSAGE);
     }
 
     @Test
@@ -226,7 +263,13 @@ public class IncidentResourceIT {
             .andExpect(jsonPath("$.[*].type").value(hasItem(DEFAULT_TYPE.toString())))
             .andExpect(jsonPath("$.[*].criticite").value(hasItem(DEFAULT_CRITICITE.toString())))
             .andExpect(jsonPath("$.[*].sla").value(hasItem(DEFAULT_SLA.intValue())))
-            .andExpect(jsonPath("$.[*].description").value(hasItem(DEFAULT_DESCRIPTION.toString())));
+            .andExpect(jsonPath("$.[*].description").value(hasItem(DEFAULT_DESCRIPTION.toString())))
+            .andExpect(jsonPath("$.[*].adresseIP").value(hasItem(DEFAULT_ADRESSE_IP.toString())))
+            .andExpect(jsonPath("$.[*].composant").value(hasItem(DEFAULT_COMPOSANT.toString())))
+            .andExpect(jsonPath("$.[*].responsable").value(hasItem(DEFAULT_RESPONSABLE.toString())))
+            .andExpect(jsonPath("$.[*].status").value(hasItem(DEFAULT_STATUS.toString())))
+            .andExpect(jsonPath("$.[*].equipementName").value(hasItem(DEFAULT_EQUIPEMENT_NAME.toString())))
+            .andExpect(jsonPath("$.[*].message").value(hasItem(DEFAULT_MESSAGE.toString())));
     }
     
     @Test
@@ -244,7 +287,13 @@ public class IncidentResourceIT {
             .andExpect(jsonPath("$.type").value(DEFAULT_TYPE.toString()))
             .andExpect(jsonPath("$.criticite").value(DEFAULT_CRITICITE.toString()))
             .andExpect(jsonPath("$.sla").value(DEFAULT_SLA.intValue()))
-            .andExpect(jsonPath("$.description").value(DEFAULT_DESCRIPTION.toString()));
+            .andExpect(jsonPath("$.description").value(DEFAULT_DESCRIPTION.toString()))
+            .andExpect(jsonPath("$.adresseIP").value(DEFAULT_ADRESSE_IP.toString()))
+            .andExpect(jsonPath("$.composant").value(DEFAULT_COMPOSANT.toString()))
+            .andExpect(jsonPath("$.responsable").value(DEFAULT_RESPONSABLE.toString()))
+            .andExpect(jsonPath("$.status").value(DEFAULT_STATUS.toString()))
+            .andExpect(jsonPath("$.equipementName").value(DEFAULT_EQUIPEMENT_NAME.toString()))
+            .andExpect(jsonPath("$.message").value(DEFAULT_MESSAGE.toString()));
     }
 
     @Test
@@ -272,7 +321,13 @@ public class IncidentResourceIT {
             .type(UPDATED_TYPE)
             .criticite(UPDATED_CRITICITE)
             .sla(UPDATED_SLA)
-            .description(UPDATED_DESCRIPTION);
+            .description(UPDATED_DESCRIPTION)
+            .adresseIP(UPDATED_ADRESSE_IP)
+            .composant(UPDATED_COMPOSANT)
+            .responsable(UPDATED_RESPONSABLE)
+            .status(UPDATED_STATUS)
+            .equipementName(UPDATED_EQUIPEMENT_NAME)
+            .message(UPDATED_MESSAGE);
         IncidentDTO incidentDTO = incidentMapper.toDto(updatedIncident);
 
         restIncidentMockMvc.perform(put("/api/incidents")
@@ -289,6 +344,12 @@ public class IncidentResourceIT {
         assertThat(testIncident.getCriticite()).isEqualTo(UPDATED_CRITICITE);
         assertThat(testIncident.getSla()).isEqualTo(UPDATED_SLA);
         assertThat(testIncident.getDescription()).isEqualTo(UPDATED_DESCRIPTION);
+        assertThat(testIncident.getAdresseIP()).isEqualTo(UPDATED_ADRESSE_IP);
+        assertThat(testIncident.getComposant()).isEqualTo(UPDATED_COMPOSANT);
+        assertThat(testIncident.getResponsable()).isEqualTo(UPDATED_RESPONSABLE);
+        assertThat(testIncident.getStatus()).isEqualTo(UPDATED_STATUS);
+        assertThat(testIncident.getEquipementName()).isEqualTo(UPDATED_EQUIPEMENT_NAME);
+        assertThat(testIncident.getMessage()).isEqualTo(UPDATED_MESSAGE);
     }
 
     @Test

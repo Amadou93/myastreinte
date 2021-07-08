@@ -1,5 +1,15 @@
 {
-    "name": "Notification",
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "relationships": [
+        {
+            "relationshipName": "employe",
+            "otherEntityName": "employe",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id",
+            "otherEntityRelationshipName": "notification"
+        }
+    ],
     "fields": [
         {
             "fieldName": "date",
@@ -51,23 +61,26 @@
         {
             "fieldName": "availiblity",
             "fieldType": "Instant"
-        }
-    ],
-    "relationships": [
+        },
         {
-            "relationshipName": "employe",
-            "otherEntityName": "employe",
-            "relationshipType": "many-to-one",
-            "otherEntityField": "id"
+            "fieldName": "contact",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "status",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "message",
+            "fieldType": "String"
         }
     ],
     "changelogDate": "20210503135548",
-    "entityTableName": "notification",
     "dto": "mapstruct",
-    "pagination": "pagination",
+    "searchEngine": false,
     "service": "serviceImpl",
+    "entityTableName": "notification",
+    "databaseType": "sql",
     "jpaMetamodelFiltering": false,
-    "fluentMethods": true,
-    "clientRootFolder": "",
-    "applications": "*"
+    "pagination": "pagination"
 }

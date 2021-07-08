@@ -39,31 +39,19 @@
     ],
     "relationships": [
         {
-            "relationshipType": "one-to-many",
-            "otherEntityName": "astreinte",
-            "otherEntityRelationshipName": "employe",
-            "relationshipName": "astreinte"
-        },
-        {
-            "relationshipType": "one-to-many",
-            "otherEntityName": "notification",
-            "otherEntityRelationshipName": "employe",
-            "relationshipName": "notification"
-        },
-        {
-            "relationshipType": "one-to-many",
-            "otherEntityName": "absence",
-            "otherEntityRelationshipName": "employe",
-            "relationshipName": "absence"
-        },
-        {
             "relationshipName": "equipe",
             "otherEntityName": "equipe",
             "relationshipType": "many-to-one",
             "otherEntityField": "id"
+        },
+        {
+            "relationshipName": "domaine",
+            "otherEntityName": "domaine",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
         }
     ],
-    "changelogDate": "20210503135545",
+    "changelogDate": "20210702132005",
     "entityTableName": "employe",
     "dto": "mapstruct",
     "pagination": "pagination",

@@ -1,137 +1,33 @@
 
 
-entity Switche{
-	ipAddress Long required
-}
- 
-entity EquipementReseau {
-	equipementName String  minlength(3),
-	type String  minlength(3),
-	ipAddress Long,
-	version  Long
+
+
+
+
+
+
+entity Domaine{
+nom String required,
+nomService String,
+respService String,
+telRespService String,
+emailRespService String,
+nomDivision String,
+respDivision String,
+telRespDivision String,
+emailRespDivision String,
+nomDepart String,
+respDepart String,
+telRespDepart String,
+emailRespDepart String,
+nomDirection String,
+respDirection String,
+telDirecteur String,
+emailDirecteur String
 }
 
- 
 
-entity Departement {
-	departementName String required
-}
 
-entity Basededonnee {
-	name String required minlength(2),
-	baseType String required minlength(3),
-    memory String required 
-}
-
-entity Employe {
-    matricul  Long required,
-	firstName String  minlength(3),
-	lastName String  minlength(3),
-	email String  minlength(3),
-	phoneNumber Long
-    
-}
-
-entity Astreinte {
-    matricul Long required,
-    numberSemaine Long required,
-    year Long
-}
-
-entity Absence{
-  
-	startDate Instant required,
-	endDate Instant required
-}
-entity Notification {
-  date Instant required ,
-  type String required ,
-  level  Long ,
-  dispositifName String  minlength(3),
-  state State ,
-  groupe String  minlength(3) ,
-  astreinteName  String  minlength(3),
-  availiblity  Instant
-}
-entity  Equipe {
-name  String  required  minlength(3)
-
-}
-
-entity  Application {
-name String  minlength(3),
-type  String
-}
-entity  Serveur {
-nameServeur String required  minlength(3),
-cpu  String  minlength(15),
-memory Long required,
-disque  Long required ,
-avalibity String required 
-}
-
-entity 	Division {
-divisionName String required  minlength(3),
-divisionChef String required 
-}
-
-entity Incident {
-  date Instant required,
-  type String required  minlength(3),
-  criticite String  minlength(3),
-  sla Long,
- description String  minlength(3)
- 
-}
-enum State{  
- Down, Up
- }
-
-relationship OneToMany {
-Division{nameEquipe} to Equipe
-}
-relationship OneToMany{
-Departement{division} to Division
-}
-
-relationship OneToMany {
-	Employe{astreinte} to Astreinte
-}
-
-relationship OneToMany {
-	Equipe{employe} to Employe
-}
-
-relationship OneToMany {
-	Employe{notification} to Notification
-}
-
-relationship OneToMany {
-	Equipe{serveur} to  Serveur
-}
-relationship OneToMany {
-	Equipe{equipement} to EquipementReseau
-}
-relationship OneToMany {
-	Equipe{switche} to Switche
-}
-relationship OneToMany {
-	Equipe{date} to Incident
-}
-relationship OneToMany {
-	Division{nameEquipe} to Equipe
-    
-}
-relationship OneToMany {
-	Equipe{application} to Application
-}
-relationship OneToMany {
-	Equipe {basededonnee} to Basededonnee
-
-}
-relationship OneToMany {
-Employe{absence} to Absence
-}
 
 
 paginate all with pagination

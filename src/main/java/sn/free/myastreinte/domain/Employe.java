@@ -5,8 +5,6 @@ import javax.persistence.*;
 import javax.validation.constraints.*;
 
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
 
 /**
  * A Employe.
@@ -39,15 +37,6 @@ public class Employe implements Serializable {
 
     @Column(name = "phone_number")
     private Long phoneNumber;
-
-    @OneToMany(mappedBy = "employe")
-    private Set<Astreinte> astreintes = new HashSet<>();
-
-    @OneToMany(mappedBy = "employe")
-    private Set<Notification> notifications = new HashSet<>();
-
-    @OneToMany(mappedBy = "employe")
-    private Set<Absence> absences = new HashSet<>();
 
     @ManyToOne
     @JsonIgnoreProperties("employes")
@@ -131,105 +120,31 @@ public class Employe implements Serializable {
         this.phoneNumber = phoneNumber;
     }
 
-    public Set<Astreinte> getAstreintes() {
-        return astreintes;
-    }
-
-    public Employe astreintes(Set<Astreinte> astreintes) {
-        this.astreintes = astreintes;
-        return this;
-    }
-
-    public Employe addAstreinte(Astreinte astreinte) {
-        this.astreintes.add(astreinte);
-        astreinte.setEmploye(this);
-        return this;
-    }
-
-    public Employe removeAstreinte(Astreinte astreinte) {
-        this.astreintes.remove(astreinte);
-        astreinte.setEmploye(null);
-        return this;
-    }
-
-    public void setAstreintes(Set<Astreinte> astreintes) {
-        this.astreintes = astreintes;
-    }
-
-    public Set<Notification> getNotifications() {
-        return notifications;
-    }
-
-    public Employe notifications(Set<Notification> notifications) {
-        this.notifications = notifications;
-        return this;
-    }
-
-    public Employe addNotification(Notification notification) {
-        this.notifications.add(notification);
-        notification.setEmploye(this);
-        return this;
-    }
-
-    public Employe removeNotification(Notification notification) {
-        this.notifications.remove(notification);
-        notification.setEmploye(null);
-        return this;
-    }
-
-    public void setNotifications(Set<Notification> notifications) {
-        this.notifications = notifications;
-    }
-
-    public Set<Absence> getAbsences() {
-        return absences;
-    }
-
-    public Employe absences(Set<Absence> absences) {
-        this.absences = absences;
-        return this;
-    }
-
-    public Employe addAbsence(Absence absence) {
-        this.absences.add(absence);
-        absence.setEmploye(this);
-        return this;
-    }
-
-    public Employe removeAbsence(Absence absence) {
-        this.absences.remove(absence);
-        absence.setEmploye(null);
-        return this;
-    }
-
-    public void setAbsences(Set<Absence> absences) {
-        this.absences = absences;
-    }
-
     public Equipe getEquipe() {
         return equipe;
-    }
-    public Domaine getDomaine() {
-        return domaine;
     }
 
     public Employe equipe(Equipe equipe) {
         this.equipe = equipe;
-        return this;
-
-    }
-    public Employe domaine(Domaine domaine){
-        this.domaine=domaine;
         return this;
     }
 
     public void setEquipe(Equipe equipe) {
         this.equipe = equipe;
     }
+
+    public Domaine getDomaine() {
+        return domaine;
+    }
+
+    public Employe domaine(Domaine domaine) {
+        this.domaine = domaine;
+        return this;
+    }
+
     public void setDomaine(Domaine domaine) {
         this.domaine = domaine;
     }
-
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
     @Override
@@ -259,11 +174,4 @@ public class Employe implements Serializable {
             ", phoneNumber=" + getPhoneNumber() +
             "}";
     }
-
-
-
-
-
-    /*public void setDomaine(Domaine domaine) {
-    }*/
 }

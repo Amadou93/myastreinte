@@ -1,5 +1,8 @@
 package sn.free.myastreinte.web.rest;
 
+import javafx.scene.media.MediaPlayer;
+import org.springframework.http.HttpStatus;
+import sn.free.myastreinte.domain.enumeration.State;
 import sn.free.myastreinte.service.IncidentService;
 import sn.free.myastreinte.web.rest.errors.BadRequestAlertException;
 import sn.free.myastreinte.service.dto.IncidentDTO;
@@ -13,7 +16,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.util.UriComponentsBuilder;
 import org.springframework.http.ResponseEntity;
@@ -23,15 +25,19 @@ import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
 
+import java.time.Instant;
+import java.util.Date;
+import java.util.Enumeration;
 import java.util.List;
 import java.util.Optional;
+
 
 /**
  * REST controller for managing {@link sn.free.myastreinte.domain.Incident}.
  */
 @RestController
 @RequestMapping("/api")
-public class IncidentResource {
+public class IncidentResource<logger> {
 
     private final Logger log = LoggerFactory.getLogger(IncidentResource.class);
 
@@ -114,6 +120,29 @@ public class IncidentResource {
         Optional<IncidentDTO> incidentDTO = incidentService.findOne(id);
         return ResponseUtil.wrapOrNotFound(incidentDTO);
     }
+    @GetMapping("/incidents/logs")
+    public ResponseEntity incidentDTOS (@RequestParam(value="param1") String pram1, @RequestParam(value = "param2")String param2, @RequestParam(value = "param3") String param3, @RequestParam(value = "param4")Long param4, @RequestParam(value="param5")String param5, @RequestParam(value = "param6")String param6, @RequestParam(value = "param7")String param7, @RequestParam(value="param8")Long param8, @RequestParam(value = "param9")State param9, @RequestParam(value = "param10") Instant param10) {
+       log.debug("call a incident method") ;
+    /*    List<IncidentDTO> List = new ArrayList<>();*/
+        IncidentDTO incidentDTO = new IncidentDTO();
+        incidentDTO.setEquipementName("param1");
+        incidentDTO.setAdresseIP("param2");
+        incidentDTO.setComposant("param3");
+        incidentDTO.setEquipeId(param4);
+        incidentDTO.setResponsable("param5");
+        incidentDTO.setMessage("param6");
+        incidentDTO.setCriticite("param7");
+        incidentDTO.setSla(param8);
+        incidentDTO.setStatus(param9);
+        incidentDTO.setDate(param10);
+        incidentService.save(incidentDTO);
+       /*List.add(incidentDTO);*/
+
+
+        return new ResponseEntity<IncidentResource>(HttpStatus.OK);
+
+    }
+
 
     /**
      * {@code DELETE  /incidents/:id} : delete the "id" incident.

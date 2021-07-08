@@ -3,12 +3,8 @@ import { HttpResponse, HttpErrorResponse } from '@angular/common/http';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
-import { filter, map } from 'rxjs/operators';
-import { JhiAlertService } from 'ng-jhipster';
 import { IEquipe, Equipe } from 'app/shared/model/equipe.model';
 import { EquipeService } from './equipe.service';
-import { IDivision } from 'app/shared/model/division.model';
-import { DivisionService } from 'app/entities/division';
 
 @Component({
   selector: 'jhi-equipe-update',
@@ -17,41 +13,24 @@ import { DivisionService } from 'app/entities/division';
 export class EquipeUpdateComponent implements OnInit {
   isSaving: boolean;
 
-  divisions: IDivision[];
-
   editForm = this.fb.group({
     id: [],
-    name: [null, [Validators.required, Validators.minLength(3)]],
-    divisionId: []
+    name: [null, [Validators.required, Validators.minLength(3)]]
   });
 
-  constructor(
-    protected jhiAlertService: JhiAlertService,
-    protected equipeService: EquipeService,
-    protected divisionService: DivisionService,
-    protected activatedRoute: ActivatedRoute,
-    private fb: FormBuilder
-  ) {}
+  constructor(protected equipeService: EquipeService, protected activatedRoute: ActivatedRoute, private fb: FormBuilder) {}
 
   ngOnInit() {
     this.isSaving = false;
     this.activatedRoute.data.subscribe(({ equipe }) => {
       this.updateForm(equipe);
     });
-    this.divisionService
-      .query()
-      .pipe(
-        filter((mayBeOk: HttpResponse<IDivision[]>) => mayBeOk.ok),
-        map((response: HttpResponse<IDivision[]>) => response.body)
-      )
-      .subscribe((res: IDivision[]) => (this.divisions = res), (res: HttpErrorResponse) => this.onError(res.message));
   }
 
   updateForm(equipe: IEquipe) {
     this.editForm.patchValue({
       id: equipe.id,
-      name: equipe.name,
-      divisionId: equipe.divisionId
+      name: equipe.name
     });
   }
 
@@ -73,8 +52,7 @@ export class EquipeUpdateComponent implements OnInit {
     return {
       ...new Equipe(),
       id: this.editForm.get(['id']).value,
-      name: this.editForm.get(['name']).value,
-      divisionId: this.editForm.get(['divisionId']).value
+      name: this.editForm.get(['name']).value
     };
   }
 
@@ -89,12 +67,5 @@ export class EquipeUpdateComponent implements OnInit {
 
   protected onSaveError() {
     this.isSaving = false;
-  }
-  protected onError(errorMessage: string) {
-    this.jhiAlertService.error(errorMessage, null, null);
-  }
-
-  trackDivisionById(index: number, item: IDivision) {
-    return item.id;
   }
 }

@@ -1,5 +1,21 @@
 {
-    "name": "Incident",
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "relationships": [
+        {
+            "relationshipName": "equipe",
+            "otherEntityName": "equipe",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id",
+            "otherEntityRelationshipName": "incident"
+        },
+        {
+            "relationshipName": "notification",
+            "otherEntityName": "notification",
+            "relationshipType": "one-to-many",
+            "otherEntityRelationshipName": "incident"
+        }
+    ],
     "fields": [
         {
             "fieldName": "date",
@@ -36,23 +52,40 @@
                 "minlength"
             ],
             "fieldValidateRulesMinlength": 3
-        }
-    ],
-    "relationships": [
+        },
         {
-            "relationshipName": "equipe",
-            "otherEntityName": "equipe",
-            "relationshipType": "many-to-one",
-            "otherEntityField": "id"
+            "fieldName": "adresseIP",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "composant",
+            "fieldType": "String",
+            "fieldValidateRules": []
+        },
+        {
+            "fieldName": "responsable",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "status",
+            "fieldType": "State",
+            "fieldValues": "UP,DOWN"
+        },
+        {
+            "fieldName": "equipementName",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "message",
+            "fieldType": "String"
         }
     ],
     "changelogDate": "20210503135553",
-    "entityTableName": "incident",
     "dto": "mapstruct",
-    "pagination": "pagination",
+    "searchEngine": false,
     "service": "serviceImpl",
+    "entityTableName": "incident",
+    "databaseType": "sql",
     "jpaMetamodelFiltering": false,
-    "fluentMethods": true,
-    "clientRootFolder": "",
-    "applications": "*"
+    "pagination": "pagination"
 }

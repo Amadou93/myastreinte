@@ -15,6 +15,9 @@ export interface INotification {
   groupe?: string;
   astreinteName?: string;
   availiblity?: Moment;
+  contact?: string;
+  status?: string;
+  message?: string;
   employeId?: number;
 }
 
@@ -29,6 +32,9 @@ export class Notification implements INotification {
     public groupe?: string,
     public astreinteName?: string,
     public availiblity?: Moment,
+    public contact?: string,
+    public status?: string,
+    public message?: string,
     public employeId?: number
   ) {}
 }

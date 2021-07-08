@@ -15,8 +15,6 @@ public class EquipeDTO implements Serializable {
     private String name;
 
 
-    private Long divisionId;
-
     public Long getId() {
         return id;
     }
@@ -31,14 +29,6 @@ public class EquipeDTO implements Serializable {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public Long getDivisionId() {
-        return divisionId;
-    }
-
-    public void setDivisionId(Long divisionId) {
-        this.divisionId = divisionId;
     }
 
     @Override
@@ -67,7 +57,6 @@ public class EquipeDTO implements Serializable {
         return "EquipeDTO{" +
             "id=" + getId() +
             ", name='" + getName() + "'" +
-            ", division=" + getDivisionId() +
             "}";
     }
 }

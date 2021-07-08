@@ -3,6 +3,7 @@ import java.time.Instant;
 import javax.validation.constraints.*;
 import java.io.Serializable;
 import java.util.Objects;
+import sn.free.myastreinte.domain.enumeration.State;
 
 /**
  * A DTO for the {@link sn.free.myastreinte.domain.Incident} entity.
@@ -25,6 +26,18 @@ public class IncidentDTO implements Serializable {
 
     @Size(min = 3)
     private String description;
+
+    private String adresseIP;
+
+    private String composant;
+
+    private String responsable;
+
+    private State status;
+
+    private String equipementName;
+
+    private String message;
 
 
     private Long equipeId;
@@ -77,6 +90,54 @@ public class IncidentDTO implements Serializable {
         this.description = description;
     }
 
+    public String getAdresseIP() {
+        return adresseIP;
+    }
+
+    public void setAdresseIP(String adresseIP) {
+        this.adresseIP = adresseIP;
+    }
+
+    public String getComposant() {
+        return composant;
+    }
+
+    public void setComposant(String composant) {
+        this.composant = composant;
+    }
+
+    public String getResponsable() {
+        return responsable;
+    }
+
+    public void setResponsable(String responsable) {
+        this.responsable = responsable;
+    }
+
+    public State getStatus() {
+        return status;
+    }
+
+    public void setStatus(State status) {
+        this.status = status;
+    }
+
+    public String getEquipementName() {
+        return equipementName;
+    }
+
+    public void setEquipementName(String equipementName) {
+        this.equipementName = equipementName;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
     public Long getEquipeId() {
         return equipeId;
     }
@@ -115,6 +176,12 @@ public class IncidentDTO implements Serializable {
             ", criticite='" + getCriticite() + "'" +
             ", sla=" + getSla() +
             ", description='" + getDescription() + "'" +
+            ", adresseIP='" + getAdresseIP() + "'" +
+            ", composant='" + getComposant() + "'" +
+            ", responsable='" + getResponsable() + "'" +
+            ", status='" + getStatus() + "'" +
+            ", equipementName='" + getEquipementName() + "'" +
+            ", message='" + getMessage() + "'" +
             ", equipe=" + getEquipeId() +
             "}";
     }

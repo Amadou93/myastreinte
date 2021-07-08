@@ -1,10 +1,10 @@
 <div>
     <h2 id="page-heading">
         <span>Domaines</span>
-        <button id="jh-create-entity" class="btn btn-danger float-right jh-create-entity create-domaine" [routerLink]="['/domaine/new']">
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-domaine" [routerLink]="['/domaine/new']">
             <fa-icon [icon]="'plus'"></fa-icon>
             <span >
-            Creer une Domaine
+            Create new Domaine
             </span>
         </button>
     </h2>
@@ -15,60 +15,60 @@
     </div>
     <div class="table-responsive" *ngIf="domaines?.length > 0">
         <table class="table table-striped">
-            <thead class="bg-danger text-white">
+            <thead>
             <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
-            <!--<th jhiSortBy="id"><span>ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>-->
+            <th jhiSortBy="id"><span>ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="nom"><span>Nom</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="service"><span>Service</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="responsableService"><span>Responsable Service</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="numTelResponsableService"><span>Num Tel Responsable Service</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="emailResponsableService"><span>Email Responsable Service</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="division"><span>Division</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="responsableDivision"><span>Responsable Division</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="numResponsableDivision"><span>Num Responsable Division</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="emailResponsableDivision"><span>Email Responsable Division</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="departement"><span>Departement</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="responsableDepartement"><span>Responsable Departement</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="numeroTelResponsableDepartement"><span>Numero Tel Responsable Departement</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="emailResponsableDepartement"><span>Email Responsable Departement</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="direction"><span>Direction</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="responsableDirection"><span>Responsable Direction</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="numeroTelDirecteur"><span>Numero Tel Directeur</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="nomService"><span>Nom Service</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="respService"><span>Resp Service</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="telRespService"><span>Tel Resp Service</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="emailRespService"><span>Email Resp Service</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="nomDivision"><span>Nom Division</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="respDivision"><span>Resp Division</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="telRespDivision"><span>Tel Resp Division</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="emailRespDivision"><span>Email Resp Division</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="nomDepart"><span>Nom Depart</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="respDepart"><span>Resp Depart</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="telRespDepart"><span>Tel Resp Depart</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="emailRespDepart"><span>Email Resp Depart</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="nomDirection"><span>Nom Direction</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="respDirection"><span>Resp Direction</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="telDirecteur"><span>Tel Directeur</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="emailDirecteur"><span>Email Directeur</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th></th>
             </tr>
             </thead>
             <tbody>
             <tr *ngFor="let domaine of domaines ;trackBy: trackId">
-               <!-- <td><a [routerLink]="['/domaine', domaine.id, 'view' ]">{{domaine.id}}</a></td>-->
+                <td><a [routerLink]="['/domaine', domaine.id, 'view' ]">{{domaine.id}}</a></td>
                 <td>{{domaine.nom}}</td>
-                <td>{{domaine.service}}</td>
-                <td>{{domaine.responsableService}}</td>
-                <td>{{domaine.numTelResponsableService}}</td>
-                <td>{{domaine.emailResponsableService}}</td>
-                <td>{{domaine.division}}</td>
-                <td>{{domaine.responsableDivision}}</td>
-                <td>{{domaine.numResponsableDivision}}</td>
-                <td>{{domaine.emailResponsableDivision}}</td>
-                <td>{{domaine.departement}}</td>
-                <td>{{domaine.responsableDepartement}}</td>
-                <td>{{domaine.numeroTelResponsableDepartement}}</td>
-                <td>{{domaine.emailResponsableDepartement}}</td>
-                <td>{{domaine.direction}}</td>
-                <td>{{domaine.responsableDirection}}</td>
-                <td>{{domaine.numeroTelDirecteur}}</td>
+                <td>{{domaine.nomService}}</td>
+                <td>{{domaine.respService}}</td>
+                <td>{{domaine.telRespService}}</td>
+                <td>{{domaine.emailRespService}}</td>
+                <td>{{domaine.nomDivision}}</td>
+                <td>{{domaine.respDivision}}</td>
+                <td>{{domaine.telRespDivision}}</td>
+                <td>{{domaine.emailRespDivision}}</td>
+                <td>{{domaine.nomDepart}}</td>
+                <td>{{domaine.respDepart}}</td>
+                <td>{{domaine.telRespDepart}}</td>
+                <td>{{domaine.emailRespDepart}}</td>
+                <td>{{domaine.nomDirection}}</td>
+                <td>{{domaine.respDirection}}</td>
+                <td>{{domaine.telDirecteur}}</td>
                 <td>{{domaine.emailDirecteur}}</td>
                 <td class="text-right">
                     <div class="btn-group">
-                       <!-- <button type="submit"
+                        <button type="submit"
                                 [routerLink]="['/domaine', domaine.id, 'view' ]"
                                 class="btn btn-info btn-sm">
                             <fa-icon [icon]="'eye'"></fa-icon>
                             <span class="d-none d-md-inline">View</span>
-                        </button>-->
+                        </button>
                         <button type="submit"
                                 [routerLink]="['/domaine', domaine.id, 'edit']"
-                                class="btn btn-dark btn-sm">
+                                class="btn btn-primary btn-sm">
                             <fa-icon [icon]="'pencil-alt'"></fa-icon>
                             <span class="d-none d-md-inline">Edit</span>
                         </button>

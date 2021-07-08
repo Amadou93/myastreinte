@@ -52,9 +52,21 @@ public class Notification implements Serializable {
     @Column(name = "availiblity")
     private Instant availiblity;
 
+    @Column(name = "contact")
+    private String contact;
+
+    @Column(name = "status")
+    private String status;
+
+    @Column(name = "message")
+    private String message;
+
     @ManyToOne
     @JsonIgnoreProperties("notifications")
     private Employe employe;
+    @ManyToOne
+    @JsonIgnoreProperties("notifications")
+    private Incident incident;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -169,8 +181,50 @@ public class Notification implements Serializable {
         this.availiblity = availiblity;
     }
 
+    public String getContact() {
+        return contact;
+    }
+
+    public Notification contact(String contact) {
+        this.contact = contact;
+        return this;
+    }
+
+    public void setContact(String contact) {
+        this.contact = contact;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public Notification status(String status) {
+        this.status = status;
+        return this;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public Notification message(String message) {
+        this.message = message;
+        return this;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
     public Employe getEmploye() {
         return employe;
+    }
+    public Incident getIncident(){
+        return incident;
     }
 
     public Notification employe(Employe employe) {
@@ -180,6 +234,9 @@ public class Notification implements Serializable {
 
     public void setEmploye(Employe employe) {
         this.employe = employe;
+    }
+    public void setIncident(Incident incident){
+        this.incident=incident;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
@@ -211,6 +268,11 @@ public class Notification implements Serializable {
             ", groupe='" + getGroupe() + "'" +
             ", astreinteName='" + getAstreinteName() + "'" +
             ", availiblity='" + getAvailiblity() + "'" +
+            ", contact='" + getContact() + "'" +
+            ", status='" + getStatus() + "'" +
+            ", message='" + getMessage() + "'" +
             "}";
     }
+
+
 }

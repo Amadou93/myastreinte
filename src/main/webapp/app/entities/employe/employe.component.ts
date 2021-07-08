@@ -123,7 +123,6 @@ export class EmployeComponent implements OnInit, OnDestroy {
     this.links = this.parseLinks.parse(headers.get('link'));
     this.totalItems = parseInt(headers.get('X-Total-Count'), 10);
     this.employes = data;
-    console.log(data);
   }
 
   protected onError(errorMessage: string) {

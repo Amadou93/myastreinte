@@ -28,6 +28,12 @@ export class IncidentUpdateComponent implements OnInit {
     criticite: [null, [Validators.minLength(3)]],
     sla: [],
     description: [null, [Validators.minLength(3)]],
+    adresseIP: [],
+    composant: [],
+    responsable: [],
+    status: [],
+    equipementName: [],
+    message: [],
     equipeId: []
   });
 
@@ -61,6 +67,12 @@ export class IncidentUpdateComponent implements OnInit {
       criticite: incident.criticite,
       sla: incident.sla,
       description: incident.description,
+      adresseIP: incident.adresseIP,
+      composant: incident.composant,
+      responsable: incident.responsable,
+      status: incident.status,
+      equipementName: incident.equipementName,
+      message: incident.message,
       equipeId: incident.equipeId
     });
   }
@@ -88,6 +100,12 @@ export class IncidentUpdateComponent implements OnInit {
       criticite: this.editForm.get(['criticite']).value,
       sla: this.editForm.get(['sla']).value,
       description: this.editForm.get(['description']).value,
+      adresseIP: this.editForm.get(['adresseIP']).value,
+      composant: this.editForm.get(['composant']).value,
+      responsable: this.editForm.get(['responsable']).value,
+      status: this.editForm.get(['status']).value,
+      equipementName: this.editForm.get(['equipementName']).value,
+      message: this.editForm.get(['message']).value,
       equipeId: this.editForm.get(['equipeId']).value
     };
   }

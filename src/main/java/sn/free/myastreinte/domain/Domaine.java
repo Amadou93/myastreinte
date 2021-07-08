@@ -1,6 +1,7 @@
 package sn.free.myastreinte.domain;
 
 import javax.persistence.*;
+import javax.validation.constraints.*;
 
 import java.io.Serializable;
 
@@ -17,58 +18,59 @@ public class Domaine implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "nom")
+    @NotNull
+    @Column(name = "nom", nullable = false)
     private String nom;
 
-    @Column(name = "service")
-    private String service;
+    @Column(name = "nom_service")
+    private String nomService;
 
-    @Column(name = "responsable_service")
-    private String responsableService;
+    @Column(name = "resp_service")
+    private String respService;
 
-    @Column(name = "num_tel_responsable_service")
-    private String numTelResponsableService;
+    @Column(name = "tel_resp_service")
+    private String telRespService;
 
-    @Column(name = "email_responsable_service")
-    private String emailResponsableService;
+    @Column(name = "email_resp_service")
+    private String emailRespService;
 
-    @Column(name = "division")
-    private String division;
+    @Column(name = "nom_division")
+    private String nomDivision;
 
-    @Column(name = "responsable_division")
-    private String responsableDivision;
+    @Column(name = "resp_division")
+    private String respDivision;
 
-    @Column(name = "num_responsable_division")
-    private String numResponsableDivision;
+    @Column(name = "tel_resp_division")
+    private String telRespDivision;
 
-    @Column(name = "email_responsable_division")
-    private String emailResponsableDivision;
+    @Column(name = "email_resp_division")
+    private String emailRespDivision;
 
-    @Column(name = "departement")
-    private String departement;
+    @Column(name = "nom_depart")
+    private String nomDepart;
 
-    @Column(name = "responsable_departement")
-    private String responsableDepartement;
+    @Column(name = "resp_depart")
+    private String respDepart;
 
-    @Column(name = "numero_tel_responsable_departement")
-    private String numeroTelResponsableDepartement;
+    @Column(name = "tel_resp_depart")
+    private String telRespDepart;
 
-    @Column(name = "email_responsable_departement")
-    private String emailResponsableDepartement;
+    @Column(name = "email_resp_depart")
+    private String emailRespDepart;
 
-    @Column(name = "direction")
-    private String direction;
+    @Column(name = "nom_direction")
+    private String nomDirection;
 
-    @Column(name = "responsable_direction")
-    private String responsableDirection;
+    @Column(name = "resp_direction")
+    private String respDirection;
 
-    @Column(name = "numero_tel_directeur")
-    private String numeroTelDirecteur;
+    @Column(name = "tel_directeur")
+    private String telDirecteur;
 
     @Column(name = "email_directeur")
     private String emailDirecteur;
 
-    // jhipster-needle-entity-add-field -mvn JHipster will add fields here, do not remove
+    // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
         return id;
     }
@@ -90,199 +92,199 @@ public class Domaine implements Serializable {
         this.nom = nom;
     }
 
-    public String getService() {
-        return service;
+    public String getNomService() {
+        return nomService;
     }
 
-    public Domaine service(String service) {
-        this.service = service;
+    public Domaine nomService(String nomService) {
+        this.nomService = nomService;
         return this;
     }
 
-    public void setService(String service) {
-        this.service = service;
+    public void setNomService(String nomService) {
+        this.nomService = nomService;
     }
 
-    public String getResponsableService() {
-        return responsableService;
+    public String getRespService() {
+        return respService;
     }
 
-    public Domaine responsableService(String responsableService) {
-        this.responsableService = responsableService;
+    public Domaine respService(String respService) {
+        this.respService = respService;
         return this;
     }
 
-    public void setResponsableService(String responsableService) {
-        this.responsableService = responsableService;
+    public void setRespService(String respService) {
+        this.respService = respService;
     }
 
-    public String getNumTelResponsableService() {
-        return numTelResponsableService;
+    public String getTelRespService() {
+        return telRespService;
     }
 
-    public Domaine numTelResponsableService(String numTelResponsableService) {
-        this.numTelResponsableService = numTelResponsableService;
+    public Domaine telRespService(String telRespService) {
+        this.telRespService = telRespService;
         return this;
     }
 
-    public void setNumTelResponsableService(String numTelResponsableService) {
-        this.numTelResponsableService = numTelResponsableService;
+    public void setTelRespService(String telRespService) {
+        this.telRespService = telRespService;
     }
 
-    public String getEmailResponsableService() {
-        return emailResponsableService;
+    public String getEmailRespService() {
+        return emailRespService;
     }
 
-    public Domaine emailResponsableService(String emailResponsableService) {
-        this.emailResponsableService = emailResponsableService;
+    public Domaine emailRespService(String emailRespService) {
+        this.emailRespService = emailRespService;
         return this;
     }
 
-    public void setEmailResponsableService(String emailResponsableService) {
-        this.emailResponsableService = emailResponsableService;
+    public void setEmailRespService(String emailRespService) {
+        this.emailRespService = emailRespService;
     }
 
-    public String getDivision() {
-        return division;
+    public String getNomDivision() {
+        return nomDivision;
     }
 
-    public Domaine division(String division) {
-        this.division = division;
+    public Domaine nomDivision(String nomDivision) {
+        this.nomDivision = nomDivision;
         return this;
     }
 
-    public void setDivision(String division) {
-        this.division = division;
+    public void setNomDivision(String nomDivision) {
+        this.nomDivision = nomDivision;
     }
 
-    public String getResponsableDivision() {
-        return responsableDivision;
+    public String getRespDivision() {
+        return respDivision;
     }
 
-    public Domaine responsableDivision(String responsableDivision) {
-        this.responsableDivision = responsableDivision;
+    public Domaine respDivision(String respDivision) {
+        this.respDivision = respDivision;
         return this;
     }
 
-    public void setResponsableDivision(String responsableDivision) {
-        this.responsableDivision = responsableDivision;
+    public void setRespDivision(String respDivision) {
+        this.respDivision = respDivision;
     }
 
-    public String getNumResponsableDivision() {
-        return numResponsableDivision;
+    public String getTelRespDivision() {
+        return telRespDivision;
     }
 
-    public Domaine numResponsableDivision(String numResponsableDivision) {
-        this.numResponsableDivision = numResponsableDivision;
+    public Domaine telRespDivision(String telRespDivision) {
+        this.telRespDivision = telRespDivision;
         return this;
     }
 
-    public void setNumResponsableDivision(String numResponsableDivision) {
-        this.numResponsableDivision = numResponsableDivision;
+    public void setTelRespDivision(String telRespDivision) {
+        this.telRespDivision = telRespDivision;
     }
 
-    public String getEmailResponsableDivision() {
-        return emailResponsableDivision;
+    public String getEmailRespDivision() {
+        return emailRespDivision;
     }
 
-    public Domaine emailResponsableDivision(String emailResponsableDivision) {
-        this.emailResponsableDivision = emailResponsableDivision;
+    public Domaine emailRespDivision(String emailRespDivision) {
+        this.emailRespDivision = emailRespDivision;
         return this;
     }
 
-    public void setEmailResponsableDivision(String emailResponsableDivision) {
-        this.emailResponsableDivision = emailResponsableDivision;
+    public void setEmailRespDivision(String emailRespDivision) {
+        this.emailRespDivision = emailRespDivision;
     }
 
-    public String getDepartement() {
-        return departement;
+    public String getNomDepart() {
+        return nomDepart;
     }
 
-    public Domaine departement(String departement) {
-        this.departement = departement;
+    public Domaine nomDepart(String nomDepart) {
+        this.nomDepart = nomDepart;
         return this;
     }
 
-    public void setDepartement(String departement) {
-        this.departement = departement;
+    public void setNomDepart(String nomDepart) {
+        this.nomDepart = nomDepart;
     }
 
-    public String getResponsableDepartement() {
-        return responsableDepartement;
+    public String getRespDepart() {
+        return respDepart;
     }
 
-    public Domaine responsableDepartement(String responsableDepartement) {
-        this.responsableDepartement = responsableDepartement;
+    public Domaine respDepart(String respDepart) {
+        this.respDepart = respDepart;
         return this;
     }
 
-    public void setResponsableDepartement(String responsableDepartement) {
-        this.responsableDepartement = responsableDepartement;
+    public void setRespDepart(String respDepart) {
+        this.respDepart = respDepart;
     }
 
-    public String getNumeroTelResponsableDepartement() {
-        return numeroTelResponsableDepartement;
+    public String getTelRespDepart() {
+        return telRespDepart;
     }
 
-    public Domaine numeroTelResponsableDepartement(String numeroTelResponsableDepartement) {
-        this.numeroTelResponsableDepartement = numeroTelResponsableDepartement;
+    public Domaine telRespDepart(String telRespDepart) {
+        this.telRespDepart = telRespDepart;
         return this;
     }
 
-    public void setNumeroTelResponsableDepartement(String numeroTelResponsableDepartement) {
-        this.numeroTelResponsableDepartement = numeroTelResponsableDepartement;
+    public void setTelRespDepart(String telRespDepart) {
+        this.telRespDepart = telRespDepart;
     }
 
-    public String getEmailResponsableDepartement() {
-        return emailResponsableDepartement;
+    public String getEmailRespDepart() {
+        return emailRespDepart;
     }
 
-    public Domaine emailResponsableDepartement(String emailResponsableDepartement) {
-        this.emailResponsableDepartement = emailResponsableDepartement;
+    public Domaine emailRespDepart(String emailRespDepart) {
+        this.emailRespDepart = emailRespDepart;
         return this;
     }
 
-    public void setEmailResponsableDepartement(String emailResponsableDepartement) {
-        this.emailResponsableDepartement = emailResponsableDepartement;
+    public void setEmailRespDepart(String emailRespDepart) {
+        this.emailRespDepart = emailRespDepart;
     }
 
-    public String getDirection() {
-        return direction;
+    public String getNomDirection() {
+        return nomDirection;
     }
 
-    public Domaine direction(String direction) {
-        this.direction = direction;
+    public Domaine nomDirection(String nomDirection) {
+        this.nomDirection = nomDirection;
         return this;
     }
 
-    public void setDirection(String direction) {
-        this.direction = direction;
+    public void setNomDirection(String nomDirection) {
+        this.nomDirection = nomDirection;
     }
 
-    public String getResponsableDirection() {
-        return responsableDirection;
+    public String getRespDirection() {
+        return respDirection;
     }
 
-    public Domaine responsableDirection(String responsableDirection) {
-        this.responsableDirection = responsableDirection;
+    public Domaine respDirection(String respDirection) {
+        this.respDirection = respDirection;
         return this;
     }
 
-    public void setResponsableDirection(String responsableDirection) {
-        this.responsableDirection = responsableDirection;
+    public void setRespDirection(String respDirection) {
+        this.respDirection = respDirection;
     }
 
-    public String getNumeroTelDirecteur() {
-        return numeroTelDirecteur;
+    public String getTelDirecteur() {
+        return telDirecteur;
     }
 
-    public Domaine numeroTelDirecteur(String numeroTelDirecteur) {
-        this.numeroTelDirecteur = numeroTelDirecteur;
+    public Domaine telDirecteur(String telDirecteur) {
+        this.telDirecteur = telDirecteur;
         return this;
     }
 
-    public void setNumeroTelDirecteur(String numeroTelDirecteur) {
-        this.numeroTelDirecteur = numeroTelDirecteur;
+    public void setTelDirecteur(String telDirecteur) {
+        this.telDirecteur = telDirecteur;
     }
 
     public String getEmailDirecteur() {
@@ -320,21 +322,21 @@ public class Domaine implements Serializable {
         return "Domaine{" +
             "id=" + getId() +
             ", nom='" + getNom() + "'" +
-            ", service='" + getService() + "'" +
-            ", responsableService='" + getResponsableService() + "'" +
-            ", numTelResponsableService='" + getNumTelResponsableService() + "'" +
-            ", emailResponsableService='" + getEmailResponsableService() + "'" +
-            ", division='" + getDivision() + "'" +
-            ", responsableDivision='" + getResponsableDivision() + "'" +
-            ", numResponsableDivision='" + getNumResponsableDivision() + "'" +
-            ", emailResponsableDivision='" + getEmailResponsableDivision() + "'" +
-            ", departement='" + getDepartement() + "'" +
-            ", responsableDepartement='" + getResponsableDepartement() + "'" +
-            ", numeroTelResponsableDepartement='" + getNumeroTelResponsableDepartement() + "'" +
-            ", emailResponsableDepartement='" + getEmailResponsableDepartement() + "'" +
-            ", direction='" + getDirection() + "'" +
-            ", responsableDirection='" + getResponsableDirection() + "'" +
-            ", numeroTelDirecteur='" + getNumeroTelDirecteur() + "'" +
+            ", nomService='" + getNomService() + "'" +
+            ", respService='" + getRespService() + "'" +
+            ", telRespService='" + getTelRespService() + "'" +
+            ", emailRespService='" + getEmailRespService() + "'" +
+            ", nomDivision='" + getNomDivision() + "'" +
+            ", respDivision='" + getRespDivision() + "'" +
+            ", telRespDivision='" + getTelRespDivision() + "'" +
+            ", emailRespDivision='" + getEmailRespDivision() + "'" +
+            ", nomDepart='" + getNomDepart() + "'" +
+            ", respDepart='" + getRespDepart() + "'" +
+            ", telRespDepart='" + getTelRespDepart() + "'" +
+            ", emailRespDepart='" + getEmailRespDepart() + "'" +
+            ", nomDirection='" + getNomDirection() + "'" +
+            ", respDirection='" + getRespDirection() + "'" +
+            ", telDirecteur='" + getTelDirecteur() + "'" +
             ", emailDirecteur='" + getEmailDirecteur() + "'" +
             "}";
     }

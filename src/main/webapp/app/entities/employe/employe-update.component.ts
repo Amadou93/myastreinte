@@ -8,8 +8,9 @@ import { JhiAlertService } from 'ng-jhipster';
 import { IEmploye, Employe } from 'app/shared/model/employe.model';
 import { EmployeService } from './employe.service';
 import { IEquipe } from 'app/shared/model/equipe.model';
-import { IDomaine } from 'app/shared/model/domaine.model';
 import { EquipeService } from 'app/entities/equipe';
+import { IDomaine } from 'app/shared/model/domaine.model';
+import { DomaineService } from 'app/entities/domaine';
 
 @Component({
   selector: 'jhi-employe-update',
@@ -19,6 +20,8 @@ export class EmployeUpdateComponent implements OnInit {
   isSaving: boolean;
 
   equipes: IEquipe[];
+
+  domaines: IDomaine[];
 
   editForm = this.fb.group({
     id: [],
@@ -35,6 +38,7 @@ export class EmployeUpdateComponent implements OnInit {
     protected jhiAlertService: JhiAlertService,
     protected employeService: EmployeService,
     protected equipeService: EquipeService,
+    protected domaineService: DomaineService,
     protected activatedRoute: ActivatedRoute,
     private fb: FormBuilder
   ) {}
@@ -51,6 +55,13 @@ export class EmployeUpdateComponent implements OnInit {
         map((response: HttpResponse<IEquipe[]>) => response.body)
       )
       .subscribe((res: IEquipe[]) => (this.equipes = res), (res: HttpErrorResponse) => this.onError(res.message));
+    this.domaineService
+      .query()
+      .pipe(
+        filter((mayBeOk: HttpResponse<IDomaine[]>) => mayBeOk.ok),
+        map((response: HttpResponse<IDomaine[]>) => response.body)
+      )
+      .subscribe((res: IDomaine[]) => (this.domaines = res), (res: HttpErrorResponse) => this.onError(res.message));
   }
 
   updateForm(employe: IEmploye) {
@@ -108,6 +119,10 @@ export class EmployeUpdateComponent implements OnInit {
   }
   protected onError(errorMessage: string) {
     this.jhiAlertService.error(errorMessage, null, null);
+  }
+
+  trackEquipeById(index: number, item: IEquipe) {
+    return item.id;
   }
 
   trackDomaineById(index: number, item: IDomaine) {

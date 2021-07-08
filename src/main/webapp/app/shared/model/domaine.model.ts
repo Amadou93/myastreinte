@@ -1,21 +1,21 @@
 export interface IDomaine {
   id?: number;
   nom?: string;
-  service?: string;
-  responsableService?: string;
-  numTelResponsableService?: string;
-  emailResponsableService?: string;
-  division?: string;
-  responsableDivision?: string;
-  numResponsableDivision?: string;
-  emailResponsableDivision?: string;
-  departement?: string;
-  responsableDepartement?: string;
-  numeroTelResponsableDepartement?: string;
-  emailResponsableDepartement?: string;
-  direction?: string;
-  responsableDirection?: string;
-  numeroTelDirecteur?: string;
+  nomService?: string;
+  respService?: string;
+  telRespService?: string;
+  emailRespService?: string;
+  nomDivision?: string;
+  respDivision?: string;
+  telRespDivision?: string;
+  emailRespDivision?: string;
+  nomDepart?: string;
+  respDepart?: string;
+  telRespDepart?: string;
+  emailRespDepart?: string;
+  nomDirection?: string;
+  respDirection?: string;
+  telDirecteur?: string;
   emailDirecteur?: string;
 }
 
@@ -23,21 +23,21 @@ export class Domaine implements IDomaine {
   constructor(
     public id?: number,
     public nom?: string,
-    public service?: string,
-    public responsableService?: string,
-    public numTelResponsableService?: string,
-    public emailResponsableService?: string,
-    public division?: string,
-    public responsableDivision?: string,
-    public numResponsableDivision?: string,
-    public emailResponsableDivision?: string,
-    public departement?: string,
-    public responsableDepartement?: string,
-    public numeroTelResponsableDepartement?: string,
-    public emailResponsableDepartement?: string,
-    public direction?: string,
-    public responsableDirection?: string,
-    public numeroTelDirecteur?: string,
+    public nomService?: string,
+    public respService?: string,
+    public telRespService?: string,
+    public emailRespService?: string,
+    public nomDivision?: string,
+    public respDivision?: string,
+    public telRespDivision?: string,
+    public emailRespDivision?: string,
+    public nomDepart?: string,
+    public respDepart?: string,
+    public telRespDepart?: string,
+    public emailRespDepart?: string,
+    public nomDirection?: string,
+    public respDirection?: string,
+    public telDirecteur?: string,
     public emailDirecteur?: string
   ) {}
 }

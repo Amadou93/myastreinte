@@ -1,10 +1,10 @@
 <div>
     <h2 id="page-heading">
         <span>Absences</span>
-        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-absence" [routerLink]="['/absence/new']">
+        <button id="jh-create-entity" class="btn btn-danger float-right jh-create-entity create-absence" [routerLink]="['/absence/new']">
             <fa-icon [icon]="'plus'"></fa-icon>
             <span >
-            Create new Absence
+            Creer une Absence
             </span>
         </button>
     </h2>
@@ -15,9 +15,9 @@
     </div>
     <div class="table-responsive" *ngIf="absences?.length > 0">
         <table class="table table-striped">
-            <thead>
+            <thead class="bg-danger text-white">
             <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
-            <th jhiSortBy="id"><span>ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+          <!--  <th jhiSortBy="id"><span>ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>-->
             <th jhiSortBy="startDate"><span>Start Date</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="endDate"><span>End Date</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="employeId"><span>Employe</span> <fa-icon [icon]="'sort'"></fa-icon></th>
@@ -26,25 +26,25 @@
             </thead>
             <tbody>
             <tr *ngFor="let absence of absences ;trackBy: trackId">
-                <td><a [routerLink]="['/absence', absence.id, 'view' ]">{{absence.id}}</a></td>
-                <td>{{absence.startDate | date:'medium'}}</td>
-                <td>{{absence.endDate | date:'medium'}}</td>
+                <!--<td><a [routerLink]="['/absence', absence.id, 'view' ]">{{absence.id}}</a></td>-->
+                <td>{{absence.startDate |  date:'dd-MM-yyyy'}}</td>
+                <td>{{absence.endDate | date:'dd-MM-yyyy'}}</td>
                 <td>
                     <div *ngIf="absence.employeId">
-                        <a [routerLink]="['../employe', absence.employeId , 'view' ]" >{{absence.employeId}}</a>
+                        <a [routerLink]="['../employe', absence.employeId , 'view' ]" >{{absence.employe.lastName}}</a>
                     </div>
                 </td>
                 <td class="text-right">
                     <div class="btn-group">
-                        <button type="submit"
+                       <!-- <button type="submit"
                                 [routerLink]="['/absence', absence.id, 'view' ]"
                                 class="btn btn-info btn-sm">
                             <fa-icon [icon]="'eye'"></fa-icon>
                             <span class="d-none d-md-inline">View</span>
-                        </button>
+                        </button>-->
                         <button type="submit"
                                 [routerLink]="['/absence', absence.id, 'edit']"
-                                class="btn btn-primary btn-sm">
+                                class="btn btn-dark btn-sm">
                             <fa-icon [icon]="'pencil-alt'"></fa-icon>
                             <span class="d-none d-md-inline">Edit</span>
                         </button>

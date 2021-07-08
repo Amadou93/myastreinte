@@ -1,10 +1,10 @@
 <div>
     <h2 id="page-heading">
         <span>Incidents</span>
-        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-incident" [routerLink]="['/incident/new']">
+        <button id="jh-create-entity" class="btn btn-danger float-right jh-create-entity create-incident" [routerLink]="['/incident/new']">
             <fa-icon [icon]="'plus'"></fa-icon>
             <span >
-            Create new Incident
+            Creer un Incident
             </span>
         </button>
     </h2>
@@ -15,26 +15,38 @@
     </div>
     <div class="table-responsive" *ngIf="incidents?.length > 0">
         <table class="table table-striped">
-            <thead>
+            <thead class="bg-danger text-white">
             <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
-            <th jhiSortBy="id"><span>ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <!--<th jhiSortBy="id"><span>ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>-->
             <th jhiSortBy="date"><span>Date</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="type"><span>Type</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="criticite"><span>Criticite</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="sla"><span>Sla</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="description"><span>Description</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="adresseIP"><span>Adresse IP</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="composant"><span>Composant</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="responsable"><span>Responsable</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="status"><span>Status</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="equipementName"><span>Equipement Name</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="message"><span>Message</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="equipeId"><span>Equipe</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th></th>
             </tr>
             </thead>
             <tbody>
             <tr *ngFor="let incident of incidents ;trackBy: trackId">
-                <td><a [routerLink]="['/incident', incident.id, 'view' ]">{{incident.id}}</a></td>
-                <td>{{incident.date | date:'medium'}}</td>
+                <!--<td><a [routerLink]="['/incident', incident.id, 'view' ]">{{incident.id}}</a></td>-->
+                <td>{{incident.date |date:'dd-MM-yyyy'}}</td>
                 <td>{{incident.type}}</td>
                 <td>{{incident.criticite}}</td>
                 <td>{{incident.sla}}</td>
                 <td>{{incident.description}}</td>
+                <td>{{incident.adresseIP}}</td>
+                <td>{{incident.composant}}</td>
+                <td>{{incident.responsable}}</td>
+                <td>{{incident.status}}</td>
+                <td>{{incident.equipementName}}</td>
+                <td>{{incident.message}}</td>
                 <td>
                     <div *ngIf="incident.equipeId">
                         <a [routerLink]="['../equipe', incident.equipeId , 'view' ]" >{{incident.equipeId}}</a>
@@ -42,15 +54,15 @@
                 </td>
                 <td class="text-right">
                     <div class="btn-group">
-                        <button type="submit"
+                        <!--<button type="submit"
                                 [routerLink]="['/incident', incident.id, 'view' ]"
                                 class="btn btn-info btn-sm">
                             <fa-icon [icon]="'eye'"></fa-icon>
                             <span class="d-none d-md-inline">View</span>
-                        </button>
+                        </button>-->
                         <button type="submit"
                                 [routerLink]="['/incident', incident.id, 'edit']"
-                                class="btn btn-primary btn-sm">
+                                class="btn btn-dark btn-sm">
                             <fa-icon [icon]="'pencil-alt'"></fa-icon>
                             <span class="d-none d-md-inline">Edit</span>
                         </button>

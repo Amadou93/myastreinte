@@ -33,6 +33,12 @@ public class NotificationDTO implements Serializable {
 
     private Instant availiblity;
 
+    private String contact;
+
+    private String status;
+
+    private String message;
+
 
     private Long employeId;
 
@@ -108,6 +114,30 @@ public class NotificationDTO implements Serializable {
         this.availiblity = availiblity;
     }
 
+    public String getContact() {
+        return contact;
+    }
+
+    public void setContact(String contact) {
+        this.contact = contact;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
     public Long getEmployeId() {
         return employeId;
     }
@@ -149,6 +179,9 @@ public class NotificationDTO implements Serializable {
             ", groupe='" + getGroupe() + "'" +
             ", astreinteName='" + getAstreinteName() + "'" +
             ", availiblity='" + getAvailiblity() + "'" +
+            ", contact='" + getContact() + "'" +
+            ", status='" + getStatus() + "'" +
+            ", message='" + getMessage() + "'" +
             ", employe=" + getEmployeId() +
             "}";
     }

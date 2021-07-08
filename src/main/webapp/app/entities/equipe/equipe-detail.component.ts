@@ -9,8 +9,6 @@ import { IEquipe } from 'app/shared/model/equipe.model';
 })
 export class EquipeDetailComponent implements OnInit {
   equipe: IEquipe;
-  /* division:IDivision
-  Departement:IDepartement */
 
   constructor(protected activatedRoute: ActivatedRoute) {}
 

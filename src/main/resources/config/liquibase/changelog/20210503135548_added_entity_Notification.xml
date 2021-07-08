@@ -48,6 +48,18 @@
                 <constraints nullable="true" />
             </column>
 
+            <column name="contact" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="status" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="message" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
             <column name="employe_id" type="bigint">
                 <constraints nullable="true" />
             </column>
@@ -86,6 +98,9 @@
             <column name="groupe" type="string"/>
             <column name="astreinte_name" type="string"/>
             <column name="availiblity" type="datetime"/>
+            <column name="contact" type="string"/>
+            <column name="status" type="string"/>
+            <column name="message" type="string"/>
             <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here, do not remove-->
         </loadData>
     </changeSet>

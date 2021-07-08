@@ -1,10 +1,10 @@
 <div>
     <h2 id="page-heading">
         <span>Notifications</span>
-        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-notification" [routerLink]="['/notification/new']">
+        <button id="jh-create-entity" class="btn btn-dark float-right jh-create-entity create-notification" [routerLink]="['/notification/new']">
             <fa-icon [icon]="'plus'"></fa-icon>
             <span >
-            Create new Notification
+            Envoyer une Notification
             </span>
         </button>
     </h2>
@@ -15,32 +15,38 @@
     </div>
     <div class="table-responsive" *ngIf="notifications?.length > 0">
         <table class="table table-striped">
-            <thead>
+            <thead class="bg-danger text-white">
             <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
-            <th jhiSortBy="id"><span>ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <!--<th jhiSortBy="id"><span>ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>-->
             <th jhiSortBy="date"><span>Date</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="type"><span>Type</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <!--<th jhiSortBy="level"><span>Level</span> <fa-icon [icon]="'sort'"></fa-icon></th>-->
-          <!--  <th jhiSortBy="dispositifName"><span>Dispositif Name</span> <fa-icon [icon]="'sort'"></fa-icon></th>-->
+            <th jhiSortBy="level"><span>Level</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="dispositifName"><span>Dispositif Name</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="state"><span>State</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="groupe"><span>Groupe</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="astreinteName"><span>Destinataire</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <!--<th jhiSortBy="availiblity"><span>Availiblity</span> <fa-icon [icon]="'sort'"></fa-icon></th>-->
-           <!-- <th jhiSortBy="employeId"><span>Employe</span> <fa-icon [icon]="'sort'"></fa-icon></th>-->
+            <th jhiSortBy="astreinteName"><span>Astreinte Name</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="availiblity"><span>Availiblity</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="contact"><span>Contact</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="status"><span>Status</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="message"><span>Message</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="employeId"><span>Employe</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th></th>
             </tr>
             </thead>
             <tbody>
             <tr *ngFor="let notification of notifications ;trackBy: trackId">
-                <td><a [routerLink]="['/notification', notification.id, 'view' ]">{{notification.id}}</a></td>
-                <td>{{notification.date | date:'medium'}}</td>
+              <!--  <td><a [routerLink]="['/notification', notification.id, 'view' ]">{{notification.id}}</a></td>-->
+                <td>{{notification.date | date:'dd-MM-yyyy'}}</td>
                 <td>{{notification.type}}</td>
-               <!-- <td>{{notification.level}}</td>
-                <td>{{notification.dispositifName}}</td>-->
+                <td>{{notification.level}}</td>
+                <td>{{notification.dispositifName}}</td>
                 <td>{{notification.state}}</td>
                 <td>{{notification.groupe}}</td>
                 <td>{{notification.astreinteName}}</td>
-                <!--<td>{{notification.availiblity | date:'medium'}}</td>-->
+                <td>{{notification.availiblity | date:'medium'}}</td>
+                <td>{{notification.contact}}</td>
+                <td>{{notification.status}}</td>
+                <td>{{notification.message}}</td>
                 <td>
                     <div *ngIf="notification.employeId">
                         <a [routerLink]="['../employe', notification.employeId , 'view' ]" >{{notification.employeId}}</a>
@@ -48,15 +54,15 @@
                 </td>
                 <td class="text-right">
                     <div class="btn-group">
-                        <button type="submit"
+                        <!--<button type="submit"
                                 [routerLink]="['/notification', notification.id, 'view' ]"
                                 class="btn btn-info btn-sm">
                             <fa-icon [icon]="'eye'"></fa-icon>
                             <span class="d-none d-md-inline">View</span>
-                        </button>
+                        </button>-->
                         <button type="submit"
                                 [routerLink]="['/notification', notification.id, 'edit']"
-                                class="btn btn-primary btn-sm">
+                                class="btn btn-dark btn-sm">
                             <fa-icon [icon]="'pencil-alt'"></fa-icon>
                             <span class="d-none d-md-inline">Edit</span>
                         </button>

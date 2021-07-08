@@ -13,81 +13,87 @@
                     <label class="form-control-label" for="field_nom">Nom</label>
                     <input type="text" class="form-control" name="nom" id="field_nom"
                            formControlName="nom"/>
+                    <div *ngIf="editForm.get('nom').invalid && (editForm.get('nom').dirty || editForm.get('nom').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('nom').errors.required">
+                        This field is required.
+                        </small>
+                    </div>
                 </div>
                 <div class="form-group">
-                    <label class="form-control-label" for="field_service">Service</label>
-                    <input type="text" class="form-control" name="service" id="field_service"
-                           formControlName="service"/>
+                    <label class="form-control-label" for="field_nomService">Nom Service</label>
+                    <input type="text" class="form-control" name="nomService" id="field_nomService"
+                           formControlName="nomService"/>
                 </div>
                 <div class="form-group">
-                    <label class="form-control-label" for="field_responsableService">Responsable Service</label>
-                    <input type="text" class="form-control" name="responsableService" id="field_responsableService"
-                           formControlName="responsableService"/>
+                    <label class="form-control-label" for="field_respService">Resp Service</label>
+                    <input type="text" class="form-control" name="respService" id="field_respService"
+                           formControlName="respService"/>
                 </div>
                 <div class="form-group">
-                    <label class="form-control-label" for="field_numTelResponsableService">Num Tel Responsable Service</label>
-                    <input type="text" class="form-control" name="numTelResponsableService" id="field_numTelResponsableService"
-                           formControlName="numTelResponsableService"/>
+                    <label class="form-control-label" for="field_telRespService">Tel Resp Service</label>
+                    <input type="text" class="form-control" name="telRespService" id="field_telRespService"
+                           formControlName="telRespService"/>
                 </div>
                 <div class="form-group">
-                    <label class="form-control-label" for="field_emailResponsableService">Email Responsable Service</label>
-                    <input type="text" class="form-control" name="emailResponsableService" id="field_emailResponsableService"
-                           formControlName="emailResponsableService"/>
+                    <label class="form-control-label" for="field_emailRespService">Email Resp Service</label>
+                    <input type="text" class="form-control" name="emailRespService" id="field_emailRespService"
+                           formControlName="emailRespService"/>
                 </div>
                 <div class="form-group">
-                    <label class="form-control-label" for="field_division">Division</label>
-                    <input type="text" class="form-control" name="division" id="field_division"
-                           formControlName="division"/>
+                    <label class="form-control-label" for="field_nomDivision">Nom Division</label>
+                    <input type="text" class="form-control" name="nomDivision" id="field_nomDivision"
+                           formControlName="nomDivision"/>
                 </div>
                 <div class="form-group">
-                    <label class="form-control-label" for="field_responsableDivision">Responsable Division</label>
-                    <input type="text" class="form-control" name="responsableDivision" id="field_responsableDivision"
-                           formControlName="responsableDivision"/>
+                    <label class="form-control-label" for="field_respDivision">Resp Division</label>
+                    <input type="text" class="form-control" name="respDivision" id="field_respDivision"
+                           formControlName="respDivision"/>
                 </div>
                 <div class="form-group">
-                    <label class="form-control-label" for="field_numResponsableDivision">Num Responsable Division</label>
-                    <input type="text" class="form-control" name="numResponsableDivision" id="field_numResponsableDivision"
-                           formControlName="numResponsableDivision"/>
+                    <label class="form-control-label" for="field_telRespDivision">Tel Resp Division</label>
+                    <input type="text" class="form-control" name="telRespDivision" id="field_telRespDivision"
+                           formControlName="telRespDivision"/>
                 </div>
                 <div class="form-group">
-                    <label class="form-control-label" for="field_emailResponsableDivision">Email Responsable Division</label>
-                    <input type="text" class="form-control" name="emailResponsableDivision" id="field_emailResponsableDivision"
-                           formControlName="emailResponsableDivision"/>
+                    <label class="form-control-label" for="field_emailRespDivision">Email Resp Division</label>
+                    <input type="text" class="form-control" name="emailRespDivision" id="field_emailRespDivision"
+                           formControlName="emailRespDivision"/>
                 </div>
                 <div class="form-group">
-                    <label class="form-control-label" for="field_departement">Departement</label>
-                    <input type="text" class="form-control" name="departement" id="field_departement"
-                           formControlName="departement"/>
+                    <label class="form-control-label" for="field_nomDepart">Nom Depart</label>
+                    <input type="text" class="form-control" name="nomDepart" id="field_nomDepart"
+                           formControlName="nomDepart"/>
                 </div>
                 <div class="form-group">
-                    <label class="form-control-label" for="field_responsableDepartement">Responsable Departement</label>
-                    <input type="text" class="form-control" name="responsableDepartement" id="field_responsableDepartement"
-                           formControlName="responsableDepartement"/>
+                    <label class="form-control-label" for="field_respDepart">Resp Depart</label>
+                    <input type="text" class="form-control" name="respDepart" id="field_respDepart"
+                           formControlName="respDepart"/>
                 </div>
                 <div class="form-group">
-                    <label class="form-control-label" for="field_numeroTelResponsableDepartement">Numero Tel Responsable Departement</label>
-                    <input type="text" class="form-control" name="numeroTelResponsableDepartement" id="field_numeroTelResponsableDepartement"
-                           formControlName="numeroTelResponsableDepartement"/>
+                    <label class="form-control-label" for="field_telRespDepart">Tel Resp Depart</label>
+                    <input type="text" class="form-control" name="telRespDepart" id="field_telRespDepart"
+                           formControlName="telRespDepart"/>
                 </div>
                 <div class="form-group">
-                    <label class="form-control-label" for="field_emailResponsableDepartement">Email Responsable Departement</label>
-                    <input type="text" class="form-control" name="emailResponsableDepartement" id="field_emailResponsableDepartement"
-                           formControlName="emailResponsableDepartement"/>
+                    <label class="form-control-label" for="field_emailRespDepart">Email Resp Depart</label>
+                    <input type="text" class="form-control" name="emailRespDepart" id="field_emailRespDepart"
+                           formControlName="emailRespDepart"/>
                 </div>
                 <div class="form-group">
-                    <label class="form-control-label" for="field_direction">Direction</label>
-                    <input type="text" class="form-control" name="direction" id="field_direction"
-                           formControlName="direction"/>
+                    <label class="form-control-label" for="field_nomDirection">Nom Direction</label>
+                    <input type="text" class="form-control" name="nomDirection" id="field_nomDirection"
+                           formControlName="nomDirection"/>
                 </div>
                 <div class="form-group">
-                    <label class="form-control-label" for="field_responsableDirection">Responsable Direction</label>
-                    <input type="text" class="form-control" name="responsableDirection" id="field_responsableDirection"
-                           formControlName="responsableDirection"/>
+                    <label class="form-control-label" for="field_respDirection">Resp Direction</label>
+                    <input type="text" class="form-control" name="respDirection" id="field_respDirection"
+                           formControlName="respDirection"/>
                 </div>
                 <div class="form-group">
-                    <label class="form-control-label" for="field_numeroTelDirecteur">Numero Tel Directeur</label>
-                    <input type="text" class="form-control" name="numeroTelDirecteur" id="field_numeroTelDirecteur"
-                           formControlName="numeroTelDirecteur"/>
+                    <label class="form-control-label" for="field_telDirecteur">Tel Directeur</label>
+                    <input type="text" class="form-control" name="telDirecteur" id="field_telDirecteur"
+                           formControlName="telDirecteur"/>
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" for="field_emailDirecteur">Email Directeur</label>

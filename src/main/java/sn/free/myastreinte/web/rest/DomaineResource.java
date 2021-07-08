@@ -1,8 +1,8 @@
 package sn.free.myastreinte.web.rest;
 
-import sn.free.myastreinte.domain.Domaine;
-import sn.free.myastreinte.repository.DomaineRepository;
+import sn.free.myastreinte.service.DomaineService;
 import sn.free.myastreinte.web.rest.errors.BadRequestAlertException;
+import sn.free.myastreinte.service.dto.DomaineDTO;
 
 import io.github.jhipster.web.util.HeaderUtil;
 import io.github.jhipster.web.util.PaginationUtil;
@@ -19,6 +19,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
 
@@ -39,26 +40,26 @@ public class DomaineResource {
     @Value("${jhipster.clientApp.name}")
     private String applicationName;
 
-    private final DomaineRepository domaineRepository;
+    private final DomaineService domaineService;
 
-    public DomaineResource(DomaineRepository domaineRepository) {
-        this.domaineRepository = domaineRepository;
+    public DomaineResource(DomaineService domaineService) {
+        this.domaineService = domaineService;
     }
 
     /**
      * {@code POST  /domaines} : Create a new domaine.
      *
-     * @param domaine the domaine to create.
-     * @return the {@link ResponseEntity} with status {@code 201 (Created)} and with body the new domaine, or with status {@code 400 (Bad Request)} if the domaine has already an ID.
+     * @param domaineDTO the domaineDTO to create.
+     * @return the {@link ResponseEntity} with status {@code 201 (Created)} and with body the new domaineDTO, or with status {@code 400 (Bad Request)} if the domaine has already an ID.
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
     @PostMapping("/domaines")
-    public ResponseEntity<Domaine> createDomaine(@RequestBody Domaine domaine) throws URISyntaxException {
-        log.debug("REST request to save Domaine : {}", domaine);
-        if (domaine.getId() != null) {
+    public ResponseEntity<DomaineDTO> createDomaine(@Valid @RequestBody DomaineDTO domaineDTO) throws URISyntaxException {
+        log.debug("REST request to save Domaine : {}", domaineDTO);
+        if (domaineDTO.getId() != null) {
             throw new BadRequestAlertException("A new domaine cannot already have an ID", ENTITY_NAME, "idexists");
         }
-        Domaine result = domaineRepository.save(domaine);
+        DomaineDTO result = domaineService.save(domaineDTO);
         return ResponseEntity.created(new URI("/api/domaines/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(applicationName, false, ENTITY_NAME, result.getId().toString()))
             .body(result);
@@ -67,21 +68,21 @@ public class DomaineResource {
     /**
      * {@code PUT  /domaines} : Updates an existing domaine.
      *
-     * @param domaine the domaine to update.
-     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the updated domaine,
-     * or with status {@code 400 (Bad Request)} if the domaine is not valid,
-     * or with status {@code 500 (Internal Server Error)} if the domaine couldn't be updated.
+     * @param domaineDTO the domaineDTO to update.
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the updated domaineDTO,
+     * or with status {@code 400 (Bad Request)} if the domaineDTO is not valid,
+     * or with status {@code 500 (Internal Server Error)} if the domaineDTO couldn't be updated.
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
     @PutMapping("/domaines")
-    public ResponseEntity<Domaine> updateDomaine(@RequestBody Domaine domaine) throws URISyntaxException {
-        log.debug("REST request to update Domaine : {}", domaine);
-        if (domaine.getId() == null) {
+    public ResponseEntity<DomaineDTO> updateDomaine(@Valid @RequestBody DomaineDTO domaineDTO) throws URISyntaxException {
+        log.debug("REST request to update Domaine : {}", domaineDTO);
+        if (domaineDTO.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
         }
-        Domaine result = domaineRepository.save(domaine);
+        DomaineDTO result = domaineService.save(domaineDTO);
         return ResponseEntity.ok()
-            .headers(HeaderUtil.createEntityUpdateAlert(applicationName, false, ENTITY_NAME, domaine.getId().toString()))
+            .headers(HeaderUtil.createEntityUpdateAlert(applicationName, false, ENTITY_NAME, domaineDTO.getId().toString()))
             .body(result);
     }
 
@@ -94,9 +95,9 @@ public class DomaineResource {
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of domaines in body.
      */
     @GetMapping("/domaines")
-    public ResponseEntity<List<Domaine>> getAllDomaines(Pageable pageable, @RequestParam MultiValueMap<String, String> queryParams, UriComponentsBuilder uriBuilder) {
+    public ResponseEntity<List<DomaineDTO>> getAllDomaines(Pageable pageable, @RequestParam MultiValueMap<String, String> queryParams, UriComponentsBuilder uriBuilder) {
         log.debug("REST request to get a page of Domaines");
-        Page<Domaine> page = domaineRepository.findAll(pageable);
+        Page<DomaineDTO> page = domaineService.findAll(pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(uriBuilder.queryParams(queryParams), page);
         return ResponseEntity.ok().headers(headers).body(page.getContent());
     }
@@ -104,26 +105,26 @@ public class DomaineResource {
     /**
      * {@code GET  /domaines/:id} : get the "id" domaine.
      *
-     * @param id the id of the domaine to retrieve.
-     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the domaine, or with status {@code 404 (Not Found)}.
+     * @param id the id of the domaineDTO to retrieve.
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the domaineDTO, or with status {@code 404 (Not Found)}.
      */
     @GetMapping("/domaines/{id}")
-    public ResponseEntity<Domaine> getDomaine(@PathVariable Long id) {
+    public ResponseEntity<DomaineDTO> getDomaine(@PathVariable Long id) {
         log.debug("REST request to get Domaine : {}", id);
-        Optional<Domaine> domaine = domaineRepository.findById(id);
-        return ResponseUtil.wrapOrNotFound(domaine);
+        Optional<DomaineDTO> domaineDTO = domaineService.findOne(id);
+        return ResponseUtil.wrapOrNotFound(domaineDTO);
     }
 
     /**
      * {@code DELETE  /domaines/:id} : delete the "id" domaine.
      *
-     * @param id the id of the domaine to delete.
+     * @param id the id of the domaineDTO to delete.
      * @return the {@link ResponseEntity} with status {@code 204 (NO_CONTENT)}.
      */
     @DeleteMapping("/domaines/{id}")
     public ResponseEntity<Void> deleteDomaine(@PathVariable Long id) {
         log.debug("REST request to delete Domaine : {}", id);
-        domaineRepository.deleteById(id);
+        domaineService.delete(id);
         return ResponseEntity.noContent().headers(HeaderUtil.createEntityDeletionAlert(applicationName, false, ENTITY_NAME, id.toString())).build();
     }
 }

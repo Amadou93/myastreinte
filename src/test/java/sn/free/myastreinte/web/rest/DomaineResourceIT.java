@@ -3,6 +3,9 @@ package sn.free.myastreinte.web.rest;
 import sn.free.myastreinte.MyAstreinteApp;
 import sn.free.myastreinte.domain.Domaine;
 import sn.free.myastreinte.repository.DomaineRepository;
+import sn.free.myastreinte.service.DomaineService;
+import sn.free.myastreinte.service.dto.DomaineDTO;
+import sn.free.myastreinte.service.mapper.DomaineMapper;
 import sn.free.myastreinte.web.rest.errors.ExceptionTranslator;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -36,56 +39,62 @@ public class DomaineResourceIT {
     private static final String DEFAULT_NOM = "AAAAAAAAAA";
     private static final String UPDATED_NOM = "BBBBBBBBBB";
 
-    private static final String DEFAULT_SERVICE = "AAAAAAAAAA";
-    private static final String UPDATED_SERVICE = "BBBBBBBBBB";
+    private static final String DEFAULT_NOM_SERVICE = "AAAAAAAAAA";
+    private static final String UPDATED_NOM_SERVICE = "BBBBBBBBBB";
 
-    private static final String DEFAULT_RESPONSABLE_SERVICE = "AAAAAAAAAA";
-    private static final String UPDATED_RESPONSABLE_SERVICE = "BBBBBBBBBB";
+    private static final String DEFAULT_RESP_SERVICE = "AAAAAAAAAA";
+    private static final String UPDATED_RESP_SERVICE = "BBBBBBBBBB";
 
-    private static final String DEFAULT_NUM_TEL_RESPONSABLE_SERVICE = "AAAAAAAAAA";
-    private static final String UPDATED_NUM_TEL_RESPONSABLE_SERVICE = "BBBBBBBBBB";
+    private static final String DEFAULT_TEL_RESP_SERVICE = "AAAAAAAAAA";
+    private static final String UPDATED_TEL_RESP_SERVICE = "BBBBBBBBBB";
 
-    private static final String DEFAULT_EMAIL_RESPONSABLE_SERVICE = "AAAAAAAAAA";
-    private static final String UPDATED_EMAIL_RESPONSABLE_SERVICE = "BBBBBBBBBB";
+    private static final String DEFAULT_EMAIL_RESP_SERVICE = "AAAAAAAAAA";
+    private static final String UPDATED_EMAIL_RESP_SERVICE = "BBBBBBBBBB";
 
-    private static final String DEFAULT_DIVISION = "AAAAAAAAAA";
-    private static final String UPDATED_DIVISION = "BBBBBBBBBB";
+    private static final String DEFAULT_NOM_DIVISION = "AAAAAAAAAA";
+    private static final String UPDATED_NOM_DIVISION = "BBBBBBBBBB";
 
-    private static final String DEFAULT_RESPONSABLE_DIVISION = "AAAAAAAAAA";
-    private static final String UPDATED_RESPONSABLE_DIVISION = "BBBBBBBBBB";
+    private static final String DEFAULT_RESP_DIVISION = "AAAAAAAAAA";
+    private static final String UPDATED_RESP_DIVISION = "BBBBBBBBBB";
 
-    private static final String DEFAULT_NUM_RESPONSABLE_DIVISION = "AAAAAAAAAA";
-    private static final String UPDATED_NUM_RESPONSABLE_DIVISION = "BBBBBBBBBB";
+    private static final String DEFAULT_TEL_RESP_DIVISION = "AAAAAAAAAA";
+    private static final String UPDATED_TEL_RESP_DIVISION = "BBBBBBBBBB";
 
-    private static final String DEFAULT_EMAIL_RESPONSABLE_DIVISION = "AAAAAAAAAA";
-    private static final String UPDATED_EMAIL_RESPONSABLE_DIVISION = "BBBBBBBBBB";
+    private static final String DEFAULT_EMAIL_RESP_DIVISION = "AAAAAAAAAA";
+    private static final String UPDATED_EMAIL_RESP_DIVISION = "BBBBBBBBBB";
 
-    private static final String DEFAULT_DEPARTEMENT = "AAAAAAAAAA";
-    private static final String UPDATED_DEPARTEMENT = "BBBBBBBBBB";
+    private static final String DEFAULT_NOM_DEPART = "AAAAAAAAAA";
+    private static final String UPDATED_NOM_DEPART = "BBBBBBBBBB";
 
-    private static final String DEFAULT_RESPONSABLE_DEPARTEMENT = "AAAAAAAAAA";
-    private static final String UPDATED_RESPONSABLE_DEPARTEMENT = "BBBBBBBBBB";
+    private static final String DEFAULT_RESP_DEPART = "AAAAAAAAAA";
+    private static final String UPDATED_RESP_DEPART = "BBBBBBBBBB";
 
-    private static final String DEFAULT_NUMERO_TEL_RESPONSABLE_DEPARTEMENT = "AAAAAAAAAA";
-    private static final String UPDATED_NUMERO_TEL_RESPONSABLE_DEPARTEMENT = "BBBBBBBBBB";
+    private static final String DEFAULT_TEL_RESP_DEPART = "AAAAAAAAAA";
+    private static final String UPDATED_TEL_RESP_DEPART = "BBBBBBBBBB";
 
-    private static final String DEFAULT_EMAIL_RESPONSABLE_DEPARTEMENT = "AAAAAAAAAA";
-    private static final String UPDATED_EMAIL_RESPONSABLE_DEPARTEMENT = "BBBBBBBBBB";
+    private static final String DEFAULT_EMAIL_RESP_DEPART = "AAAAAAAAAA";
+    private static final String UPDATED_EMAIL_RESP_DEPART = "BBBBBBBBBB";
 
-    private static final String DEFAULT_DIRECTION = "AAAAAAAAAA";
-    private static final String UPDATED_DIRECTION = "BBBBBBBBBB";
+    private static final String DEFAULT_NOM_DIRECTION = "AAAAAAAAAA";
+    private static final String UPDATED_NOM_DIRECTION = "BBBBBBBBBB";
 
-    private static final String DEFAULT_RESPONSABLE_DIRECTION = "AAAAAAAAAA";
-    private static final String UPDATED_RESPONSABLE_DIRECTION = "BBBBBBBBBB";
+    private static final String DEFAULT_RESP_DIRECTION = "AAAAAAAAAA";
+    private static final String UPDATED_RESP_DIRECTION = "BBBBBBBBBB";
 
-    private static final String DEFAULT_NUMERO_TEL_DIRECTEUR = "AAAAAAAAAA";
-    private static final String UPDATED_NUMERO_TEL_DIRECTEUR = "BBBBBBBBBB";
+    private static final String DEFAULT_TEL_DIRECTEUR = "AAAAAAAAAA";
+    private static final String UPDATED_TEL_DIRECTEUR = "BBBBBBBBBB";
 
     private static final String DEFAULT_EMAIL_DIRECTEUR = "AAAAAAAAAA";
     private static final String UPDATED_EMAIL_DIRECTEUR = "BBBBBBBBBB";
 
     @Autowired
     private DomaineRepository domaineRepository;
+
+    @Autowired
+    private DomaineMapper domaineMapper;
+
+    @Autowired
+    private DomaineService domaineService;
 
     @Autowired
     private MappingJackson2HttpMessageConverter jacksonMessageConverter;
@@ -109,7 +118,7 @@ public class DomaineResourceIT {
     @BeforeEach
     public void setup() {
         MockitoAnnotations.initMocks(this);
-        final DomaineResource domaineResource = new DomaineResource(domaineRepository);
+        final DomaineResource domaineResource = new DomaineResource(domaineService);
         this.restDomaineMockMvc = MockMvcBuilders.standaloneSetup(domaineResource)
             .setCustomArgumentResolvers(pageableArgumentResolver)
             .setControllerAdvice(exceptionTranslator)
@@ -127,21 +136,21 @@ public class DomaineResourceIT {
     public static Domaine createEntity(EntityManager em) {
         Domaine domaine = new Domaine()
             .nom(DEFAULT_NOM)
-            .service(DEFAULT_SERVICE)
-            .responsableService(DEFAULT_RESPONSABLE_SERVICE)
-            .numTelResponsableService(DEFAULT_NUM_TEL_RESPONSABLE_SERVICE)
-            .emailResponsableService(DEFAULT_EMAIL_RESPONSABLE_SERVICE)
-            .division(DEFAULT_DIVISION)
-            .responsableDivision(DEFAULT_RESPONSABLE_DIVISION)
-            .numResponsableDivision(DEFAULT_NUM_RESPONSABLE_DIVISION)
-            .emailResponsableDivision(DEFAULT_EMAIL_RESPONSABLE_DIVISION)
-            .departement(DEFAULT_DEPARTEMENT)
-            .responsableDepartement(DEFAULT_RESPONSABLE_DEPARTEMENT)
-            .numeroTelResponsableDepartement(DEFAULT_NUMERO_TEL_RESPONSABLE_DEPARTEMENT)
-            .emailResponsableDepartement(DEFAULT_EMAIL_RESPONSABLE_DEPARTEMENT)
-            .direction(DEFAULT_DIRECTION)
-            .responsableDirection(DEFAULT_RESPONSABLE_DIRECTION)
-            .numeroTelDirecteur(DEFAULT_NUMERO_TEL_DIRECTEUR)
+            .nomService(DEFAULT_NOM_SERVICE)
+            .respService(DEFAULT_RESP_SERVICE)
+            .telRespService(DEFAULT_TEL_RESP_SERVICE)
+            .emailRespService(DEFAULT_EMAIL_RESP_SERVICE)
+            .nomDivision(DEFAULT_NOM_DIVISION)
+            .respDivision(DEFAULT_RESP_DIVISION)
+            .telRespDivision(DEFAULT_TEL_RESP_DIVISION)
+            .emailRespDivision(DEFAULT_EMAIL_RESP_DIVISION)
+            .nomDepart(DEFAULT_NOM_DEPART)
+            .respDepart(DEFAULT_RESP_DEPART)
+            .telRespDepart(DEFAULT_TEL_RESP_DEPART)
+            .emailRespDepart(DEFAULT_EMAIL_RESP_DEPART)
+            .nomDirection(DEFAULT_NOM_DIRECTION)
+            .respDirection(DEFAULT_RESP_DIRECTION)
+            .telDirecteur(DEFAULT_TEL_DIRECTEUR)
             .emailDirecteur(DEFAULT_EMAIL_DIRECTEUR);
         return domaine;
     }
@@ -154,21 +163,21 @@ public class DomaineResourceIT {
     public static Domaine createUpdatedEntity(EntityManager em) {
         Domaine domaine = new Domaine()
             .nom(UPDATED_NOM)
-            .service(UPDATED_SERVICE)
-            .responsableService(UPDATED_RESPONSABLE_SERVICE)
-            .numTelResponsableService(UPDATED_NUM_TEL_RESPONSABLE_SERVICE)
-            .emailResponsableService(UPDATED_EMAIL_RESPONSABLE_SERVICE)
-            .division(UPDATED_DIVISION)
-            .responsableDivision(UPDATED_RESPONSABLE_DIVISION)
-            .numResponsableDivision(UPDATED_NUM_RESPONSABLE_DIVISION)
-            .emailResponsableDivision(UPDATED_EMAIL_RESPONSABLE_DIVISION)
-            .departement(UPDATED_DEPARTEMENT)
-            .responsableDepartement(UPDATED_RESPONSABLE_DEPARTEMENT)
-            .numeroTelResponsableDepartement(UPDATED_NUMERO_TEL_RESPONSABLE_DEPARTEMENT)
-            .emailResponsableDepartement(UPDATED_EMAIL_RESPONSABLE_DEPARTEMENT)
-            .direction(UPDATED_DIRECTION)
-            .responsableDirection(UPDATED_RESPONSABLE_DIRECTION)
-            .numeroTelDirecteur(UPDATED_NUMERO_TEL_DIRECTEUR)
+            .nomService(UPDATED_NOM_SERVICE)
+            .respService(UPDATED_RESP_SERVICE)
+            .telRespService(UPDATED_TEL_RESP_SERVICE)
+            .emailRespService(UPDATED_EMAIL_RESP_SERVICE)
+            .nomDivision(UPDATED_NOM_DIVISION)
+            .respDivision(UPDATED_RESP_DIVISION)
+            .telRespDivision(UPDATED_TEL_RESP_DIVISION)
+            .emailRespDivision(UPDATED_EMAIL_RESP_DIVISION)
+            .nomDepart(UPDATED_NOM_DEPART)
+            .respDepart(UPDATED_RESP_DEPART)
+            .telRespDepart(UPDATED_TEL_RESP_DEPART)
+            .emailRespDepart(UPDATED_EMAIL_RESP_DEPART)
+            .nomDirection(UPDATED_NOM_DIRECTION)
+            .respDirection(UPDATED_RESP_DIRECTION)
+            .telDirecteur(UPDATED_TEL_DIRECTEUR)
             .emailDirecteur(UPDATED_EMAIL_DIRECTEUR);
         return domaine;
     }
@@ -184,9 +193,10 @@ public class DomaineResourceIT {
         int databaseSizeBeforeCreate = domaineRepository.findAll().size();
 
         // Create the Domaine
+        DomaineDTO domaineDTO = domaineMapper.toDto(domaine);
         restDomaineMockMvc.perform(post("/api/domaines")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
-            .content(TestUtil.convertObjectToJsonBytes(domaine)))
+            .content(TestUtil.convertObjectToJsonBytes(domaineDTO)))
             .andExpect(status().isCreated());
 
         // Validate the Domaine in the database
@@ -194,21 +204,21 @@ public class DomaineResourceIT {
         assertThat(domaineList).hasSize(databaseSizeBeforeCreate + 1);
         Domaine testDomaine = domaineList.get(domaineList.size() - 1);
         assertThat(testDomaine.getNom()).isEqualTo(DEFAULT_NOM);
-        assertThat(testDomaine.getService()).isEqualTo(DEFAULT_SERVICE);
-        assertThat(testDomaine.getResponsableService()).isEqualTo(DEFAULT_RESPONSABLE_SERVICE);
-        assertThat(testDomaine.getNumTelResponsableService()).isEqualTo(DEFAULT_NUM_TEL_RESPONSABLE_SERVICE);
-        assertThat(testDomaine.getEmailResponsableService()).isEqualTo(DEFAULT_EMAIL_RESPONSABLE_SERVICE);
-        assertThat(testDomaine.getDivision()).isEqualTo(DEFAULT_DIVISION);
-        assertThat(testDomaine.getResponsableDivision()).isEqualTo(DEFAULT_RESPONSABLE_DIVISION);
-        assertThat(testDomaine.getNumResponsableDivision()).isEqualTo(DEFAULT_NUM_RESPONSABLE_DIVISION);
-        assertThat(testDomaine.getEmailResponsableDivision()).isEqualTo(DEFAULT_EMAIL_RESPONSABLE_DIVISION);
-        assertThat(testDomaine.getDepartement()).isEqualTo(DEFAULT_DEPARTEMENT);
-        assertThat(testDomaine.getResponsableDepartement()).isEqualTo(DEFAULT_RESPONSABLE_DEPARTEMENT);
-        assertThat(testDomaine.getNumeroTelResponsableDepartement()).isEqualTo(DEFAULT_NUMERO_TEL_RESPONSABLE_DEPARTEMENT);
-        assertThat(testDomaine.getEmailResponsableDepartement()).isEqualTo(DEFAULT_EMAIL_RESPONSABLE_DEPARTEMENT);
-        assertThat(testDomaine.getDirection()).isEqualTo(DEFAULT_DIRECTION);
-        assertThat(testDomaine.getResponsableDirection()).isEqualTo(DEFAULT_RESPONSABLE_DIRECTION);
-        assertThat(testDomaine.getNumeroTelDirecteur()).isEqualTo(DEFAULT_NUMERO_TEL_DIRECTEUR);
+        assertThat(testDomaine.getNomService()).isEqualTo(DEFAULT_NOM_SERVICE);
+        assertThat(testDomaine.getRespService()).isEqualTo(DEFAULT_RESP_SERVICE);
+        assertThat(testDomaine.getTelRespService()).isEqualTo(DEFAULT_TEL_RESP_SERVICE);
+        assertThat(testDomaine.getEmailRespService()).isEqualTo(DEFAULT_EMAIL_RESP_SERVICE);
+        assertThat(testDomaine.getNomDivision()).isEqualTo(DEFAULT_NOM_DIVISION);
+        assertThat(testDomaine.getRespDivision()).isEqualTo(DEFAULT_RESP_DIVISION);
+        assertThat(testDomaine.getTelRespDivision()).isEqualTo(DEFAULT_TEL_RESP_DIVISION);
+        assertThat(testDomaine.getEmailRespDivision()).isEqualTo(DEFAULT_EMAIL_RESP_DIVISION);
+        assertThat(testDomaine.getNomDepart()).isEqualTo(DEFAULT_NOM_DEPART);
+        assertThat(testDomaine.getRespDepart()).isEqualTo(DEFAULT_RESP_DEPART);
+        assertThat(testDomaine.getTelRespDepart()).isEqualTo(DEFAULT_TEL_RESP_DEPART);
+        assertThat(testDomaine.getEmailRespDepart()).isEqualTo(DEFAULT_EMAIL_RESP_DEPART);
+        assertThat(testDomaine.getNomDirection()).isEqualTo(DEFAULT_NOM_DIRECTION);
+        assertThat(testDomaine.getRespDirection()).isEqualTo(DEFAULT_RESP_DIRECTION);
+        assertThat(testDomaine.getTelDirecteur()).isEqualTo(DEFAULT_TEL_DIRECTEUR);
         assertThat(testDomaine.getEmailDirecteur()).isEqualTo(DEFAULT_EMAIL_DIRECTEUR);
     }
 
@@ -219,11 +229,12 @@ public class DomaineResourceIT {
 
         // Create the Domaine with an existing ID
         domaine.setId(1L);
+        DomaineDTO domaineDTO = domaineMapper.toDto(domaine);
 
         // An entity with an existing ID cannot be created, so this API call must fail
         restDomaineMockMvc.perform(post("/api/domaines")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
-            .content(TestUtil.convertObjectToJsonBytes(domaine)))
+            .content(TestUtil.convertObjectToJsonBytes(domaineDTO)))
             .andExpect(status().isBadRequest());
 
         // Validate the Domaine in the database
@@ -231,6 +242,25 @@ public class DomaineResourceIT {
         assertThat(domaineList).hasSize(databaseSizeBeforeCreate);
     }
 
+
+    @Test
+    @Transactional
+    public void checkNomIsRequired() throws Exception {
+        int databaseSizeBeforeTest = domaineRepository.findAll().size();
+        // set the field null
+        domaine.setNom(null);
+
+        // Create the Domaine, which fails.
+        DomaineDTO domaineDTO = domaineMapper.toDto(domaine);
+
+        restDomaineMockMvc.perform(post("/api/domaines")
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .content(TestUtil.convertObjectToJsonBytes(domaineDTO)))
+            .andExpect(status().isBadRequest());
+
+        List<Domaine> domaineList = domaineRepository.findAll();
+        assertThat(domaineList).hasSize(databaseSizeBeforeTest);
+    }
 
     @Test
     @Transactional
@@ -244,21 +274,21 @@ public class DomaineResourceIT {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(domaine.getId().intValue())))
             .andExpect(jsonPath("$.[*].nom").value(hasItem(DEFAULT_NOM.toString())))
-            .andExpect(jsonPath("$.[*].service").value(hasItem(DEFAULT_SERVICE.toString())))
-            .andExpect(jsonPath("$.[*].responsableService").value(hasItem(DEFAULT_RESPONSABLE_SERVICE.toString())))
-            .andExpect(jsonPath("$.[*].numTelResponsableService").value(hasItem(DEFAULT_NUM_TEL_RESPONSABLE_SERVICE.toString())))
-            .andExpect(jsonPath("$.[*].emailResponsableService").value(hasItem(DEFAULT_EMAIL_RESPONSABLE_SERVICE.toString())))
-            .andExpect(jsonPath("$.[*].division").value(hasItem(DEFAULT_DIVISION.toString())))
-            .andExpect(jsonPath("$.[*].responsableDivision").value(hasItem(DEFAULT_RESPONSABLE_DIVISION.toString())))
-            .andExpect(jsonPath("$.[*].numResponsableDivision").value(hasItem(DEFAULT_NUM_RESPONSABLE_DIVISION.toString())))
-            .andExpect(jsonPath("$.[*].emailResponsableDivision").value(hasItem(DEFAULT_EMAIL_RESPONSABLE_DIVISION.toString())))
-            .andExpect(jsonPath("$.[*].departement").value(hasItem(DEFAULT_DEPARTEMENT.toString())))
-            .andExpect(jsonPath("$.[*].responsableDepartement").value(hasItem(DEFAULT_RESPONSABLE_DEPARTEMENT.toString())))
-            .andExpect(jsonPath("$.[*].numeroTelResponsableDepartement").value(hasItem(DEFAULT_NUMERO_TEL_RESPONSABLE_DEPARTEMENT.toString())))
-            .andExpect(jsonPath("$.[*].emailResponsableDepartement").value(hasItem(DEFAULT_EMAIL_RESPONSABLE_DEPARTEMENT.toString())))
-            .andExpect(jsonPath("$.[*].direction").value(hasItem(DEFAULT_DIRECTION.toString())))
-            .andExpect(jsonPath("$.[*].responsableDirection").value(hasItem(DEFAULT_RESPONSABLE_DIRECTION.toString())))
-            .andExpect(jsonPath("$.[*].numeroTelDirecteur").value(hasItem(DEFAULT_NUMERO_TEL_DIRECTEUR.toString())))
+            .andExpect(jsonPath("$.[*].nomService").value(hasItem(DEFAULT_NOM_SERVICE.toString())))
+            .andExpect(jsonPath("$.[*].respService").value(hasItem(DEFAULT_RESP_SERVICE.toString())))
+            .andExpect(jsonPath("$.[*].telRespService").value(hasItem(DEFAULT_TEL_RESP_SERVICE.toString())))
+            .andExpect(jsonPath("$.[*].emailRespService").value(hasItem(DEFAULT_EMAIL_RESP_SERVICE.toString())))
+            .andExpect(jsonPath("$.[*].nomDivision").value(hasItem(DEFAULT_NOM_DIVISION.toString())))
+            .andExpect(jsonPath("$.[*].respDivision").value(hasItem(DEFAULT_RESP_DIVISION.toString())))
+            .andExpect(jsonPath("$.[*].telRespDivision").value(hasItem(DEFAULT_TEL_RESP_DIVISION.toString())))
+            .andExpect(jsonPath("$.[*].emailRespDivision").value(hasItem(DEFAULT_EMAIL_RESP_DIVISION.toString())))
+            .andExpect(jsonPath("$.[*].nomDepart").value(hasItem(DEFAULT_NOM_DEPART.toString())))
+            .andExpect(jsonPath("$.[*].respDepart").value(hasItem(DEFAULT_RESP_DEPART.toString())))
+            .andExpect(jsonPath("$.[*].telRespDepart").value(hasItem(DEFAULT_TEL_RESP_DEPART.toString())))
+            .andExpect(jsonPath("$.[*].emailRespDepart").value(hasItem(DEFAULT_EMAIL_RESP_DEPART.toString())))
+            .andExpect(jsonPath("$.[*].nomDirection").value(hasItem(DEFAULT_NOM_DIRECTION.toString())))
+            .andExpect(jsonPath("$.[*].respDirection").value(hasItem(DEFAULT_RESP_DIRECTION.toString())))
+            .andExpect(jsonPath("$.[*].telDirecteur").value(hasItem(DEFAULT_TEL_DIRECTEUR.toString())))
             .andExpect(jsonPath("$.[*].emailDirecteur").value(hasItem(DEFAULT_EMAIL_DIRECTEUR.toString())));
     }
     
@@ -274,21 +304,21 @@ public class DomaineResourceIT {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(domaine.getId().intValue()))
             .andExpect(jsonPath("$.nom").value(DEFAULT_NOM.toString()))
-            .andExpect(jsonPath("$.service").value(DEFAULT_SERVICE.toString()))
-            .andExpect(jsonPath("$.responsableService").value(DEFAULT_RESPONSABLE_SERVICE.toString()))
-            .andExpect(jsonPath("$.numTelResponsableService").value(DEFAULT_NUM_TEL_RESPONSABLE_SERVICE.toString()))
-            .andExpect(jsonPath("$.emailResponsableService").value(DEFAULT_EMAIL_RESPONSABLE_SERVICE.toString()))
-            .andExpect(jsonPath("$.division").value(DEFAULT_DIVISION.toString()))
-            .andExpect(jsonPath("$.responsableDivision").value(DEFAULT_RESPONSABLE_DIVISION.toString()))
-            .andExpect(jsonPath("$.numResponsableDivision").value(DEFAULT_NUM_RESPONSABLE_DIVISION.toString()))
-            .andExpect(jsonPath("$.emailResponsableDivision").value(DEFAULT_EMAIL_RESPONSABLE_DIVISION.toString()))
-            .andExpect(jsonPath("$.departement").value(DEFAULT_DEPARTEMENT.toString()))
-            .andExpect(jsonPath("$.responsableDepartement").value(DEFAULT_RESPONSABLE_DEPARTEMENT.toString()))
-            .andExpect(jsonPath("$.numeroTelResponsableDepartement").value(DEFAULT_NUMERO_TEL_RESPONSABLE_DEPARTEMENT.toString()))
-            .andExpect(jsonPath("$.emailResponsableDepartement").value(DEFAULT_EMAIL_RESPONSABLE_DEPARTEMENT.toString()))
-            .andExpect(jsonPath("$.direction").value(DEFAULT_DIRECTION.toString()))
-            .andExpect(jsonPath("$.responsableDirection").value(DEFAULT_RESPONSABLE_DIRECTION.toString()))
-            .andExpect(jsonPath("$.numeroTelDirecteur").value(DEFAULT_NUMERO_TEL_DIRECTEUR.toString()))
+            .andExpect(jsonPath("$.nomService").value(DEFAULT_NOM_SERVICE.toString()))
+            .andExpect(jsonPath("$.respService").value(DEFAULT_RESP_SERVICE.toString()))
+            .andExpect(jsonPath("$.telRespService").value(DEFAULT_TEL_RESP_SERVICE.toString()))
+            .andExpect(jsonPath("$.emailRespService").value(DEFAULT_EMAIL_RESP_SERVICE.toString()))
+            .andExpect(jsonPath("$.nomDivision").value(DEFAULT_NOM_DIVISION.toString()))
+            .andExpect(jsonPath("$.respDivision").value(DEFAULT_RESP_DIVISION.toString()))
+            .andExpect(jsonPath("$.telRespDivision").value(DEFAULT_TEL_RESP_DIVISION.toString()))
+            .andExpect(jsonPath("$.emailRespDivision").value(DEFAULT_EMAIL_RESP_DIVISION.toString()))
+            .andExpect(jsonPath("$.nomDepart").value(DEFAULT_NOM_DEPART.toString()))
+            .andExpect(jsonPath("$.respDepart").value(DEFAULT_RESP_DEPART.toString()))
+            .andExpect(jsonPath("$.telRespDepart").value(DEFAULT_TEL_RESP_DEPART.toString()))
+            .andExpect(jsonPath("$.emailRespDepart").value(DEFAULT_EMAIL_RESP_DEPART.toString()))
+            .andExpect(jsonPath("$.nomDirection").value(DEFAULT_NOM_DIRECTION.toString()))
+            .andExpect(jsonPath("$.respDirection").value(DEFAULT_RESP_DIRECTION.toString()))
+            .andExpect(jsonPath("$.telDirecteur").value(DEFAULT_TEL_DIRECTEUR.toString()))
             .andExpect(jsonPath("$.emailDirecteur").value(DEFAULT_EMAIL_DIRECTEUR.toString()));
     }
 
@@ -314,26 +344,27 @@ public class DomaineResourceIT {
         em.detach(updatedDomaine);
         updatedDomaine
             .nom(UPDATED_NOM)
-            .service(UPDATED_SERVICE)
-            .responsableService(UPDATED_RESPONSABLE_SERVICE)
-            .numTelResponsableService(UPDATED_NUM_TEL_RESPONSABLE_SERVICE)
-            .emailResponsableService(UPDATED_EMAIL_RESPONSABLE_SERVICE)
-            .division(UPDATED_DIVISION)
-            .responsableDivision(UPDATED_RESPONSABLE_DIVISION)
-            .numResponsableDivision(UPDATED_NUM_RESPONSABLE_DIVISION)
-            .emailResponsableDivision(UPDATED_EMAIL_RESPONSABLE_DIVISION)
-            .departement(UPDATED_DEPARTEMENT)
-            .responsableDepartement(UPDATED_RESPONSABLE_DEPARTEMENT)
-            .numeroTelResponsableDepartement(UPDATED_NUMERO_TEL_RESPONSABLE_DEPARTEMENT)
-            .emailResponsableDepartement(UPDATED_EMAIL_RESPONSABLE_DEPARTEMENT)
-            .direction(UPDATED_DIRECTION)
-            .responsableDirection(UPDATED_RESPONSABLE_DIRECTION)
-            .numeroTelDirecteur(UPDATED_NUMERO_TEL_DIRECTEUR)
+            .nomService(UPDATED_NOM_SERVICE)
+            .respService(UPDATED_RESP_SERVICE)
+            .telRespService(UPDATED_TEL_RESP_SERVICE)
+            .emailRespService(UPDATED_EMAIL_RESP_SERVICE)
+            .nomDivision(UPDATED_NOM_DIVISION)
+            .respDivision(UPDATED_RESP_DIVISION)
+            .telRespDivision(UPDATED_TEL_RESP_DIVISION)
+            .emailRespDivision(UPDATED_EMAIL_RESP_DIVISION)
+            .nomDepart(UPDATED_NOM_DEPART)
+            .respDepart(UPDATED_RESP_DEPART)
+            .telRespDepart(UPDATED_TEL_RESP_DEPART)
+            .emailRespDepart(UPDATED_EMAIL_RESP_DEPART)
+            .nomDirection(UPDATED_NOM_DIRECTION)
+            .respDirection(UPDATED_RESP_DIRECTION)
+            .telDirecteur(UPDATED_TEL_DIRECTEUR)
             .emailDirecteur(UPDATED_EMAIL_DIRECTEUR);
+        DomaineDTO domaineDTO = domaineMapper.toDto(updatedDomaine);
 
         restDomaineMockMvc.perform(put("/api/domaines")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
-            .content(TestUtil.convertObjectToJsonBytes(updatedDomaine)))
+            .content(TestUtil.convertObjectToJsonBytes(domaineDTO)))
             .andExpect(status().isOk());
 
         // Validate the Domaine in the database
@@ -341,21 +372,21 @@ public class DomaineResourceIT {
         assertThat(domaineList).hasSize(databaseSizeBeforeUpdate);
         Domaine testDomaine = domaineList.get(domaineList.size() - 1);
         assertThat(testDomaine.getNom()).isEqualTo(UPDATED_NOM);
-        assertThat(testDomaine.getService()).isEqualTo(UPDATED_SERVICE);
-        assertThat(testDomaine.getResponsableService()).isEqualTo(UPDATED_RESPONSABLE_SERVICE);
-        assertThat(testDomaine.getNumTelResponsableService()).isEqualTo(UPDATED_NUM_TEL_RESPONSABLE_SERVICE);
-        assertThat(testDomaine.getEmailResponsableService()).isEqualTo(UPDATED_EMAIL_RESPONSABLE_SERVICE);
-        assertThat(testDomaine.getDivision()).isEqualTo(UPDATED_DIVISION);
-        assertThat(testDomaine.getResponsableDivision()).isEqualTo(UPDATED_RESPONSABLE_DIVISION);
-        assertThat(testDomaine.getNumResponsableDivision()).isEqualTo(UPDATED_NUM_RESPONSABLE_DIVISION);
-        assertThat(testDomaine.getEmailResponsableDivision()).isEqualTo(UPDATED_EMAIL_RESPONSABLE_DIVISION);
-        assertThat(testDomaine.getDepartement()).isEqualTo(UPDATED_DEPARTEMENT);
-        assertThat(testDomaine.getResponsableDepartement()).isEqualTo(UPDATED_RESPONSABLE_DEPARTEMENT);
-        assertThat(testDomaine.getNumeroTelResponsableDepartement()).isEqualTo(UPDATED_NUMERO_TEL_RESPONSABLE_DEPARTEMENT);
-        assertThat(testDomaine.getEmailResponsableDepartement()).isEqualTo(UPDATED_EMAIL_RESPONSABLE_DEPARTEMENT);
-        assertThat(testDomaine.getDirection()).isEqualTo(UPDATED_DIRECTION);
-        assertThat(testDomaine.getResponsableDirection()).isEqualTo(UPDATED_RESPONSABLE_DIRECTION);
-        assertThat(testDomaine.getNumeroTelDirecteur()).isEqualTo(UPDATED_NUMERO_TEL_DIRECTEUR);
+        assertThat(testDomaine.getNomService()).isEqualTo(UPDATED_NOM_SERVICE);
+        assertThat(testDomaine.getRespService()).isEqualTo(UPDATED_RESP_SERVICE);
+        assertThat(testDomaine.getTelRespService()).isEqualTo(UPDATED_TEL_RESP_SERVICE);
+        assertThat(testDomaine.getEmailRespService()).isEqualTo(UPDATED_EMAIL_RESP_SERVICE);
+        assertThat(testDomaine.getNomDivision()).isEqualTo(UPDATED_NOM_DIVISION);
+        assertThat(testDomaine.getRespDivision()).isEqualTo(UPDATED_RESP_DIVISION);
+        assertThat(testDomaine.getTelRespDivision()).isEqualTo(UPDATED_TEL_RESP_DIVISION);
+        assertThat(testDomaine.getEmailRespDivision()).isEqualTo(UPDATED_EMAIL_RESP_DIVISION);
+        assertThat(testDomaine.getNomDepart()).isEqualTo(UPDATED_NOM_DEPART);
+        assertThat(testDomaine.getRespDepart()).isEqualTo(UPDATED_RESP_DEPART);
+        assertThat(testDomaine.getTelRespDepart()).isEqualTo(UPDATED_TEL_RESP_DEPART);
+        assertThat(testDomaine.getEmailRespDepart()).isEqualTo(UPDATED_EMAIL_RESP_DEPART);
+        assertThat(testDomaine.getNomDirection()).isEqualTo(UPDATED_NOM_DIRECTION);
+        assertThat(testDomaine.getRespDirection()).isEqualTo(UPDATED_RESP_DIRECTION);
+        assertThat(testDomaine.getTelDirecteur()).isEqualTo(UPDATED_TEL_DIRECTEUR);
         assertThat(testDomaine.getEmailDirecteur()).isEqualTo(UPDATED_EMAIL_DIRECTEUR);
     }
 
@@ -365,11 +396,12 @@ public class DomaineResourceIT {
         int databaseSizeBeforeUpdate = domaineRepository.findAll().size();
 
         // Create the Domaine
+        DomaineDTO domaineDTO = domaineMapper.toDto(domaine);
 
         // If the entity doesn't have an ID, it will throw BadRequestAlertException
         restDomaineMockMvc.perform(put("/api/domaines")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
-            .content(TestUtil.convertObjectToJsonBytes(domaine)))
+            .content(TestUtil.convertObjectToJsonBytes(domaineDTO)))
             .andExpect(status().isBadRequest());
 
         // Validate the Domaine in the database
@@ -408,5 +440,28 @@ public class DomaineResourceIT {
         assertThat(domaine1).isNotEqualTo(domaine2);
         domaine1.setId(null);
         assertThat(domaine1).isNotEqualTo(domaine2);
+    }
+
+    @Test
+    @Transactional
+    public void dtoEqualsVerifier() throws Exception {
+        TestUtil.equalsVerifier(DomaineDTO.class);
+        DomaineDTO domaineDTO1 = new DomaineDTO();
+        domaineDTO1.setId(1L);
+        DomaineDTO domaineDTO2 = new DomaineDTO();
+        assertThat(domaineDTO1).isNotEqualTo(domaineDTO2);
+        domaineDTO2.setId(domaineDTO1.getId());
+        assertThat(domaineDTO1).isEqualTo(domaineDTO2);
+        domaineDTO2.setId(2L);
+        assertThat(domaineDTO1).isNotEqualTo(domaineDTO2);
+        domaineDTO1.setId(null);
+        assertThat(domaineDTO1).isNotEqualTo(domaineDTO2);
+    }
+
+    @Test
+    @Transactional
+    public void testEntityFromId() {
+        assertThat(domaineMapper.fromId(42L).getId()).isEqualTo(42);
+        assertThat(domaineMapper.fromId(null)).isNull();
     }
 }

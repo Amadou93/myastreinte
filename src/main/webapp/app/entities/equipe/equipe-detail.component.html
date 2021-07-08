@@ -9,20 +9,6 @@
                 <dd>
                     <span>{{equipe.name}}</span>
                 </dd>
-                <dt><span>Division</span></dt>
-                <dd>
-                    <span>{{divion.divisionName}}</span>
-                </dd>
-                <dt><span>Chef division</span></dt>
-                <dd>
-                    <span>{{division.divisionChef}}</span>
-                </dd>
-                <dt><span>Division</span></dt>
-                <dd>
-                    <div *ngIf="equipe.divisionId">
-                        <a [routerLink]="['/division', equipe.divisionId, 'view']">{{equipe.divisionName}}</a>
-                    </div>
-                </dd>
             </dl>
 
             <button type="submit"

@@ -63,6 +63,15 @@ public class NotificationResourceIT {
     private static final Instant DEFAULT_AVAILIBLITY = Instant.ofEpochMilli(0L);
     private static final Instant UPDATED_AVAILIBLITY = Instant.now().truncatedTo(ChronoUnit.MILLIS);
 
+    private static final String DEFAULT_CONTACT = "AAAAAAAAAA";
+    private static final String UPDATED_CONTACT = "BBBBBBBBBB";
+
+    private static final String DEFAULT_STATUS = "AAAAAAAAAA";
+    private static final String UPDATED_STATUS = "BBBBBBBBBB";
+
+    private static final String DEFAULT_MESSAGE = "AAAAAAAAAA";
+    private static final String UPDATED_MESSAGE = "BBBBBBBBBB";
+
     @Autowired
     private NotificationRepository notificationRepository;
 
@@ -118,7 +127,10 @@ public class NotificationResourceIT {
             .state(DEFAULT_STATE)
             .groupe(DEFAULT_GROUPE)
             .astreinteName(DEFAULT_ASTREINTE_NAME)
-            .availiblity(DEFAULT_AVAILIBLITY);
+            .availiblity(DEFAULT_AVAILIBLITY)
+            .contact(DEFAULT_CONTACT)
+            .status(DEFAULT_STATUS)
+            .message(DEFAULT_MESSAGE);
         return notification;
     }
     /**
@@ -136,7 +148,10 @@ public class NotificationResourceIT {
             .state(UPDATED_STATE)
             .groupe(UPDATED_GROUPE)
             .astreinteName(UPDATED_ASTREINTE_NAME)
-            .availiblity(UPDATED_AVAILIBLITY);
+            .availiblity(UPDATED_AVAILIBLITY)
+            .contact(UPDATED_CONTACT)
+            .status(UPDATED_STATUS)
+            .message(UPDATED_MESSAGE);
         return notification;
     }
 
@@ -169,6 +184,9 @@ public class NotificationResourceIT {
         assertThat(testNotification.getGroupe()).isEqualTo(DEFAULT_GROUPE);
         assertThat(testNotification.getAstreinteName()).isEqualTo(DEFAULT_ASTREINTE_NAME);
         assertThat(testNotification.getAvailiblity()).isEqualTo(DEFAULT_AVAILIBLITY);
+        assertThat(testNotification.getContact()).isEqualTo(DEFAULT_CONTACT);
+        assertThat(testNotification.getStatus()).isEqualTo(DEFAULT_STATUS);
+        assertThat(testNotification.getMessage()).isEqualTo(DEFAULT_MESSAGE);
     }
 
     @Test
@@ -248,7 +266,10 @@ public class NotificationResourceIT {
             .andExpect(jsonPath("$.[*].state").value(hasItem(DEFAULT_STATE.toString())))
             .andExpect(jsonPath("$.[*].groupe").value(hasItem(DEFAULT_GROUPE.toString())))
             .andExpect(jsonPath("$.[*].astreinteName").value(hasItem(DEFAULT_ASTREINTE_NAME.toString())))
-            .andExpect(jsonPath("$.[*].availiblity").value(hasItem(DEFAULT_AVAILIBLITY.toString())));
+            .andExpect(jsonPath("$.[*].availiblity").value(hasItem(DEFAULT_AVAILIBLITY.toString())))
+            .andExpect(jsonPath("$.[*].contact").value(hasItem(DEFAULT_CONTACT.toString())))
+            .andExpect(jsonPath("$.[*].status").value(hasItem(DEFAULT_STATUS.toString())))
+            .andExpect(jsonPath("$.[*].message").value(hasItem(DEFAULT_MESSAGE.toString())));
     }
     
     @Test
@@ -269,7 +290,10 @@ public class NotificationResourceIT {
             .andExpect(jsonPath("$.state").value(DEFAULT_STATE.toString()))
             .andExpect(jsonPath("$.groupe").value(DEFAULT_GROUPE.toString()))
             .andExpect(jsonPath("$.astreinteName").value(DEFAULT_ASTREINTE_NAME.toString()))
-            .andExpect(jsonPath("$.availiblity").value(DEFAULT_AVAILIBLITY.toString()));
+            .andExpect(jsonPath("$.availiblity").value(DEFAULT_AVAILIBLITY.toString()))
+            .andExpect(jsonPath("$.contact").value(DEFAULT_CONTACT.toString()))
+            .andExpect(jsonPath("$.status").value(DEFAULT_STATUS.toString()))
+            .andExpect(jsonPath("$.message").value(DEFAULT_MESSAGE.toString()));
     }
 
     @Test
@@ -300,7 +324,10 @@ public class NotificationResourceIT {
             .state(UPDATED_STATE)
             .groupe(UPDATED_GROUPE)
             .astreinteName(UPDATED_ASTREINTE_NAME)
-            .availiblity(UPDATED_AVAILIBLITY);
+            .availiblity(UPDATED_AVAILIBLITY)
+            .contact(UPDATED_CONTACT)
+            .status(UPDATED_STATUS)
+            .message(UPDATED_MESSAGE);
         NotificationDTO notificationDTO = notificationMapper.toDto(updatedNotification);
 
         restNotificationMockMvc.perform(put("/api/notifications")
@@ -320,6 +347,9 @@ public class NotificationResourceIT {
         assertThat(testNotification.getGroupe()).isEqualTo(UPDATED_GROUPE);
         assertThat(testNotification.getAstreinteName()).isEqualTo(UPDATED_ASTREINTE_NAME);
         assertThat(testNotification.getAvailiblity()).isEqualTo(UPDATED_AVAILIBLITY);
+        assertThat(testNotification.getContact()).isEqualTo(UPDATED_CONTACT);
+        assertThat(testNotification.getStatus()).isEqualTo(UPDATED_STATUS);
+        assertThat(testNotification.getMessage()).isEqualTo(UPDATED_MESSAGE);
     }
 
     @Test

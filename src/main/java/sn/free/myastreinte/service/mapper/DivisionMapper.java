@@ -15,8 +15,8 @@ public interface DivisionMapper extends EntityMapper<DivisionDTO, Division> {
     DivisionDTO toDto(Division division);
 
     @Mapping(source = "departementId", target = "departement")
-    @Mapping(target = "nameEquipes", ignore = true)
-    @Mapping(target = "removeNameEquipe", ignore = true)
+    @Mapping(target = "equipes", ignore = true)
+    @Mapping(target = "removeEquipe", ignore = true)
     Division toEntity(DivisionDTO divisionDTO);
 
     default Division fromId(Long id) {

@@ -1,0 +1,76 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
+    <changeSet author="adeh (generated)" id="1625072013904-3">
+        <createTable tableName="domaine">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="domainePK"/>
+            </column>
+            <column name="departement" type="VARCHAR(255)"/>
+            <column name="direction" type="VARCHAR(255)"/>
+            <column name="division" type="VARCHAR(255)"/>
+            <column name="email_directeur" type="VARCHAR(255)"/>
+            <column name="email_responsable_departement" type="VARCHAR(255)"/>
+            <column name="email_responsable_division" type="VARCHAR(255)"/>
+            <column name="email_responsable_service" type="VARCHAR(255)"/>
+            <column name="nom" type="VARCHAR(255)"/>
+            <column name="num_responsable_division" type="VARCHAR(255)"/>
+            <column name="num_tel_responsable_service" type="VARCHAR(255)"/>
+            <column name="numero_tel_directeur" type="VARCHAR(255)"/>
+            <column name="numero_tel_responsable_departement" type="VARCHAR(255)"/>
+            <column name="responsable_departement" type="VARCHAR(255)"/>
+            <column name="responsable_direction" type="VARCHAR(255)"/>
+            <column name="responsable_division" type="VARCHAR(255)"/>
+            <column name="responsable_service" type="VARCHAR(255)"/>
+            <column name="service" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="adeh (generated)" id="1625072013904-4">
+        <addColumn tableName="notification">
+            <column name="incident_id" type="bigint"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="adeh (generated)" id="1625072013904-5">
+        <addForeignKeyConstraint baseColumnNames="equipe_id" baseTableName="application" constraintName="FK4vwointl1bi6h5v77e419431m" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="equipe" validate="true"/>
+    </changeSet>
+    <changeSet author="adeh (generated)" id="1625072013904-6">
+        <addForeignKeyConstraint baseColumnNames="equipe_id" baseTableName="basededonnee" constraintName="FKasjq5q6ff3ran5fmsqjo6vhft" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="equipe" validate="true"/>
+    </changeSet>
+    <changeSet author="adeh (generated)" id="1625072013904-7">
+        <addForeignKeyConstraint baseColumnNames="employe_id" baseTableName="astreinte" constraintName="FKckb200yt7iha51fnb8nt4851x" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="employe" validate="true"/>
+    </changeSet>
+    <changeSet author="adeh (generated)" id="1625072013904-8">
+        <addForeignKeyConstraint baseColumnNames="domaine_id" baseTableName="employe" constraintName="FKghr2kagqrl1f7i24utjaj41n2" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="domaine" validate="true"/>
+    </changeSet>
+    <changeSet author="adeh (generated)" id="1625072013904-9">
+        <addForeignKeyConstraint baseColumnNames="employe_id" baseTableName="absence" constraintName="FKgtwvcca02w9ge7lfcavhao3pl" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="employe" validate="true"/>
+    </changeSet>
+    <changeSet author="adeh (generated)" id="1625072013904-10">
+        <addForeignKeyConstraint baseColumnNames="equipe_id" baseTableName="serveur" constraintName="FKh1rqr0jeeej2g4hw4ng8xbe8d" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="equipe" validate="true"/>
+    </changeSet>
+    <changeSet author="adeh (generated)" id="1625072013904-11">
+        <addForeignKeyConstraint baseColumnNames="incident_id" baseTableName="notification" constraintName="FKi00oe9rhur9n8n8r3cm7elov2" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="incident" validate="true"/>
+    </changeSet>
+    <changeSet author="adeh (generated)" id="1625072013904-12">
+        <addForeignKeyConstraint baseColumnNames="equipe_id" baseTableName="employe" constraintName="FKktnysem8hoeyrvpp4oaq658at" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="equipe" validate="true"/>
+    </changeSet>
+    <changeSet author="adeh (generated)" id="1625072013904-13">
+        <addForeignKeyConstraint baseColumnNames="employe_id" baseTableName="notification" constraintName="FKm5m6fr24nxg7lpo71kjyiwunm" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="employe" validate="true"/>
+    </changeSet>
+    <changeSet author="adeh (generated)" id="1625072013904-14">
+        <addForeignKeyConstraint baseColumnNames="equipe_id" baseTableName="switche" constraintName="FKmavuam1f45dmmxw7qr2s8x0d8" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="equipe" validate="true"/>
+    </changeSet>
+    <changeSet author="adeh (generated)" id="1625072013904-15">
+        <addForeignKeyConstraint baseColumnNames="division_id" baseTableName="equipe" constraintName="FKpx2kfgu4soviwhyjdmhhe99qj" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="division" validate="true"/>
+    </changeSet>
+    <changeSet author="adeh (generated)" id="1625072013904-16">
+        <addForeignKeyConstraint baseColumnNames="equipe_id" baseTableName="equipement_reseau" constraintName="FKqvm74hbsfayxr5fjlutsnxhgf" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="equipe" validate="true"/>
+    </changeSet>
+    <changeSet author="adeh (generated)" id="1625072013904-1">
+        <dropUniqueConstraint constraintName="UC_JHI_USEREMAIL_COL" tableName="jhi_user"/>
+        <addUniqueConstraint columnNames="email" constraintName="UC_JHI_USEREMAIL_COL" tableName="jhi_user"/>
+    </changeSet>
+    <changeSet author="adeh (generated)" id="1625072013904-2">
+        <dropUniqueConstraint constraintName="UC_JHI_USERLOGIN_COL" tableName="jhi_user"/>
+        <addUniqueConstraint columnNames="login" constraintName="UC_JHI_USERLOGIN_COL" tableName="jhi_user"/>
+    </changeSet>
+</databaseChangeLog>
