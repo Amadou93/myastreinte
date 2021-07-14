@@ -18,12 +18,12 @@
             <thead class="bg-danger text-white">
             <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
             <!--<th jhiSortBy="id"><span>ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>-->
-            <th jhiSortBy="matricul"><span>Matricul</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="firstName"><span>Employe</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <!--<th jhiSortBy="lastName"><span>Last Name</span> <fa-icon [icon]="'sort'"></fa-icon></th>-->
+            <th jhiSortBy="matricul"><span>Matricule</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="firstName"><span>Prenom</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="lastName"><span>Nom</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="email"><span>Email</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="phoneNumber"><span>Phone Number</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="equipeId"><span>Equipe</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="phoneNumber"><span>Tel</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+           <!-- <th jhiSortBy="equipeId"><span>Equipe</span> <fa-icon [icon]="'sort'"></fa-icon></th>-->
             <th jhiSortBy="domaineId"><span>Domaine</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th></th>
             </tr>
@@ -32,15 +32,16 @@
             <tr *ngFor="let employe of employes ;trackBy: trackId">
                 <!--<td><a [routerLink]="['/employe', employe.id, 'view' ]">{{employe.id}}</a></td>-->
                 <td>{{employe.matricul}}</td>
-                <td>{{employe.firstName}} {{employe.lastName}}</td>
-                <!--<td>{{employe.lastName}}</td>-->
+                <td>{{employe.firstName}}</td>
+                <td>{{employe.lastName}}</td>
                 <td>{{employe.email}}</td>
                 <td>{{employe.phoneNumber}}</td>
-                <td>
-                    <div *ngIf="employe.equipeId">
+                <td><a href='/Domaine'>Network</a></td>
+                <!--td>
+                    <div *ngIf="employe.equipe">
                         <a [routerLink]="['../equipe', employe.equipeId , 'view' ]" >{{employe.equipe.name}}</a>
                     </div>
-                </td>
+                </td>-->
                 <td>
                     <div *ngIf="employe.domaineId">
                         <a [routerLink]="['../domaine', employe.domaineId , 'view' ]" >{{employe.domaineId}}</a>
@@ -58,7 +59,7 @@
                                 [routerLink]="['/employe', employe.id, 'edit']"
                                 class="btn btn-dark btn-sm">
                             <fa-icon [icon]="'pencil-alt'"></fa-icon>
-                            <span class="d-none d-md-inline">Edit</span>
+                            <span class="d-none d-md-inline">Editer</span>
                         </button>
                         <button type="submit"
                                 [routerLink]="['/', 'employe', { outlets: { popup: employe.id + '/delete'} }]"
@@ -66,7 +67,7 @@
                                 queryParamsHandling="merge"
                                 class="btn btn-danger btn-sm">
                             <fa-icon [icon]="'times'"></fa-icon>
-                            <span class="d-none d-md-inline">Delete</span>
+                            <span class="d-none d-md-inline">Supprimer</span>
                         </button>
                     </div>
                 </td>

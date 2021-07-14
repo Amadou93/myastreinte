@@ -41,11 +41,11 @@ public class Employe implements Serializable {
     @ManyToOne
     @JsonIgnoreProperties("employes")
     private Equipe equipe;
-
-    @ManyToOne
+ /*   private Domaine domaine;*/
+    /*@ManyToOne
     @JsonIgnoreProperties("employes")
     private Domaine domaine;
-
+*/
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
         return id;
@@ -133,18 +133,18 @@ public class Employe implements Serializable {
         this.equipe = equipe;
     }
 
-    public Domaine getDomaine() {
+    /*public Domaine getDomaine() {
         return domaine;
-    }
+    }*/
 
-    public Employe domaine(Domaine domaine) {
+    /*public Employe domaine(Domaine domaine) {
         this.domaine = domaine;
         return this;
     }
-
-    public void setDomaine(Domaine domaine) {
+*/
+   /* public void setDomaine(Domaine domaine) {
         this.domaine = domaine;
-    }
+    }*/
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
     @Override

@@ -3,22 +3,22 @@
         <!-- <span class="hipster img-fluid rounded"></span> -->
     </div>
     <div class="col-md-9">
-        <h1 class="display-4">Welcome to the MyAstreinte!</h1>
+        <h2 class="display-4">Bienvenue sur votre Plateforme MyAstreinte!</h2>
         <!--<p class="lead">This is your homepage</p>
 -->
         <div [ngSwitch]="isAuthenticated()">
             <div class="alert alert-success" *ngSwitchCase="true">
                 <span id="home-logged-message" *ngIf="account"
-                   > You are logged in as user "{{account.login}}". </span>
+                   > Vous etes connecter en tant qu'utilisateur "{{account.login}}". </span>
             </div>
 
             <div class="alert alert-danger" *ngSwitchCase="false">
-                <span>If you want to </span>
-                <a class="alert-link" (click)="login()">sign in</a><!--<span>, you can try the default accounts:<br/>- Administrator (login="admin" and password="admin") <br/>- User (login="user" and password="user").</span>-->
+                <span>Si tu veux </span>
+                <a class="alert-link" (click)="login()">s'identifier</a><!--<span>, you can try the default accounts:<br/>- Administrator (login="admin" and password="admin") <br/>- User (login="user" and password="user").</span>-->
             </div>
             <div class="alert alert-danger" *ngSwitchCase="false">
-                <span>You don't have an account yet?</span>&nbsp;
-                <a class="alert-link" routerLink="register">Register a new account</a>
+                <span>Vous n'avez pas encore du compte?</span>&nbsp;
+                <a class="alert-link" routerLink="register">Enregistrer un nouveau Compte</a>
             </div>
         </div>
 

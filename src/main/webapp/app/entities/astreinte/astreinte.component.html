@@ -13,7 +13,7 @@
         </form>
         <button type="submit" (click)="previousState()" class="btn btn-danger">
 
-            <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> retour</span>
+            <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span>retour</span>
         </button>
         <!--<h2>
             Bienvenue dans la barre de Recherche
@@ -85,7 +85,7 @@
             [routerLink]="['/astreinte/new']">
             <fa-icon [icon]="'plus'"></fa-icon>
             <span>
-                Creer Astreinte
+                Creer un nouveau Astreinte
             </span>
         </button>
     </h2>
@@ -107,17 +107,19 @@
 
                     <th jhiSortBy="matricul"><span>Matricule</span>
                         <fa-icon [icon]="'sort'"></fa-icon>
-
-                    <!--<th jhiSortBy="numberWeek"><span>Numéro Semaine</span>
+                    </th>
+                    <th jhiSortBy="numberWeek"><span>Numéro Semaine</span>
                         <fa-icon [icon]="'sort'"></fa-icon>
-                    </th>-->
-                <th jhiSortBy="astreinte.numberWeek.toDateString()"><span>Debut de la semaine</span>
+                    </th>
+               <th jhiSortBy="astreinte.numberWeek.toDateString()"><span>Date Debut</span>
                     <fa-icon [icon]="'sort'"></fa-icon>
                 </th>
-                </th>
+
                 <th jhiSortBy="year"><span>Année</span>
                     <fa-icon [icon]="'sort'"></fa-icon>
                 </th>
+
+
                 <th jhiSortBy="employe.lastName"><span >Employe</span>
                     <fa-icon [icon]="'sort'"></fa-icon>
                 </th>
@@ -141,19 +143,19 @@
                 <tr *ngFor="let astreinte of astreintes ;trackBy: trackId">
 <!--                    <td><a [routerLink]="['/astreinte', astreinte.id, 'view' ]">{{astreinte.employe.fistName}}</a></td>-->
                     <td>{{astreinte.matricul}}</td>
-              <!--  <td>{{astreinte.numberWeek}}</td>-->
-                    <td><!--<label for="start">Start date:</label>-->
+               <td>{{astreinte.numberWeek}}</td>
+                   <td>
 
                         <input type="date" id="start" name="trip-start"
-                               value="2021-06-12"
-                               value="2021-06-20"
+                               value=""
+                               value=""
                                min="2021-01-01" max="2021-12-31"></td>
                    <!-- <td *ngIf="astreinte">{{astreinte.numberWeek.toDateString()}}</td>-->
                     <td>{{astreinte.year}}</td>
-                 <!--  <td><a href="http://localhost:8080/employe?firstName=Amadou">{{astreinte.employe.firstName}} {{astreinte.employe.lastName}}</a></td>-->
-                  <td><a [routerLink]="['/employe']" [queryParams]="{firstName:'Amadou'}">
+                <td><a href="/employe">{{astreinte.employe.firstName}} {{astreinte.employe.lastName}}</a></td>
+                  <!--<td><a [routerLink]="['/employe']" [queryParams]="{firstName:'Amadou'}">
                         {{astreinte.employe.firstName}} {{astreinte.employe.lastName}}
-                    </a></td>
+                    </a></td>-->
 
                  <!--   <td>{{astreinte.employe.lastName}}</td>-->
                     <!--<td *ngIf="astreinte.employe.equipe"><a href="/equipe">{{astreinte.employe.equipe.name}}</a></a></td>
@@ -173,13 +175,13 @@
                             <button type="submit" [routerLink]="['/astreinte', astreinte.id, 'edit']"
                                 class="btn btn-dark btn-sm">
                                 <fa-icon [icon]="'pencil-alt'"></fa-icon>
-                                <span class="d-none d-md-inline">Edit</span>
+                                <span class="d-none d-md-inline">Editer</span>
                             </button>
                             <button type="submit"
                                 [routerLink]="['/', 'astreinte', { outlets: { popup: astreinte.id + '/delete'} }]"
                                 replaceUrl="true" queryParamsHandling="merge" class="btn btn-danger btn-sm">
                                 <fa-icon [icon]="'times'"></fa-icon>
-                                <span class="d-none d-md-inline">Delete</span>
+                                <span class="d-none d-md-inline">Supprimer</span>
                             </button>
                         </div>
                     </td>

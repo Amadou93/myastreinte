@@ -4,7 +4,7 @@
         <button id="jh-create-entity" class="btn btn-danger float-right jh-create-entity create-incident" [routerLink]="['/incident/new']">
             <fa-icon [icon]="'plus'"></fa-icon>
             <span >
-            Creer un Incident
+            Incident
             </span>
         </button>
     </h2>
@@ -64,7 +64,7 @@
                                 [routerLink]="['/incident', incident.id, 'edit']"
                                 class="btn btn-dark btn-sm">
                             <fa-icon [icon]="'pencil-alt'"></fa-icon>
-                            <span class="d-none d-md-inline">Edit</span>
+                            <span class="d-none d-md-inline">Editer</span>
                         </button>
                         <button type="submit"
                                 [routerLink]="['/', 'incident', { outlets: { popup: incident.id + '/delete'} }]"
@@ -72,7 +72,7 @@
                                 queryParamsHandling="merge"
                                 class="btn btn-danger btn-sm">
                             <fa-icon [icon]="'times'"></fa-icon>
-                            <span class="d-none d-md-inline">Delete</span>
+                            <span class="d-none d-md-inline">Supprimer</span>
                         </button>
                     </div>
                 </td>

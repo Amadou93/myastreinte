@@ -55,7 +55,7 @@
                     <label class="form-control-label" for="field_equipe">Equipe</label>
                     <select class="form-control" id="field_equipe" name="equipe" formControlName="equipeId">
                         <option [ngValue]="null"></option>
-                        <option [ngValue]="equipeOption.id" *ngFor="let equipeOption of equipes; trackBy: trackEquipeById">{{equipeOption.id}}</option>
+                        <option [ngValue]="equipeOption.id" *ngFor="let equipeOption of equipes; trackBy: trackEquipeById">{{equipeOption.name}}</option>
                     </select>
                 </div>
             </div>

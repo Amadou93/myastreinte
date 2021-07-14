@@ -4,7 +4,7 @@
         <button id="jh-create-entity" class="btn btn-danger float-right jh-create-entity create-equipe" [routerLink]="['/equipe/new']">
             <fa-icon [icon]="'plus'"></fa-icon>
             <span >
-            Creer une Equipe
+            Creer une nouvelle Equipe
             </span>
         </button>
     </h2>
@@ -19,7 +19,7 @@
             <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
           <!--  <th jhiSortBy="id"><span>ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>-->
             <th jhiSortBy="name"><span>Name</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-                <th jhiSortBy="name"><span>Division</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+        <!--        <th jhiSortBy="name"><span>Division</span> <fa-icon [icon]="'sort'"></fa-icon></th>-->
             <th></th>
             </tr>
             </thead>
@@ -27,7 +27,7 @@
             <tr *ngFor="let equipe of equipes ;trackBy: trackId">
               <!--  <td><a [routerLink]="['/equipe', equipe.id, 'view' ]">{{equipe.id}}</a></td>-->
                 <td>{{equipe.name}}</td>
-                <td *ng If="equipe.division">{{equipe.division.divisionName}}</td>
+               <!-- <td *ng If="equipe.division">{{equipe.division.divisionName}}</td>-->
                 <td class="text-right">
                     <div class="btn-group">
                        <!-- <button type="submit"
@@ -40,7 +40,7 @@
                                 [routerLink]="['/equipe', equipe.id, 'edit']"
                                 class="btn btn-dark btn-sm">
                             <fa-icon [icon]="'pencil-alt'"></fa-icon>
-                            <span class="d-none d-md-inline">Edit</span>
+                            <span class="d-none d-md-inline">Editer</span>
                         </button>
                         <button type="submit"
                                 [routerLink]="['/', 'equipe', { outlets: { popup: equipe.id + '/delete'} }]"
@@ -48,7 +48,7 @@
                                 queryParamsHandling="merge"
                                 class="btn btn-danger btn-sm">
                             <fa-icon [icon]="'times'"></fa-icon>
-                            <span class="d-none d-md-inline">Delete</span>
+                            <span class="d-none d-md-inline">Supprimer</span>
                         </button>
                     </div>
                 </td>

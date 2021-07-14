@@ -11,7 +11,7 @@
         <ng-template ngbTabContent>
             <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
 
-                <h2 id="jhi-astreinte-heading">Inserer un seul astreinte</h2>
+                <h2 id="jhi-astreinte-heading">Inserer un astreinte</h2>
                 <div>
                     <jhi-alert-error></jhi-alert-error>
                     <div class="form-group" [hidden]="!editForm.get('id').value">
@@ -42,7 +42,7 @@
 
                     <div class="form-group">
                         <label class="form-control-label" for="field_numberWeek">Number Week</label>
-                        <input type="number" class="form-control" name="numberWeek" id="field_numberWeek"
+                        <input type="number"  maxlength="52"  class="form-control" name="numberWeek" id="field_numberWeek"
                                formControlName="numberWeek"/>
                         <div *ngIf="editForm.get('numberWeek').invalid && (editForm.get('numberWeek').dirty || editForm.get('numberWeek').touched)">
                             <small class="form-text text-danger"
@@ -60,17 +60,17 @@
                         <label class="form-control-label" for="field_employe">Employe</label>
                         <select class="form-control" id="field_employe" name="employe" formControlName="employeId">
                             <option [ngValue]="null"></option>
-                            <option [ngValue]="employeOption.id" *ngFor="let employeOption of employes; trackBy: trackEmployeById">{{employeOption.lastName}}</option>
+                            <option [ngValue]="employeOption.id" *ngFor="let employeOption of employes; trackBy: trackEmployeById">{{employeOption.firstName}} {{employeOption.lastName}}</option>
                         </select>
                     </div>
                 </div>
 
                 <div>
                     <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
-                        <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span>Cancel</span>
+                        <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span>Annuler</span>
                     </button>
                     <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
-                        <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Save</span>
+                        <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Sauvegarder</span>
                     </button>
                 </div>
             </form>
@@ -78,12 +78,12 @@
         </ng-template>
     </ngb-tab>
 
-    <ngb-tab title="Importer ">
+    <ngb-tab title="Importer " class="bg-danger text-white">
 
         <ng-template ngbTabContent>
 
             <form (ngSubmit)="uploadFile()">
-                <h2>inserer un ou plusieurs astreinte </h2>
+                <h2>Inserer un ou plusieurs astreintes </h2>
                 <div class="form-group">
                     <jhi-alert-error></jhi-alert-error>
                    <div class="alert alert-info" style="margin: 1%">
@@ -95,11 +95,11 @@
                 </div>
                 <div>
                     <button (click)="previousState()" class="btn btn-secondary" type="button">
-                        <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span>Cancel</span>
+                        <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span>Annuler</span>
                     </button>
                     <button class="btn btn-primary"
                             type="submit">
-                        <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Save</span>
+                        <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Sauvegarder</span>
                     </button>
                 </div>
             </form>

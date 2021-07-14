@@ -18,9 +18,9 @@
             <thead class="bg-danger text-white">
             <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
             <!--<th jhiSortBy="id"><span>ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>-->
-            <th jhiSortBy="divisionName"><span>Division Name</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="divisionChef"><span>Division Chef</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="departementName"><span>Departement</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="divisionName"><span>Division</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="divisionChef"><span>Chef_Division</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="departementName"><span>Département</span> <fa-icon [icon]="'sort'"></fa-icon></th>
                 <!--<th jhiSortBy="division.equipeName"><span>Domaine</span> <fa-icon [icon]="'sort'"></fa-icon></th>
 -->
 
@@ -53,7 +53,7 @@
                                 [routerLink]="['/division', division.id, 'edit']"
                                 class="btn btn-dark btn-sm">
                             <fa-icon [icon]="'pencil-alt'"></fa-icon>
-                            <span class="d-none d-md-inline">Edit</span>
+                            <span class="d-none d-md-inline">Editer</span>
                         </button>
                         <button type="submit"
                                 [routerLink]="['/', 'division', { outlets: { popup: division.id + '/delete'} }]"
@@ -61,7 +61,7 @@
                                 queryParamsHandling="merge"
                                 class="btn btn-danger btn-sm">
                             <fa-icon [icon]="'times'"></fa-icon>
-                            <span class="d-none d-md-inline">Delete</span>
+                            <span class="d-none d-md-inline">Supprimer</span>
                         </button>
                     </div>
                 </td>

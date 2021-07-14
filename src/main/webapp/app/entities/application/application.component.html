@@ -1,10 +1,10 @@
 <div>
     <h2 id="page-heading">
         <span>Applications</span>
-        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-application" [routerLink]="['/application/new']">
+        <button id="jh-create-entity" class="btn btn-dark float-right jh-create-entity create-application" [routerLink]="['/application/new']">
             <fa-icon [icon]="'plus'"></fa-icon>
             <span >
-            Create new Application
+            Ccnfigurer une  Application
             </span>
         </button>
     </h2>
@@ -46,7 +46,7 @@
                                 [routerLink]="['/application', application.id, 'edit']"
                                 class="btn btn-dark btn-sm">
                             <fa-icon [icon]="'pencil-alt'"></fa-icon>
-                            <span class="d-none d-md-inline">Edit</span>
+                            <span class="d-none d-md-inline">Editer</span>
                         </button>
                         <button type="submit"
                                 [routerLink]="['/', 'application', { outlets: { popup: application.id + '/delete'} }]"
@@ -54,7 +54,7 @@
                                 queryParamsHandling="merge"
                                 class="btn btn-danger btn-sm">
                             <fa-icon [icon]="'times'"></fa-icon>
-                            <span class="d-none d-md-inline">Delete</span>
+                            <span class="d-none d-md-inline">Supprimer</span>
                         </button>
                     </div>
                 </td>
