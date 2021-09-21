@@ -150,7 +150,7 @@ jhipster:
 # ===================================================================
 
 # application:
-app:
-  ldap:
-    domain: sentel.lan
-    url: ldap://10.0.4.215/
+#app:
+#  ldap:
+#    domain: sentel.lan
+#    url: ldap://10.0.4.215/

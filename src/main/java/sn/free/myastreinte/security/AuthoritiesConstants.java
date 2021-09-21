@@ -11,9 +11,9 @@ public final class AuthoritiesConstants {
 
     public static final String ANONYMOUS = "ROLE_ANONYMOUS";
 
-    public static final String EMPLOYE = "ROLE_EMPLOYE";
+    /*public static final String EMPLOYE = "ROLE_EMPLOYE";
 
-    public static final String GESTIONNAIRE = "ROLE_GESTIONNAIRE";
+    public static final String GESTIONNAIRE = "ROLE_GESTIONNAIRE";*/
 
     private AuthoritiesConstants() {
     }

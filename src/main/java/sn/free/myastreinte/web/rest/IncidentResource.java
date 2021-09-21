@@ -1,12 +1,5 @@
 package sn.free.myastreinte.web.rest;
 
-import javafx.scene.media.MediaPlayer;
-import org.springframework.http.HttpStatus;
-import sn.free.myastreinte.domain.enumeration.State;
-import sn.free.myastreinte.service.IncidentService;
-import sn.free.myastreinte.web.rest.errors.BadRequestAlertException;
-import sn.free.myastreinte.service.dto.IncidentDTO;
-
 import io.github.jhipster.web.util.HeaderUtil;
 import io.github.jhipster.web.util.PaginationUtil;
 import io.github.jhipster.web.util.ResponseUtil;
@@ -16,18 +9,20 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpHeaders;
-import org.springframework.util.MultiValueMap;
-import org.springframework.web.util.UriComponentsBuilder;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.util.UriComponentsBuilder;
+import sn.free.myastreinte.domain.enumeration.State;
+import sn.free.myastreinte.service.IncidentService;
+import sn.free.myastreinte.service.dto.IncidentDTO;
+import sn.free.myastreinte.web.rest.errors.BadRequestAlertException;
 
 import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
-
 import java.time.Instant;
-import java.util.Date;
-import java.util.Enumeration;
 import java.util.List;
 import java.util.Optional;
 

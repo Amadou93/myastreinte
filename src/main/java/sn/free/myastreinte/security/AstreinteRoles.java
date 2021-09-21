@@ -1,3 +1,4 @@
+
 package sn.free.myastreinte.security;
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
@@ -35,3 +36,4 @@ public enum AstreinteRoles {
         this.authority = new SimpleGrantedAuthority(activeDirectoryGroup);
     }
 }
+

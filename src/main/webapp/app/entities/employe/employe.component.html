@@ -1,10 +1,10 @@
 <div>
     <h2 id="page-heading">
-        <span>Employes</span>
+        <span>liste des employé</span>
         <button id="jh-create-entity" class="btn btn-danger float-right jh-create-entity create-employe" [routerLink]="['/employe/new']">
             <fa-icon [icon]="'plus'"></fa-icon>
             <span >
-            Creer un Employe
+            Ajouter un employé
             </span>
         </button>
     </h2>
@@ -21,8 +21,8 @@
             <th jhiSortBy="matricul"><span>Matricule</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="firstName"><span>Prenom</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="lastName"><span>Nom</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="email"><span>Email</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="phoneNumber"><span>Tel</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="email"><span>Addresse_email</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="phoneNumber"><span>Téléphone</span> <fa-icon [icon]="'sort'"></fa-icon></th>
            <!-- <th jhiSortBy="equipeId"><span>Equipe</span> <fa-icon [icon]="'sort'"></fa-icon></th>-->
             <th jhiSortBy="domaineId"><span>Domaine</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th></th>

@@ -1,10 +1,6 @@
 package sn.free.myastreinte.config;
 
-import sn.free.myastreinte.security.*;
-import sn.free.myastreinte.security.jwt.*;
-
-import org.springframework.beans.factory.BeanInitializationException;
-import org.springframework.beans.factory.InitializingBean;
+import io.github.jhipster.config.JHipsterProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Import;
 import org.springframework.http.HttpMethod;
@@ -20,28 +16,30 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 import org.springframework.security.web.header.writers.ReferrerPolicyHeaderWriter;
 import org.springframework.web.filter.CorsFilter;
 import org.zalando.problem.spring.web.advice.security.SecurityProblemSupport;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.security.ldap.authentication.ad.ActiveDirectoryLdapAuthenticationProvider;
+import sn.free.myastreinte.security.AuthoritiesConstants;
+import sn.free.myastreinte.security.jwt.JWTConfigurer;
+import sn.free.myastreinte.security.jwt.TokenProvider;
 
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true, securedEnabled = true)
 @Import(SecurityProblemSupport.class)
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
-
+    private final JHipsterProperties jHipsterProperties;
     private final TokenProvider tokenProvider;
-
     private final CorsFilter corsFilter;
     private final SecurityProblemSupport problemSupport;
 
-    @Value("${app.ldap.domain}")
+    /*@Value("${app.ldap.domain}")
     private String domain;
     @Value("${app.ldap.url}")
-    private String url;
+    private String url;*/
 
-    public SecurityConfiguration(TokenProvider tokenProvider, CorsFilter corsFilter, SecurityProblemSupport problemSupport) {
+    public SecurityConfiguration(JHipsterProperties jHipsterProperties,TokenProvider tokenProvider, CorsFilter corsFilter, SecurityProblemSupport problemSupport) {
+        this.jHipsterProperties=jHipsterProperties;
         this.tokenProvider = tokenProvider;
         this.corsFilter = corsFilter;
         this.problemSupport = problemSupport;
+
     }
 
     @Bean
@@ -106,8 +104,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         return new JWTConfigurer(tokenProvider);
     }
 
-    @Bean
+   /* @Bean
     public ActiveDirectoryLdapAuthenticationProvider activeDirectoryLdapAuthenticationProvider() {
         return new ActiveDirectoryLdapAuthenticationProvider(this.domain, this.url);
-    }
+    }*/
 }

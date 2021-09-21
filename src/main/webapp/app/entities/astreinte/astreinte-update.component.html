@@ -5,13 +5,13 @@
 
         <ngb-tabset>
 
-    <ngb-tab title="creer ou modifier astreinte">
+    <ngb-tab title="ajouter ou modifier une astreinte">
 
 
         <ng-template ngbTabContent>
             <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
 
-                <h2 id="jhi-astreinte-heading">Inserer un astreinte</h2>
+                <h2 id="jhi-astreinte-heading">création manuelle</h2>
                 <div>
                     <jhi-alert-error></jhi-alert-error>
                     <div class="form-group" [hidden]="!editForm.get('id').value">
@@ -78,12 +78,12 @@
         </ng-template>
     </ngb-tab>
 
-    <ngb-tab title="Importer " class="bg-danger text-white">
+    <ngb-tab title="creation par import " class="bg-danger text-white">
 
         <ng-template ngbTabContent>
 
             <form (ngSubmit)="uploadFile()">
-                <h2>Inserer un ou plusieurs astreintes </h2>
+                <h2>ajouter une ou plusieurs astreintes </h2>
                 <div class="form-group">
                     <jhi-alert-error></jhi-alert-error>
                    <div class="alert alert-info" style="margin: 1%">

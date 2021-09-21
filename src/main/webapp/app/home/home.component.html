@@ -1,11 +1,11 @@
 <div class="row">
     <div class="col-md-3">
-        <!-- <span class="hipster img-fluid rounded"></span> -->
+         <span class="free img-fluid rounded"></span>
     </div>
     <div class="col-md-9">
         <h2 class="display-4">Bienvenue sur votre Plateforme MyAstreinte!</h2>
         <!--<p class="lead">This is your homepage</p>
--->
+
         <div [ngSwitch]="isAuthenticated()">
             <div class="alert alert-success" *ngSwitchCase="true">
                 <span id="home-logged-message" *ngIf="account"
@@ -14,7 +14,7 @@
 
             <div class="alert alert-danger" *ngSwitchCase="false">
                 <span>Si tu veux </span>
-                <a class="alert-link" (click)="login()">s'identifier</a><!--<span>, you can try the default accounts:<br/>- Administrator (login="admin" and password="admin") <br/>- User (login="user" and password="user").</span>-->
+                <a class="alert-link" (click)="login()">s'identifier</a><!<span>, you can try the default accounts:<br/>- Administrator (login="admin" and password="admin") <br/>- User (login="user" and password="user").</span>-->
             </div>
             <div class="alert alert-danger" *ngSwitchCase="false">
                 <span>Vous n'avez pas encore du compte?</span>&nbsp;
