@@ -1,6 +1,6 @@
 <div>
     <h2 id="page-heading">
-        <span>Incidents</span>
+        <span>Liste des Incidents</span>
         <button id="jh-create-entity" class="btn btn-danger float-right jh-create-entity create-incident" [routerLink]="['/incident/new']">
             <fa-icon [icon]="'plus'"></fa-icon>
             <span >
@@ -11,7 +11,7 @@
     <jhi-alert></jhi-alert>
     <br/>
     <div class="alert alert-warning" *ngIf="incidents?.length === 0">
-        <span>No incidents found</span>
+        <span>incidents no trouvé</span>
     </div>
     <div class="table-responsive" *ngIf="incidents?.length > 0">
         <table class="table table-striped">
@@ -27,7 +27,7 @@
             <th jhiSortBy="composant"><span>Composant</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="responsable"><span>Responsable</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="status"><span>Status</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="equipementName"><span>Equipement Name</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="equipementName"><span>Equipement </span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="message"><span>Message</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="equipeId"><span>Equipe</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th></th>

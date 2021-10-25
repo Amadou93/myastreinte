@@ -85,14 +85,14 @@
             [routerLink]="['/astreinte/new']">
             <fa-icon [icon]="'plus'"></fa-icon>
             <span>
-                Ajouter une nouveelle astreinte
+                Ajouter une astreinte
             </span>
         </button>
     </h2>
     <jhi-alert></jhi-alert>
     <br />
     <div class="alert alert-warning" *ngIf="astreintes?.length === 0">
-        <span>No astreintes found</span>
+        <span> astreinte n'est pas trouvé</span>
     </div>
 
 
@@ -108,7 +108,7 @@
                     <th jhiSortBy="matricul"><span>Matricule</span>
                         <fa-icon [icon]="'sort'"></fa-icon>
                     </th>
-                    <th jhiSortBy="numberWeek"><span>Numéro Semaine</span>
+                    <th jhiSortBy="numberWeek"><span>Numéro de la  Semaine</span>
                         <fa-icon [icon]="'sort'"></fa-icon>
                     </th>
                <th jhiSortBy="astreinte.numberWeek.toDateString()"><span>Date Debut</span>
@@ -129,7 +129,7 @@
                 <th jhiSortBy="astreinte.employe.numberPhone"><span>N° Telephone</span>
                     <fa-icon [icon]="'sort'"></fa-icon>
                 </th>
-                <th jhiSortBy="astreinte.employe.mail"><span>Email</span>
+                <th jhiSortBy="astreinte.employe.mail"><span>adress email</span>
                     <fa-icon [icon]="'sort'"></fa-icon>
                 </th>
                     <th></th>

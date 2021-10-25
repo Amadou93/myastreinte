@@ -11,7 +11,7 @@
         <ng-template ngbTabContent>
             <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
 
-                <h2 id="jhi-astreinte-heading">création manuelle</h2>
+                <h2 id="jhi-astreinte-heading">ajouter par manuelle</h2>
                 <div>
                     <jhi-alert-error></jhi-alert-error>
                     <div class="form-group" [hidden]="!editForm.get('id').value">
@@ -20,7 +20,7 @@
                                readonly />
                     </div>
                     <div class="form-group">
-                        <label class="form-control-label" for="field_matricul">Matricul</label>
+                        <label class="form-control-label" for="field_matricul">Matricule</label>
                         <input type="number" class="form-control" name="matricul" id="field_matricul"
                                formControlName="matricul"/>
                         <div *ngIf="editForm.get('matricul').invalid && (editForm.get('matricul').dirty || editForm.get('matricul').touched)">
@@ -35,13 +35,13 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="form-control-label" for="field_year">Year</label>
+                        <label class="form-control-label" for="field_year">Année</label>
                         <input type="number" class="form-control" name="year" id="field_year"
                                formControlName="year"/>
                     </div>
 
                     <div class="form-group">
-                        <label class="form-control-label" for="field_numberWeek">Number Week</label>
+                        <label class="form-control-label" for="field_numberWeek">numéro de la semaine</label>
                         <input type="number"  maxlength="52"  class="form-control" name="numberWeek" id="field_numberWeek"
                                formControlName="numberWeek"/>
                         <div *ngIf="editForm.get('numberWeek').invalid && (editForm.get('numberWeek').dirty || editForm.get('numberWeek').touched)">
@@ -78,7 +78,7 @@
         </ng-template>
     </ngb-tab>
 
-    <ngb-tab title="creation par import " class="bg-danger text-white">
+    <ngb-tab title="A par import " class="bg-danger text-white">
 
         <ng-template ngbTabContent>
 

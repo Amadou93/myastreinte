@@ -1,17 +1,17 @@
 <div>
     <h2 id="page-heading">
-        <span>Notifications</span>
+        <span> la liste de Notifications</span>
         <button id="jh-create-entity" class="btn btn-dark float-right jh-create-entity create-notification" [routerLink]="['/notification/new']">
             <fa-icon [icon]="'plus'"></fa-icon>
             <span >
-            Envoyer une Notification
+            Ajouter une Notification
             </span>
         </button>
     </h2>
     <jhi-alert></jhi-alert>
     <br/>
     <div class="alert alert-warning" *ngIf="notifications?.length === 0">
-        <span>No notifications found</span>
+        <span>notifications n'est pas trouvé</span>
     </div>
     <div class="table-responsive" *ngIf="notifications?.length > 0">
         <table class="table table-striped">

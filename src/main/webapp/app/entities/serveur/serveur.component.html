@@ -4,25 +4,25 @@
         <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-serveur" [routerLink]="['/serveur/new']">
             <fa-icon [icon]="'plus'"></fa-icon>
             <span >
-            Create new Serveur
+            Ajouter un Serveur
             </span>
         </button>
     </h2>
     <jhi-alert></jhi-alert>
     <br/>
     <div class="alert alert-warning" *ngIf="serveurs?.length === 0">
-        <span>No serveurs found</span>
+        <span>serveurs n'est pas trouvé </span>
     </div>
     <div class="table-responsive" *ngIf="serveurs?.length > 0">
         <table class="table table-striped">
             <thead>
             <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
             <th jhiSortBy="id"><span>ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="nameServeur"><span>Name Serveur</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="nameServeur"><span>Serveur</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="cpu"><span>Cpu</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="memory"><span>Memory</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="memory"><span>memoir</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="disque"><span>Disque</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="avalibity"><span>Avalibity</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="avalibity"><span>Disponiblité</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="equipeId"><span>Equipe</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th></th>
             </tr>
@@ -52,7 +52,7 @@
                                 [routerLink]="['/serveur', serveur.id, 'edit']"
                                 class="btn btn-primary btn-sm">
                             <fa-icon [icon]="'pencil-alt'"></fa-icon>
-                            <span class="d-none d-md-inline">Edit</span>
+                            <span class="d-none d-md-inline">Editer</span>
                         </button>
                         <button type="submit"
                                 [routerLink]="['/', 'serveur', { outlets: { popup: serveur.id + '/delete'} }]"
@@ -60,7 +60,7 @@
                                 queryParamsHandling="merge"
                                 class="btn btn-danger btn-sm">
                             <fa-icon [icon]="'times'"></fa-icon>
-                            <span class="d-none d-md-inline">Delete</span>
+                            <span class="d-none d-md-inline">Supprimer</span>
                         </button>
                     </div>
                 </td>

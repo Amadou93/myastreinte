@@ -1,6 +1,6 @@
 <div>
     <h2 id="page-heading">
-        <span>Switchs</span>
+        <span>Liste de Switchs</span>
         <button id="jh-create-entity" class="btn btn-dark float-right jh-create-entity create-switche" [routerLink]="['/switche/new']">
             <fa-icon [icon]="'plus'"></fa-icon>
             <span >
@@ -11,7 +11,7 @@
     <jhi-alert></jhi-alert>
     <br/>
     <div class="alert alert-warning" *ngIf="switches?.length === 0">
-        <span>No switchs found</span>
+        <span>aucun switchs trouvé</span>
     </div>
     <div class="table-responsive" *ngIf="switches?.length > 0">
         <table class="table table-striped">

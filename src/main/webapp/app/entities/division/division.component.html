@@ -4,14 +4,14 @@
         <button id="jh-create-entity" class="btn btn-danger float-right jh-create-entity create-division" [routerLink]="['/division/new']">
             <fa-icon [icon]="'plus'"></fa-icon>
             <span >
-            Creer une nounelle Division
+            Ajouter une Division
             </span>
         </button>
     </h2>
     <jhi-alert></jhi-alert>
     <br/>
     <div class="alert alert-warning" *ngIf="divisions?.length === 0">
-        <span>No divisions found</span>
+        <span>Division non trouvé</span>
     </div>
     <div class="table-responsive" *ngIf="divisions?.length > 0">
         <table class="table table-striped">

@@ -1,7 +1,7 @@
 <div class="row justify-content-center">
     <div class="col-8">
         <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
-            <h2 id="jhi-serveur-heading">Create or edit a Serveur</h2>
+            <h2 id="jhi-serveur-heading">Ajouter ou modifier Serveur</h2>
             <div>
                 <jhi-alert-error></jhi-alert-error>
                 <div class="form-group" [hidden]="!editForm.get('id').value">
@@ -10,7 +10,7 @@
                         readonly />
                 </div>
                 <div class="form-group">
-                    <label class="form-control-label" for="field_nameServeur">Name Serveur</label>
+                    <label class="form-control-label" for="field_nameServeur">Serveur</label>
                     <input type="text" class="form-control" name="nameServeur" id="field_nameServeur"
                            formControlName="nameServeur"/>
                     <div *ngIf="editForm.get('nameServeur').invalid && (editForm.get('nameServeur').dirty || editForm.get('nameServeur').touched)">
@@ -36,7 +36,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="form-control-label" for="field_memory">Memory</label>
+                    <label class="form-control-label" for="field_memory">memoir</label>
                     <input type="number" class="form-control" name="memory" id="field_memory"
                            formControlName="memory"/>
                     <div *ngIf="editForm.get('memory').invalid && (editForm.get('memory').dirty || editForm.get('memory').touched)">
@@ -87,10 +87,10 @@
             </div>
             <div>
                 <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
-                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span>Cancel</span>
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span>Annuler</span>
                 </button>
                 <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
-                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Save</span>
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Sauvegarder</span>
                 </button>
             </div>
         </form>
